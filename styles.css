@@ -1,0 +1,78 @@
+.mark {
+    background-color: rgba(255, 255, 0, 0.479);
+    padding: 1vw;
+}
+
+b {
+    background-color:lightgrey;
+    color: red;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+}
+abbr {
+    text-decoration: none; /*Tira o pontilhado do <abbrs>*/
+
+}
+
+hr {
+    opacity: 0.5;
+}
+
+/*Links*/
+
+a:link, a:visited, a:active {            
+    color: black;
+    font-size: medium;
+    text-decoration: none;
+}
+    
+a:hover {
+    color: rgba(0,0,0, 0.5);
+}
+
+/*formatação*/
+
+.menu1 {
+    color:black;
+    text-decoration: none;
+    font-size: 20px;
+    
+}
+.menu1:hover {
+    color: rgba(0,0,0,0.5);
+}
+
+.code {
+    background-color: black;
+    color: white;
+    padding:0.3vw;
+}
+body {
+    font-size: 18px;
+}
+
+/*Botão de subir*/
+div.irtopo {
+    border: 1px solid black;
+    border-radius: 50%;
+    right: 25px;
+    bottom: 25px;
+    position: fixed;
+    color: black;
+    opacity: 0.3;
+}
+div.irtopo a {
+    display: block;
+    padding: 12px 8px;
+    text-decoration: none;
+}
+
+
+div.irtopo:hover, a:hover {
+    opacity: 1;
+    color: black;
+}

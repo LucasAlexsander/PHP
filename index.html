@@ -6,15 +6,41 @@
 
         <title>PHP</title>
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
+
+        <header>
+            <h1 id="irtop" style="text-align: center;"><abbr title="Hypertext Preprocessor">PHP</abbr></h1>
+        </header>
+
+        <h2>Sumário:</h2>
+        <ul>
+            <a href="#php"><li class="menu1">O que é PHP?</li></a>
+            <a href="#sintaxe"><li class="menu1">Sintaxe PHP</li></a>
+            <a href="#comentario"><li class="menu1">Comentários</li></a>
+            <a href="#variaveis"><li class="menu1">Variáveis</li></a>
+            <a href="#echo"><li class="menu1">Echo / Print</li></a>
+            <a href="#dados"><li class="menu1">Tipos de Dados PHP</li></a>
+            <a href="#string"><li class="menu1">Algumas funções da String</li></a>
+            <a href="#number"><li class="menu1">Número PHP</li></a>
+            <a href="#math"><li class="menu1">Math PHP</li></a>
+            <a href="#constantes"><li class="menu1">Constantes</li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+
+
+
+        </ul>
+
+
+
+
         <section>
             <header>
-                <h1 style="text-align: center;"><abbr title="Hypertext Preprocessor">PHP</abbr></h1>
+                <h2 id="php">O que é PHP?</h2>
             </header>
-            <h2>O que é PHP?</h2>
             <ul>
                 <li>PHP é um acrônimo para "PHP: Hypertext Preprocessor"</li>
                 <li>PHP é uma linguagem de script de código aberto amplamente usada</li>
@@ -51,10 +77,11 @@
 
         <section>
             <header>
-                <h1>Sintaxe PHP</h1>
+                <h1 id="sintaxe">Sintaxe PHP</h1>
             </header>
             <p>Um script PHP é executado no servidor e o resultado HTML simples é enviado de volta ao navegador.</p>
         </section>
+        
 
         <section>
             <header>
@@ -66,7 +93,7 @@
             <p>Abaixo, temos um exemplo de um arquivo PHP simples, com um script PHP que usa uma função PHP embutida "<b>echo</b>" para gerar o texto "Olá, mundo!" em uma página da web.</p>
             <img src="img\echo.png" alt="Usando o echo de PHP" width="220" height="290"><br>
             <p><strong>Nota:</strong>As intruções PHP terminam com um ponto e vírgula (<b>;</b>).</p>
-        </section>
+        </section><hr>
 
         <section>
             <header>
@@ -76,9 +103,390 @@
             <p>No exemplo abaixo, todas as três declarações de eco são iguais e legais:</p>
             <img src="img\sintaxe_maiu.png" alt="Sensibilidade a maiúsculas e minúsculas do PHP" width="237" height="278"><br>
             <div class="mark">
-                <p><strong>Nota:</strong> No entando, todos os nomes de váriaveis diferenciam maiúsculas de minúsculas.</p>
+                <p><strong>Nota:</strong> No entando, todos os nomes de variáveis diferenciam maiúsculas de minúsculas.</p>
+            </div>
+            <p>Já as variáveis não podem ter letras diferentes como no exemplo passado, elas já são mais rigorosas perante a isso. Elas precisam estar escritas do mesmo jeito de quando foram criadas.</p>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="comentario">Comentários</h1>
+            </header>
+            <p>Os comentários farão com que as linhas de códigos não funcionem, tendo como finalidade passar a ideia daquele ponto em que foi comentado. No PHP temos várias formas para comentar:</p>
+            <p>Podendo ser com <b>//</b> (usado por linhas)</p>
+            <p><b>#</b>(por linha)</p>
+            <p>e <b>/*</b>, <b>*/</b>(comentar mais de uma linha)</p>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="variaveis">Variáveis</h1>
+            </header>
+            <p>Para criamos uma variável começamos com o sinal <b>$</b>, seguindo pelo nome da variável.</p>
+            <h3>Exemplo:</h3>
+            <img src="img\variavel.png" alt="Como criar uma variável no PHP" width="260" height="130">
+            <p>Após a execução das intruções acima, a variável <b>$txt</b> conterá o valor <b>Hello world!</b>, a variável <b>$x</b> conterá o valor <b>5</b> e a variável <b>$y</b> conterá <b>10.5</b>.</p>
+            <p><strong>OBS:</strong> Ao atribuir um valor de texto para uma variável, coloque o valor dentro de aspas.</p>
+            <p><strong>Nota:</strong> Ao contrário de outras linguagens de programação, o PHP não tem comando para declarar o tipo da variável. Ele é criado no momento em que você atribuiu um valor a ele pela primeira vez. (Pense nas variáveis como contêiners para armazenar dados).</p>
+        </section>
+        <section>
+            <header>
+                <h2>Variáveis PHP:</h2>
+            </header>
+            <ul>
+                <li>Deve começar com letra ou caractere de sublinhado</li>
+                <li>Não pode começar com número</li>
+                <li>Pode conter apenas caracteres alfanumericos e sublinhados (Az, 0-9 e _)</li>
+                <li>Diferenciam maiúsuclas de minúsculas</li>
+            </ul>
+        </section>
+
+        <section>
+            <header>
+                <h2>Variáveis de Saída</h2>
+            </header>
+            <p>O <b>echo</b> é usado para dar um print na tela, enviar dados a tela.</p>
+            <h3>O exemplo a seguir mostra como é o seu uso:</h3>
+            <img src="img\uso_echo.png" alt="Exemplo de uso do echo" width="220" height="87">
+            <h3>Podendo fazer a importação da variável da seguinte forma também:</h3>
+            <img src="img\segundotipoecho.png" alt="Outro tipo de uso do echo" width="163" height="127">
+        </section>
+
+        <section>
+            <header>
+                <h2>Escopo das variáveis</h2>
+            </header>
+            <p>No PHP as variáveis podem ser declaradas em qualquer lugar no scrip. O escopo de uma variável é a parte do script onde a variável pode ser referenciada / usada.</p>
+            <p>Podendo ter três escopos:</p>
+            <ul>
+                <li>local</li>
+                <li>global</li>
+                <li>estático</li>
+            </ul>
+        </section>
+
+        <section>
+            <header>
+                <h2>Escopo Global e Local</h2>
+            </header>
+            <p>Uma variável criada <strong>fora</strong> de uma função só pode ser acessada fora da função e tem um <strong>ESCOPO GLOBAL</strong>.</p>
+            <img src="img\escopo_global.png" alt="Exemplo de escopo global" width="507" height="260">
+            <p>Uma variável criada <strong>dentro</strong> de uma função tem um <strong>ESCOPO LOCAL</strong> e só pode ser acessada dentro da função:</p>
+            <img src="img\escopo_local.png" alt="Exemplo de escopo local" width="480" height="236">
+            <div class="mark">
+                <p>Você pode ter variáveis locais com o mesmo nome em funções diferentes, porque as variáveis locais só são reconhecidas pela função na qual são declaradas.</p>
             </div>
         </section>
 
+        <section>
+            <header>
+                <h2>PHP a palara-chave global</h2>
+            </header>
+            <p>A palavra-chave <b>global</b> é usada para acessar uma variável global de dentro de uma função. Para fazer isso, use a palavra-chave <b>global</b> antes das variáveis (dentro da função):</p>
+            <img src="img\variavel_global.png" alt="Usando a palara-chave global dentro da função" width="232" height="282">
+            <p>O PHP também armazena todas as variáveis globais dentro de um array. Contendo o nome da variável. Este array também é acessível a partir de funções e pode ser usado para atualizar  variáveis globais.</p>
+            <p>O exemplo anterior pode ser escrito dessa seguinte forma:</p>
+            <img src="img\variavel_global_1.png" alt="Usando array para puxar variáveis para dentro da função" width="500" height="257">
+        </section>
+
+        <section>
+            <header>
+                <h2>PHP palavra-chave estática</h2>
+            </header>
+            <p>Normalmente, quando uma função é concluída / executada, todas as suas variáveis são excluídas. No entando, às vezes queremos que uma variável local NÂO seja excluída. Precisamos disso para um novo trabalho.</p>
+            <p>Para fazer isso, use o <b>static</b> ao declara a variável pela primeira vez.</p>
+            <img src="img\usando_static.png" alt="Usando o static" width="278" height="235">
+            <p>Então, cada vez que a função é chamada, essa variável ainda terá as informações que continha da última vez que a função foi chamada.</p>
+            <p><strong>OBS:</strong> A variável ainda é local para a função.</p>
+        </section>
+
+        <section>
+            <header>
+                <h1 id="echo">Echo / Print</h1>
+            </header>
+            <p>No php podemos usar o <b>echo</b> e o <b>print</b> para printar na tela.</p>
+            <h2>Echo e Print Statement</h2>
+            <p>Os dois são mais ou menos iguais, ambos são usados para enviar um dado na tela.</p>
+            <p><b>echo</b> não tem valor de retorno enquanto o <b>print</b> tem o valor 1 de retorno, portanto, pode ser usado em expressões. <b>echo</b> pode ter vários parâmetros (embora esse uso seja raro), enquanto <b>print</b> pode ter um argumento. <b>echo</b> é ligeiramente mais rápido que do   <b>print</b>.</p>
+
+            <h2>A declaração echo em PHP</h2>
+            <p>A <b>echo</b> pode ser usada com ou sem parentêses: <b>echo</b> ou <b>echo()</b>.</p>
+            <h3>Texto de exibição:</h3>
+            <p>O exemplo a seguir mostra que podemos usar algumas marcações do HTML no PHP:</p>
+            <img src="img\echo_exemplo.png" alt="Modos de uso do echo" width="373" height="130">
+            <h4>Variáveis de exibição:</h4>
+            <p>O exemplo a seguir mostra como gerar texto e variáveis com a <b>echo</b> intrução:</p>
+            <img src="img\echo_exemplo(2).png" alt="Outro modo de uso do echo" width="242" height="177">
+        </section>
+
+        <section>
+            <header>
+                <h2>Print no PHP</h2>
+            </header>
+            <p>Podendo ser usado com parentêses ou não. Um exemplo de uso do print:</p>
+            <img src="img\print.png" alt="Uso do print" width="237" height="77">
+            <h4>Variáveis de exibição:</h4>
+            <p>O exemplo a seguir mostra como gerar texto e variáveis com o <b>print</b>:</p>
+            <img src="img\print_exemplo.png" alt="Outro modo de uso do print" width="231" height="179">
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1 id="dados">Tipos de Dados PHP</h1>
+            </header>
+            <p>Variáveis podem armazerar diferentes tipos de dados, e diferentes tipos de dados podem fazer diferentes coisas.</p>
+            <p>PHP suporta os seguintes dados:</p>
+            <ul>
+                <li>Fragmento</li>
+                <li>Inteiro</li>
+                <li>Float (Podendo ser chamado de double)</li>
+                <li>Boleano</li>
+                <li>Variedade</li>
+                <li>Objeto</li>
+                <li>Nulo</li>
+                <li>Recurso</li>
+            </ul>
+
+            <h2>String</h2>
+            <p>Uma sequência de caracteres, como "Hello world". Ficando entre aspas, podendo ser aspas simples ou aspas duplas.</p>
+            
+            <h2>Inteiro</h2>
+            <p>São números que não contém o uso da virgula ou ponto, ficando entre -2.147.483.648 e 2.147.483.647. E precisam ter pelo menos 1 dígito.</p>
+            <p>No exemplo a seguir, %x é um número inteiro. A função PHP var_dump() retorna o tipo de dado e o valor:</p>
+
+            <h2>Float</h2>
+            <p>É um número flutuante (que contém casa depois da virgula).</p>
+
+            <h2>Boleano</h2>
+            <p>Um valor boolean representa estados: true ou false. Costumam ser usado em testes condicionais. </p>
+
+            <h2>Array PHP</h2>
+            <p>Uma matriz que armazena vários vetore em uma única variável.</p>
+            <p>No exemplo a seguir $cars é uma array. A função PHP var_dump() retorna o tipo de dados e os valores.</p>
+
+            <h2>Objeto</h2>
+            <p>Classes e objetos são os dois aspectos principais da programação orientada a objetos.</p>
+            <p>Uma classe é um modelo para o objeto e um objeto é uma instância de uma classe. Quando os objetos são criados, eles herdam todas as propridades e comportamentos da classe, mas cada objeto terá valores diferentes para as propridades.</p>
+            <p>Vamos supor que temos uma classe chamada Carros. Um carro pode ter propridades como modelo, cor, etc. Podemos definir variáveis como $modelo, $cor, e assim por diante, pra conter os valores dessas propridades.</p>
+            <p>Quando os objetos individuais ("Fox", "Gol", "Opala") são criados, eles herdam todas as propridades e comportamentos da classe, mas cada obejto terá valores diferentes para as propridades.</p>
+            <p>Se você criar uma função _construct(), o PHP irá automaticamente chamar esta função quando você criar um objeto de uma classe.</p>
+            <img src="img\exemplo_de_class.png" alt="Exemplo de class" width="305" height="350">
+
+            <h2>Valor Nulo</h2>
+            <p>Null é um tipo de dado que pode apenas um valor: NULL.</p>
+            <p>Uma variável deste tipo é uma variável que não possui nenhum atributo a ela.</p>
+            <p><strong>OBS:</strong> Se uma variável for criada sem um valor, será automaticamente atribuído a ela um valor NULL.</p>
+            <p>As variáveis também podem ser esvaziadas definindo o valor NULL:</p>
+            <img src="img\usando_null.png" alt="Usando NULL" width="152" height="116">
+
+            <h2>Recurso PHP</h2>
+            <p>O tipo de recusro especial não é um tipo de dados real. É o armazenamento de uma referência a funções e recursos externos ao PHP.</p>
+            <p>Um exemplo comum do uso é no banco de dados.</p>
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1 id="string">Algumas funções da String</h1>
+            </header>
+            <h2>srtlen() - Retorna o comprimento da string</h2>
+            <p>Retorna o comprimento da string.</p>
+            <img src="img\strlen.png" alt="Usando o strlen" width="223" height="73">
+
+            <h2>Str_word_count()</h2>
+            <p>Conta o número de palavras em uma string.</p>
+            <img src="img\str_world_count.png" alt="Usando o str_world_count" width="286" height="76">
+
+            <h2>strrev()</h2>
+            <p>Reverte uma string.</p>
+            <img src="img\strrev.png" alt="Usando o strrev" width="216" height="81">
+
+            <h2>Strpos()</h2>
+            <p>Pesquisa um texto dentro de uma string.</p>
+            <img src="img\strpos.png" alt="Usando o strpos" width="312" height="72">
+            <p>A primeira posição do caractere é 0 e não 1.</p>
+
+            <h2>str_replace()</h2>
+            <p>Substitui o texto dentro de um string. Trocar, por esse, neste texto.</p>
+            <img src="img\str_replace.png" alt="Usando o str_replace" width="403" height="83">
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1 id="number">Número PHP</h1>
+            </header>
+            <p>No PHP quando você troca o valor das variáveis elas são automaticamente ajustadas, se erá string passará a ser o que você colocou.</p>
+
+            <h2>Inteiros</h2>
+            <p>São números que não possuem virgulas (ou ponto).</p>
+            <p><strong>Nota:</strong> Uma coisa importante para se saber é que mesmo que o 4 * 2,5 for 10, o resultado armazenado será float, pois um dos operadores é flaot(2,5).</p>
+            <p>PHP tem as seguintes constantes predefinidas para inteiros:</p>
+            <ul>
+                <li>PHP_INT_MAX - O maior número inteiro suportado</li>
+                <li>PHP_INT_MIN - O menor número inteiro suportado</li>
+                <li>PHP_INT_SIZE - O tamanho do número inteiro em bytes</li>
+            </ul>
+            <p>PHP tem as seguintes funções para verificar se o tipo de uma variável é inteiro:</p>
+            <ul>
+                <li>is_int()</li>
+                <li>is_integer() - alias de in_int()</li>
+                <li>is_long() - alias de is_int()</li>
+            </ul>
+            <h3>Exemplo:</h3>
+            <img src="img\is_int.png" alt="Usando o is_int" width="175" height="99">
+            <p>O resultado sera em bool, falando se é true ou false.</p>
+
+            <h2>Float</h2>
+            <p>Um número que tem uma virgula (ou ponto).</p>
+            <p>O PHP tem as seguintes constantes predefinidas para flutuantes:</p>
+            <ul>
+                <li>PHP_FLOAT_MAX - O maior número de ponto flutuante</li>
+                <li>PHP_FLOAT_MIN - O menor número de ponto flutuante</li>
+                <li>-PHP_FLOAT_MAX - O menor número de ponto flutuante negativo</li>
+                <li>PHP_FLOAT_DIG - O número de dígitos decimais que podem ser arredondados para um ponto flutuante e vicer-versa sem perda de precisão</li>
+                <li>PHP_FLOAT_EPSILON - O menor número positivo x representável, de modo que x + 1,0 != 1,0</li>
+            </ul>
+
+            <p>PHP tem as seguintes funções para verificar se o tipo de uma variável é flutuante</p>
+            <ul>
+                <li>is_float()</li>
+                <li>is_double() - alias de is is_float()</li>
+            </ul>
+
+            <h2>Infinity</h2>
+            <p>Um número maior que PHP_FLOAT_MAX é infinito.</p>
+            <p>PHP tem as seguintes funções para verificar se um valor é infinito ou não:</p>
+            <ul>
+                <li>is_infinite()</li>
+                <li>is_finite()</li>
+            </ul>
+            
+            <h2>NaN</h2>
+            <p>NaN significa Não é um número. Usado para operações matemáticas impossíveis.</p>
+            <p>Tendo a seguinte função:</p>
+            <ul>
+                <li>is_nan()</li>
+            </ul>
+
+            <h2>Strings Numéricas</h2>
+            <p>A função is_numeric() pode ser usada para descobrir se uma variável é numérica. A função retorna verdadeiro se a variável for número ou uma string númerica, false caso contrário.</p>
+
+            <h2>Casting Strings e Floats to Integers</h2>
+            <p>Às vezes, você precisa converter um valor numérico em outro tipo de dados.</p>
+            <p>As funções (int), (inteiro) ou intval() são frequentemente usadas para converter um valor em um inteiro.</p>
+            <img src="img\convertendo_int.png" alt="Convertendo float/string para inteiro" width="170" height="244">
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1 id="math">Math PHP</h1>
+            </header>
+            <h2>pi()</h2>
+            <p>Retorna um valor de PI.</p>
+
+            <h2>min() e max()</h2>
+            <p>As funções <b>min()</b> e <b>max()</b> pode ser usadas para encontrar o valor mais baixo ou mais alto em uma lista de argumentos:</p>
+            <img src="img\max_min.png" alt="Usando os max() e min()" width="234" height="114">
+
+            <h2>abs()</h2>
+            <p>Retorna um valor absoluto (positivo) de um número:</p>
+            <p>Caso o número for -1.3, vai retornar 1.3.</p>
+
+            <h2>sqrt()</h2>
+            <p>Retorna uma raiz quadrada de um número.</p>
+
+            <h2>round()</h2>
+            <p>Arredonda um número flutuante para um número inteiro mais próximo:</p>
+            <p>0.8 = 1</p>
+            <p>0.49 = 0</p>
+
+            <h2>rand()</h2>
+            <p>Gera número aleatório.</p>
+            <p>echo rand();</p>
+            <p>Para obeter mais controle sobre o número, você pode adicionar parâmetros <i>min</i> e <i>max</i> opcionais para especificar o inteiro mais baixo e o inteiro mais alto a ser retornado.</p>
+            <p>Por exemplo, se você deseja obter um número aleatório entre 0 - 100 (inclusive), use <b>rand(10, 100)</b></p>
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1 id="constantes">Constantes</h1>
+            </header>
+            <p>Uma constante é um identificador (nome) para um valor simples. O valor não pode ser alterado durante o script. Um nome de constante válido começa com uma letra ou sublinhado (sem o sinal $ antes do nome da constante).</p>
+            <p><strong>Nota:</strong> Ao contrário das variáveis, as constantes são automaticamente globais em todo scprit.</p>
+            <h3>Sintaxe:</h3>
+            <p>Para criar esta constante, usamos <b>define()</b>.</p>
+            <div class="code">
+                <p>define(name, value, case-insensitive)</p>
+            </div>
+            <p>Parâmetros:</p>
+            <ul>
+                <li>Name: especifica o nome da variável</li>
+                <li>Value: especifica o valor da constante</li>
+                <li>case-insensitive: especifica se o nome da constante deve ser indiferente a maiúsculas ou minúsculas. Por padrão vem <i>false</i></li>
+            </ul>
+            <p>Caso queira mudar o case-insensitive, coloque <i>true</i>.</p>
+
+            <h2>Matrizes Constantes</h2>
+            <p>Podemos criar array usando o <b>define()</b>:</p>
+            <img src="img\array_contante.png" alt="Definindo array como constante" width="339" height="84">
+
+            <h2>Constantes Globias</h2>
+            <p>As constantes são globais e podem ser usadas em todo o script.</p>
+            <p>O exemplo a seguir usa uma constante dentro de uma função, mesmo se for definida fora da função:</p>
+            <img src="img\constante_global.png" alt="Exemplo de constante Global" width="316" height="95">
+        </section><br><hr>
+
+        <section>
+            <header>
+                <h1>Operadores</h1>
+            </header>
+            <p>O PHP divide os operadores nos seguintes grupos:</p>
+            <ul>
+                <li>Operadores aritiméticos</li>
+                <li>Operadores de atribuição</li>
+                <li>Operadores de comparação</li>
+                <li>Operadores de incremento / decremento</li>
+                <li>Operadores lógicos</li>
+                <li>Operadores de string</li>
+                <li>Operadores de matriz</li>
+                <li>Operadores de atribuição</li>
+            </ul>
+
+            <h2>Operadores aritiméticos:</h2>
+            <p>Usados para fazer contas de adição, subtração, mutiplicação, etc...</p>
+            <img src="img\aritmeticos.png" alt="Operações aritmeticas para PHP" width="783" height="424">
+
+            <h2>Operadores de Atribuição</h2>
+            <p>Usados com valores numéricos para gravar um valor em uma variável.</p>
+            <img src="img\operadores.png" alt="Operadores de atribuição para PHP" width="774" height="469">
+
+            <h2>Operadores de comparação</h2>
+            <p>Usado para comprar dois valores.</p>
+            <img src="img\comparativos.png" alt="Operadores de Atribuição para PHP" width="785" height="613">
+
+            <h2>Operadores de Incremento / decremento</h2>
+            <p>Usados para incrementar / descrementar uma variável</p>
+            <img src="img\incremento.png" alt="Operadores de incremento e decremento" width="781" height="308">
+
+            <h2>Operadores lógicos</h2>
+            <p>Usado para combinar declarações condicionais.</p>
+            <img src="img\logicos.png" alt="Oparedores lógicos para PHP" width="776" height="516">
+
+            <h2>Operadores de string</h2>
+            <p>São projetados para string.</p>
+            <img src="img\operadores_string.png" alt="Operadores para String em PHP" width="773" height="207">
+
+            <h2>Operadores de Array</h2>
+            <p>São usados para comparar array.</p>
+            <img src="img\oparadores_array.png" alt="Operadores para Array em PHP" width="776" height="581">
+
+            <h2>Operadores de atribuição condicional</h2>
+            <p>Usados para definir um valor dependendo das condições.</p>
+            <img src="img\operadores_condicionais.png" alt="Operadores condicionais para PHP" width="783" height="487">
+        </section><br><hr>
+
+
+
+        <div class="irtopo"><a href="#irtop">Subir</a></div>
+        
     </body>
 </html>

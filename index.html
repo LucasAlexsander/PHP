@@ -27,8 +27,16 @@
             <a href="#number"><li class="menu1">Número PHP</li></a>
             <a href="#math"><li class="menu1">Math PHP</li></a>
             <a href="#constantes"><li class="menu1">Constantes</li></a>
+            <a href="#operadores"><li class="menu1">Operadores</li></a>
+            <a href="#if_else"><li class="menu1">If... else... elseif</li></a>
+            <a href="#loop"><li class="menu1">Loops</li></a>
+            <a href="#funcoes"><li class="menu1">Funções</li></a>
+            <a href="#array"><li class="menu1">Array</li></a>
+            <a href="#variaveis_globais"><li class="menu1">Variáveis Globais</li></a>
+            <a href="#expressoes"><li class="menu1">Expressões Regulares</li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
+
 
 
 
@@ -437,7 +445,7 @@
 
         <section>
             <header>
-                <h1>Operadores</h1>
+                <h1 id="operadores">Operadores</h1>
             </header>
             <p>O PHP divide os operadores nos seguintes grupos:</p>
             <ul>
@@ -483,6 +491,697 @@
             <p>Usados para definir um valor dependendo das condições.</p>
             <img src="img\operadores_condicionais.png" alt="Operadores condicionais para PHP" width="783" height="487">
         </section><br><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="if_else">If... else... elseif</h1>
+                </header>
+                <p>Funções usadas para executar ações diferentes com base nas condições.</p>  
+            </section>
+
+            <section>
+                <header>
+                    <h2>Declarações condicionais de PHP</h2>
+                </header>
+                <p>Muitas vezes ao criar um código você deseja que o programa possa executar diferentes ações com base no que o usuário solicita. Para isso, usamos o <b>if</b>, <b>else</b> e o <b>elseif</b>.</p>
+                <p>Os significados de cada uma:</p>
+                <ul>
+                    <li><b>if</b> - executa algum código se uma condição for verdadeira</li>
+                    <li><b>if...else</b> - executa alguma condição caso uma for verdadeira e a outra falsa</li>
+                    <li><b>if...elseif...else</b> - executa códigos diferentes para mais de duas condições</li>
+                    <li><b>switch</b> - seleciona um de muitos blocos de códigos para serem executados</li>
+                </ul>
+            </section> <br><hr>
+
+            <section>
+                <header>
+                    <h2>Sintaxes</h2>
+                    <h3>if</h3>
+                </header>
+                <pre>if (condições) {
+    código para ser executado caso a condição for verdadeira;
+}                </pre>
+
+                <img src="img\uso_do_if.png" alt="Exemplo com o uso do if" width="257" height="129">
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>if...else</h3>
+                </header>
+                <pre>if (condição) {
+    código para ser executado caso a condição for verdadeira;
+} else {
+    código para ser executado caso a condição for false;
+}                </pre>
+            </section>
+            
+            <section>
+                <header>
+                    <h3>if...elseif...else</h3>
+                </header>
+                <pre>if (condição) {
+    código para ser executado caso a condição for verdadeira;
+} elseif (condição) {
+    código para ser executado se esta condição for verdadeira;
+} else {
+    código para ser executado caso todas as condições forem falsas;
+}                </pre>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>switch</h3>
+                </header>
+                <pre>switch (n) {
+    case Label1:
+        código para ser executado se n=Label1;
+        break;
+    case Label2:
+        código para ser executado se n=Label2;
+        break;
+    case Label3;
+        código para ser executado se n=Label3;
+        break;
+        ...
+    default:
+        código para ser executado se n é diferente de todos os Labels;
+}                </pre>
+
+                <p><strong>Como funciona:</strong>> Primeiro, temos uma única expressão <i>n</i> (geralmente uma variável), que é avaliada uma vez. O valor da expressão então é comparado com os valores de cada caso na estrutura. Se houver uma correspondência, o bloco do código associado a esse caso é executado. Use o <b>break</b> para evitar que o código seja executado no próximo caso automaticamente. A intrução <b>default</b> é usada se nenhuma correspondência for encontrada.</p>
+                <p><strong>OBS:</strong>> É como se fosse vários if.</p>
+            </section><hr><br>    
+
+
+            <section>
+                <header>
+                    <h1 id="loop">Loops</h1>
+                </header>
+                <p>Os loops são usados para executar uma linha de código repetidamente, desde que uma determinada condição seja obtida.</p>
+                <p>Temos os seguintes loops em PHP:</p>
+                <ul>
+                    <li><b>while</b> - percorre um bloco de código, desde que a condição especifica seja concluida</li>
+                    <li><b>do...while</b> - faz um loop no bloco de código uma vez e, em seguida, repete o loop, desde que a condição especifica seja verdadeira</li>
+                    <li><b>for</b> - percorre um bloco de código em um determinado número de vezes</li>
+                    <li><b>foreach</b> - pecorre um bloco de código para cada elemento em uma matriz</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Sintaxes</h2>
+                    <h3>While</h3>
+                </header>
+                <pre>while (condição) {
+    código para ser executado;
+}                </pre>
+
+            <img src="img\usando_while.png" alt="Exemplo com o uso do while em PHP" width="249" height="134">
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>do...while</h3>
+                </header>
+                <pre>do {
+    código para ser executado;
+} while (condição);
+                </pre>
+                <p><strong>OBS:</strong> primeiro vai executar o código e depois vai ver se a condição é verdadeira para efetuar o loop.</p>
+            </section><hr>
+            
+            <section>
+                <header>
+                    <h3>For</h3>
+                </header>
+                <pre>for (variável; condição para a variável; incremento da variável) {
+    código para ser executado para cada interação;
+}                </pre>
+                </section><hr>
+
+                <section>
+                    <header>
+                        <h3>foreach</h3>
+                    </header>
+                    <p>Funciona apenas com arrays e é usado para percorrer cada par de chave / valor em um array.</p>
+                    <pre>foreach ($array um $valor) {
+    código para  ser executado;
+}                    </pre>
+                    <p>Usamos o foreach para passar valores de array para novas váriaveis, podemos fazer para atribuir valores separados para variáveis diferentes.</p>
+                </section><hr>
+
+                <section>
+                    <header>
+                        <h2>Break / Continue</h2>
+                    </header>
+                    <p>O <b>break</b> pode ser usado para "salta" de um <b>switch</b> e também pode ser usado para sair de um loop.</p>
+                </section><hr>
+
+                <section>
+                    <header>
+                        <h3>Continue</h3>
+                    </header>
+                    <p>Interrompe uma interção (no loop), se uma condição especifica ocorre, e continua com a próxima interção no loop.</p>
+                </section><hr>
+        </section>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="funcoes">Funções</h1>
+                </header>
+                <p>O PHP tem mais de 1000 funções e, além disso, podemos criar nossas próprias funções.</p>
+                <header>
+                    <h3>Funções definidas pelo usuário de PHP</h3>
+                </header>
+                <ul>
+                    <li>Um função é um bloco de instruções que pode ser usado repetidamente em um programa</li>
+                    <li>Uma função não será executada automaticamente quando uma página for carregada</li>
+                    <li>Uma função será executada por uma chamada função</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Crie uma função definida pelo usuário:</h3>
+                </header>
+                <p>Uma declaração de função definida pelo usuário começa com a palavra <b>function</b>:</p>
+                <h3>Sintaxe:</h3>
+                <pre> function NomeDaFunção () {
+    código para ser executado;
+}               </pre>
+
+                <div class="mark">
+                    <p><strong>OBS:</strong> O nome da função deve começar com uma letra ou sublinhado. Os nomes das funções NÂO diferenciam maiúsculas de minúsculas.</p>
+                </div>
+                <p><strong>Dica:</strong> Dê sempre um nome de uma função que se reflita a o que faz!</p>
+                <p>No exemplo a seguir, criamos uma função chamada "msgEscrita ()". A chave de abertura ({) indica o início de um código da função e a chave de fechamento (}) indica o fim da função. A função exibe "Olá, mundo!". Para chamar a função, basta escrever seu nome seguido de colchetes ():</p>
+                <img src="img\criando_function.png" alt="Criando uma função em PHP" width="198" height="155">
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>Argumento de função PHP</h3>
+                </header>
+                <p>As informações podem ser passadas para funções por meio de argumentos. Um argumento é como uma variável.</p>
+                <p>Os argumentos são especificos após o nome da função, entre parênteses. Você pode adcionar quantos argumentos quiser, apenas separe-os com vírgula.</p>
+                <p>O exemplo a seguir tem uma função com um argumento ($fname). Quando a função familyName() é chamanda, também passamos um nome (por exemplo, Lucas), e o nome é usado dentro da função, que produz vários primeiros nomes diferentes, mas um sobrenome igual:</p>
+                <img src="img\function_atribuindo_valor.png" alt="Criando função e atribuindo valor" width="249" height="176">                
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>PHP é uma linguagem francamente tipada</h3>
+                </header>
+                <p>No exemplo aterior percebemos que não precisamos colocar o tipo da variável. Isso porque, o PHP associa automaticamente um tipo de dado à variáveis, dependendo do seu valor. Como os tipos de dados não são definidos estritamente, você pode adcionar uma string a um inteiro sem causa nenhum problema.</p>
+                <p>No PHP 7, declarações de tipo foram adicionados. Isso nos dá a opção de especificar o tipo de dados esperado ao declarar uma função e, ao adicionar a <b>strict</b>, será um "Erro Fatal" se o tipo de dados não corresponder.</p>
+                <p>Para usarmos o <b>strict</b>, precisamos definir <b>declare(strict_type=1);</b> no começo do programa (primeira linha).</p>
+                <div class="mark">
+                    <p>A declaração <b>strict</b> força as coisas a serem usadas da maneira pretendida.</p>
+                </div>
+                <p>Sendo assim, se declaramos uma variável <i>int</i> devemos colocar um valor inteiro, caso o contrário dará erro.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>Valor do argumento padrão</h3>
+                </header>
+                <p>O exemplo a seguir mostra como usar uma parâmetro padrão. Se chamarmos a função setHeitght() sem argumentos, ela tomará o valor padrão como argumento.</p>
+                <img src="img/argumento_padrão.png" alt="Argumento Padrão para function" width="328" height="191">
+            </section><hr>
+            
+            <section>
+                <header>
+                    <h3>Retornando Valores</h3>
+                </header>
+                <p>Para retornamos algum valor usamos o <b>return</b> e logo em seguida o que você deseja que seja retornado.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>Declaração do tipo return</h3>
+                </header>
+                <p>O PHP 7 também aceita o <b>return</b>. Como com a declaração de tipo para argumentos de funções, ao habilitar o requisito estrito, ele lançará um "Erro fatal" em uma incompatibilidade de tipo.</p>
+                <p>Para declarar um função do tipo <b>return</b> adicione dois pontos (:) e o tipo logo antes do colchete de abertura (<b>{</b>) quando declara a função.</p>
+                <div class="code">
+                    <pre>function addNumbers (float $x, float $y) : float {
+    return $x + $y;
+}
+echo addNumbers (1.2, 5.2);</pre>
+                </div>
+                <p>Você pode definir um return diferente do tipo das variáveis. Mas tem que colocar depois do <b>return</b> o tipo que você deseja.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>Passando Argumentos por referência</h3>
+                </header>
+                <p>Os argumentos geralmente são passados por valor, o que significa que uma cópia do valor é usada na função e a variável que foi passada para a função não pode ser alterada.</p>
+                <p>Quando um argumento de função é passado por referência, as mudanças nos argumentos também mudam a variável que foi passada. Para transformar um argumento de função em uma referêcia, o operador <b>&</b> é usado.</p>
+            </section>
+        </section><hr><br>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="array">Array</h1>
+                </header>
+                <p>Um array armazena vários valores em uma única variável.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>O que é um Array / Matriz?</h2>
+                </header>
+                <p>Um array é uma variável especial, que pode conter mais de um valor por vez.</p>
+                <p>Se você tiver uma lista de itens (uma lista de nomes de carro, por exemplo), armazenar os carros em variáveis únicas pode ser assim:</p>
+                <pre>$car1 = "Volvo";
+$car2 = "BMW";
+$car3 = "Toyota";</pre>
+                    <p>Mas se você tiver ao inves de 3 carros, ter 300?</p>
+                    <p>Uma solução para isso é usar o array. Podendo assim, conter muitos carros em um único nome e você pode acessar os valores redefindo-se a um número de índice.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Criando um array em PHP</h2>
+                </header>
+                <p>A função <b>array()</b> é usada para criar um array.</p>
+                <p>Existem 3 tipos de arrays:</p>
+                <ul>
+                    <li><strong>Matrizes indexadas</strong> - matrizes com um índice numérico</li>
+                    <li><strong>Matrizes associativeis</strong> - matrizes com chaves nomeadas</li>
+                    <li><strong>Matrizes multidimensionais</strong> - matrizes que contem uma ou mais matrizes</li>
+                </ul>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Obternha o comprimento de uma matriz</h2>
+                </header>
+                <p>A função <b>count()</b> é usada para retornar o comprimento (o número de elementos) de uma matriz.</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <header>
+                    <h2>Matrizes indexadas</h2>
+                </header>
+                <p>Para criarmos matrizes indexadas, colocamos na frente da variável <b>array</b> e dentro dos colchetes os valores.</p>
+            </section>
+            
+            <section>
+                <header>
+                    <h3>Loop por meio de uma matriz indexada</h3>
+                </header>
+                <p>Para correr por toda a matriz, podemos usar um <b>for</b> para isso.</p>                
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Array Associativos</h2>
+                </header>
+                <p>São matrizes que usam chaves nomeadas que você atribui a elas.</p>
+                <p>Podendo ser criada das seguintes formas:</p>
+                <ul>
+                    <li>$age = array("Lucas" => "19", "Pedro" => "23");</li>
+                    <li>$age['Lucas'] = 19;<br>
+                    $age['Pedro'] = 23;</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Loop por meio de matrizes associativas</h3>
+                </header>
+                <p>Para percorrer e imprimir todos os valores de uma matriz associativa, você pode usar o <b>foreach</b>.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Array multidimensional</h2>
+                </header>
+                <p>Quando você deseja armazenar valores com mais de uma chave. Para isso, temos matrizes multidimensionais.</p>
+                <div class="mark">
+                    <p>A dimensão de uma matriz indica o número de índices que você precisa para selecionar um elemento.</p>
+                    <ul>
+                        <li>Para uma matriz bidimensional, você precisa de dois índices para selecionar um elemento.</li>
+                        <li>Para uma matriz tridimensional, você precisa de três índices para selecionar um elemnto.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Array Bidimensional</h3>
+                </header>
+                <p>Uma matriz bidimensional é uma matriz de matrizes (uma matriz tridimensional é uma matriz de matrizes de matrizes).</p>
+                <table>
+                    <tr>
+                        <td>Nome</td>
+                        <td>Estoque</td>
+                        <td>Vendido</td>
+                    </tr>
+
+                    <tr>
+                        <td>Fox</td>
+                        <td>10</td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr>
+                        <td>BMW</td>
+                        <td>2</td>
+                        <td>5</td>
+                    </tr>
+
+                    <tr>
+                        <td>Opala</td>
+                        <td>6</td>
+                        <td>1</td>
+                    </tr>
+                </table>
+                <p>Podemos armazenar os dados da tabela acima em uma matriz bidimensional, como esta:</p>
+                <pre>$cars = array(
+    array ("Fox", "10", "3");
+    array ("BMW", "2", "5");
+    array ("Opala", "6", "1");
+};              </pre>
+                <p>Para lermos os array multidimensionais usamos dois <b>for</b> para isso, um ficando dentro do outro.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Classificando Matrizes</h2>
+                </header>
+                <p>Os elementos de uma matriz pode ser classificados de ordem númerica ou alfabética, crescente ou decrescente.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Funções de classificações para matrizes</h3>
+                </header>
+                <ul>
+                    <li><b>sort()</b> - Deixa em ordem crescente</li>
+                    <li><b>rsort()</b> - Deixa em ordem decrescente</li>
+                    <li><b>asort()</b> - classfica matrizes associativas em ordem crescente, de acordo com o valor</li>
+                    <li><b>ksort()</b> - Classifica matrizes associativas em ordem crescente, de acordo com a chave</li>
+                    <li><b>arsort()</b> - Classifica matrizes associativas em ordem decrescente, de acordo com o valor</li>
+                    <li><b>krsort()</b> Classifica matrizes associativas em ordem descrecente, de acordo com a chave</li>
+                </ul>
+                <p>Para usarmos essas funções precisamos colocar o array dentro dos parênteses <b>()</b>.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="variaveis_globais">Variáveis Globais</h1>
+                </header>
+                <p>Algumas variáei em PHP são "superglobais", o que significa que estão sempre acessíveis, independentemente do escopo - e você pode acessá-las de qualquer função, classe ou arquivos sem ter que fazer nada especial.</p>
+                <p>As variáveis globais são:</p>
+                <ul>
+                    <li>$GLOBALS</li>
+                    <li>$_SERVER</li>
+                    <li>$_REQUEST</li>
+                    <li>$_POST</li>
+                    <li>$_GET</li>
+                    <li>$_FILES</li>
+                    <li>$_ENV</li>
+                    <li>$_COOKIE</li>
+                    <li>$_SESSION</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Globals</h2>
+                </header>
+                <p>É uma variável superglobal que é usada para acessar variáveis globais de qualquer lugar no script (também de funções ou métodos)</p>
+                <p>O PHP armazena todas as variáveis globais em um array chamado $GLOALS [index]. O índice contém o nome da variável.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>Server</h3>
+                </header>
+                <p>Também sendo uma variável superglobal que contém informções sobre cabeçalhos, caminhos e locais de script.</p>
+                <table>
+                    <tr>
+                        <td>Elemento/código</td>
+                        <td>Descrição</td>
+                    </tr>
+                    <tr>
+                        <td>PHP_SELF</td>
+                        <td>Retorna o nome do arquivo do script atualmente em execução</td>
+                    </tr>
+                    <tr>
+                        <td>GATEWAY_INTERFACE</td>
+                        <td>Retorna a versão da Common Geteway Interface (CGI) que o servidor esta usando</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_ADDR</td>
+                        <td>Retorna o endereço de IP do host</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_NAME</td>
+                        <td>Retorna o servidor host</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_SOFTWARE</td>
+                        <td>Retorna a string de indentificação do servidor</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_PROTOCOL</td>
+                        <td>Retorna o nome e a revisão do protocolo de informções</td>
+                    </tr>
+                    <tr>
+                        <td>REQUEST_METHOD</td>
+                        <td>Retorna o método de solicitação usado para acessar a página</td>
+                    </tr>
+                    <tr>
+                        <td>REQUEST_TIME</td>
+                        <td>Retorna o carimbo de data / hora do início da soliciatação</td>
+                    </tr>
+                    <tr>
+                        <td>QUERT_STRING</td>
+                        <td>Retorna a string de consulta se a página for acessada por meio de uma string de consulta</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP_ACCEPT</td>
+                        <td>Retorna o cabeçalho aceito da solicitação atual</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP_ACCEPT_CHARSET</td>
+                        <td>Retorna o cabeçalho Accept_Charset da solicitação atual (como utf-8, ISO-8859-1)</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP_HOST</td>
+                        <td>Retorna o cabeçalho atual do host atual da solicitação</td>
+                    </tr>
+                    <tr>
+                        <td>HTTP_REFERER</td>
+                        <td>Retorna o URL completo da página atual (não confiável porque nem todos os agentes de usuário o suportam)</td>
+                    </tr>
+                    <tr>
+                        <td>HTTPS</td>
+                        <td>O script é consultado por meio de um protocolo HTTP seguro</td>
+                    </tr>
+                    <tr>
+                        <td>REMOTE_ADDR</td>
+                        <td>Retorna o indereçõ de IP de onde o usuário está visualizando a página atual</td>
+                    </tr>
+                    <tr>
+                        <td>REMOTE_HOST</td>
+                        <td>Retorna o nome do host de onde o usuário está visualizando a página atual</td>
+                    </tr>
+                    <tr>
+                        <td>REMOTE_PORT</td>
+                        <td>Retorna a porta que está sendo usada na máquina do usuário para se comunicar com o servidor web</td>
+                    </tr>
+                    <tr>
+                        <td>SCRIPT_FILE</td>
+                        <td>Retorna o caminho absoluto do script atualmente em execução</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_ADMIN</td>
+                        <td>Retorna o valor dado à direita SERVER_ADMIN no arquivo de configuração do servidor web (se o seu script for executado em um host virtual, será o valor definido para aquele host virtual)</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_PORT</td>
+                        <td>Retorna a porta na máquina servidora que está sendo usada pelo servidor da web para comunicação (como 80)</td>
+                    </tr>
+                    <tr>
+                        <td>SERVER_SIGNATURE</td>
+                        <td>Retorna a versão do servidor e o nome do host virtual que são adicionados às páginas geradas pelo servidor</td>
+                    </tr>
+                    <tr>
+                        <td>PATH_TRANSLATED</td>
+                        <td>Retorna o caminho baseado no sistema de arquivos para script atual</td>
+                    </tr>
+                    <tr>
+                        <td>SCRIPT_NAME</td>
+                        <td>Retorna o caminho do script atual</td>
+                    </tr>
+                    <tr>
+                        <td>SCRIPT_URI</td>
+                        <td>Retorna o URI da página atual</td>
+                    </tr>
+                </table>
+            </section><hr>
+            
+            <section>
+                <header>
+                    <h3>_REQUEST</h3>
+                </header>
+                <p>É uma variável superglobal que é usada para coletar dados após o envio de um formulário HTML.</p>            
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3>_POST</h3>
+                </header>
+                <p>Sendo uma variável superglobal que é usada para coletar dados de formulários após o envio de um formulário HTML com method = "post". $_POST também é amplamente usado para passar variáveis.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h3></h3>
+                </header>
+                <p>É uma variável superglobal que é capaz de coletar dados de formulários após envio de um formulário HTML com method = "get".</p>
+                <p>Sendo capaz também de coletar dados enviados na URL.</p>
+                <p>Suponha que temos uma página HTML que contêm um hiperlink com parâmetros. Quando um usuário clica no link "Test $GET", os parâmetros "subject" e "web" são enviados para "test_get.php", e você pode acessar seus valores em "test_get.php" com $_GET.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="expressoes">Expressões Regulares</h1>
+                </header>
+                <p>Uma expressão regular é uma sequência de caracteres que forma um padrão de pesquisa. Ao pesquisar dados em um texto, você pode usar esse padrão de pesquisa para descrever o que está acontecendo.</p>
+                <p>Uma expressão pode ser apenas um caractere ou um padrão mais complicado. As expressões regulares podem ser usadas para realizar todos os tipos de pesquisa de texto e operações de substituição de texto.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Sintaxe</h2>
+                </header>
+                <p>No PHP, as expressões regulares são strings compostas por delimitadores, um padrão e modificadores opcionais.</p>
+                <div class="code">
+                    <p>$exp ="w3schools/i";</p>
+                </div>
+                <p>No exemplo acima, <b>/</b> é um <strong>demilitador</strong> <i>w3schools</i> é o <strong>padrão</strong> que está sendo pesquisado e <b>i</b> é um <strong>modificador</strong> que torna a pesquisa insensível a maiúsculas e minúsculas.</p>
+                <p>O delimitador pode ser qualquer caractere que não seja uma letra, número, barra invertida ou espaço. O outro delimitador mais comum é a barra (/), mas quando seu padrão contém barras, é conveniente escolher outros delimitadores, como # ou ~.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Funções de Expressões Regular</h2>
+                </header>
+                <p>As funções <b>preg_match()</b>, <b>preg_match_all()</b> e <b>preg_replace()</b> são algumas das mais comumente usadas:</p>
+                <table>
+                    <tr>
+                        <td>Função</td>
+                        <td>Descrição</td>
+                    </tr>
+                    <tr>
+                        <td>preg_match()</td>
+                        <td>Retorna 1 se o padrão foi encontrado na string e 0 se não</td>
+                    </tr>
+                    <tr>
+                        <td>preg_match_all()</td>
+                        <td>Retorna o número de vezes que o padrão foi encontrado na string, que também pode ser 0</td>
+                    </tr>
+                    <tr>
+                        <td>preg_replace()</td>
+                        <td>Retorna uma nova string onde os padrões correspondentes foram substituídos por outra string</td>
+                    </tr>
+                </table>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Usando o preg_match()</h2>
+                </header>
+                <p>Esta função dirá se uma string contém correspondência de um padrão.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Usando preg_match_all()</h2>
+                </header>
+                <p>Função informará quantas correspondências foram encontradas para um pardrão em uma string.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>preg_replace()</h2>
+                </header>
+                <p>Função irá substituir todas as correspondências do padrão em uma string por outra string.</p>
+            </section><hr>
+
+            <section>
+                <header>
+                    <h2>Modificadores de expressão regular</h2>
+                </header>
+                <p>Os modificadores podem alterar a forma como uma pesquisa é realizada:</p>
+                <table>
+                    <tr>
+                        <td>Moficicador</td>
+                        <td>Descrição</td>
+                    </tr>
+                    <tr>
+                        <td>i</td>
+                        <td>Executa uma pesquisa que não diferencia maiúsculas de minúsculas</td>
+                    </tr>
+                    <tr>
+                        <td>m</td>
+                        <td>Executa uma pesquisa em várias linhas (os padrões que procuram o início ou o fim de uma string irão correponder ao início ou ao final de cada linha)</td>
+                    </tr>
+                    <tr>
+                        <td>u</td>
+                        <td>Ativa a correspondência correta de padrões codificados em UTF-8</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Padrões de Expressão Regular</h2>
+                </header>
+                <p>Os colchetes são usados para encontrar uma variedade de caracteres:</p>
+                <table>
+                    <tr>
+                        <td>Expressão</td>
+                        <td>Descrição</td>
+                    </tr>
+                    <tr>
+                        <td>[abc]</td>
+                        <td>Encontra um caractere das opções entre os colchetes</td>
+                    </tr>
+                    <tr>
+                        <td>[^abc]</td>
+                        <td>Encontre qualquer caractere NÂO entre colchetes</td>
+                    </tr>
+                    <tr>
+                        <td>[0-9]</td>
+                        <td>Encontre um caractere no intervalo de 0 a 9</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Metacaracteres</h2>
+                </header>
+                <p></p>
+            </section>
+        </section>
+
+
 
 
 

@@ -78,9 +78,14 @@ div.irtopo:hover, a:hover {
 }
 
 /*Tabela*/
-table, tr, td { 
+table, td, th { 
     border: 1px solid black;
     padding: 3px 2px;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: center;
 }
 
 td:hover {
@@ -91,6 +96,18 @@ td {
     padding-right: 9vw;
 }
 
-tr, td {
-    text-align: center;
+tr:nth-child(even) { /*Deixa a tabela listrada*/
+    background-color: lightgray;
+}
+.scroll {
+    overflow-y: scroll; /*Coloca uma barra de scroll*/
+    height: 284px;  
+    display: block; 
+}
+
+.next {
+    color: blue;
+}
+.next:hover {
+    color: darkblue;
 }

@@ -300,4 +300,19 @@ echo "<br><hr>";
 $str = "Visit Microsoft!";
 $pattern = "/microsoft/i";
 echo preg_replace($pattern, "W3Schools", $str); // Outputs "Visit W3Schools
+echo "<br><hr>";
+?>
+
+<?php
+$str = "Apples and bananas.";
+$pattern = "/ba(na){2}/i";
+echo preg_match($pattern, $str);
+echo "<br><hr>";
+?>
+
+<?php
+echo $_POST["name"];
+echo "<br>";
+echo $_POST["email"];
+echo "<br>";
 ?>

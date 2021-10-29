@@ -34,12 +34,6 @@
             <a href="#array"><li class="menu1">Array</li></a>
             <a href="#variaveis_globais"><li class="menu1">Variáveis Globais</li></a>
             <a href="#expressoes"><li class="menu1">Expressões Regulares</li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
-
-
-
-
         </ul>
 
 
@@ -928,108 +922,114 @@ $car3 = "Toyota";</pre>
                     <h3>Server</h3>
                 </header>
                 <p>Também sendo uma variável superglobal que contém informções sobre cabeçalhos, caminhos e locais de script.</p>
-                <table>
-                    <tr>
-                        <td>Elemento/código</td>
-                        <td>Descrição</td>
-                    </tr>
-                    <tr>
-                        <td>PHP_SELF</td>
-                        <td>Retorna o nome do arquivo do script atualmente em execução</td>
-                    </tr>
-                    <tr>
-                        <td>GATEWAY_INTERFACE</td>
-                        <td>Retorna a versão da Common Geteway Interface (CGI) que o servidor esta usando</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_ADDR</td>
-                        <td>Retorna o endereço de IP do host</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_NAME</td>
-                        <td>Retorna o servidor host</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_SOFTWARE</td>
-                        <td>Retorna a string de indentificação do servidor</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_PROTOCOL</td>
-                        <td>Retorna o nome e a revisão do protocolo de informções</td>
-                    </tr>
-                    <tr>
-                        <td>REQUEST_METHOD</td>
-                        <td>Retorna o método de solicitação usado para acessar a página</td>
-                    </tr>
-                    <tr>
-                        <td>REQUEST_TIME</td>
-                        <td>Retorna o carimbo de data / hora do início da soliciatação</td>
-                    </tr>
-                    <tr>
-                        <td>QUERT_STRING</td>
-                        <td>Retorna a string de consulta se a página for acessada por meio de uma string de consulta</td>
-                    </tr>
-                    <tr>
-                        <td>HTTP_ACCEPT</td>
-                        <td>Retorna o cabeçalho aceito da solicitação atual</td>
-                    </tr>
-                    <tr>
-                        <td>HTTP_ACCEPT_CHARSET</td>
-                        <td>Retorna o cabeçalho Accept_Charset da solicitação atual (como utf-8, ISO-8859-1)</td>
-                    </tr>
-                    <tr>
-                        <td>HTTP_HOST</td>
-                        <td>Retorna o cabeçalho atual do host atual da solicitação</td>
-                    </tr>
-                    <tr>
-                        <td>HTTP_REFERER</td>
-                        <td>Retorna o URL completo da página atual (não confiável porque nem todos os agentes de usuário o suportam)</td>
-                    </tr>
-                    <tr>
-                        <td>HTTPS</td>
-                        <td>O script é consultado por meio de um protocolo HTTP seguro</td>
-                    </tr>
-                    <tr>
-                        <td>REMOTE_ADDR</td>
-                        <td>Retorna o indereçõ de IP de onde o usuário está visualizando a página atual</td>
-                    </tr>
-                    <tr>
-                        <td>REMOTE_HOST</td>
-                        <td>Retorna o nome do host de onde o usuário está visualizando a página atual</td>
-                    </tr>
-                    <tr>
-                        <td>REMOTE_PORT</td>
-                        <td>Retorna a porta que está sendo usada na máquina do usuário para se comunicar com o servidor web</td>
-                    </tr>
-                    <tr>
-                        <td>SCRIPT_FILE</td>
-                        <td>Retorna o caminho absoluto do script atualmente em execução</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_ADMIN</td>
-                        <td>Retorna o valor dado à direita SERVER_ADMIN no arquivo de configuração do servidor web (se o seu script for executado em um host virtual, será o valor definido para aquele host virtual)</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_PORT</td>
-                        <td>Retorna a porta na máquina servidora que está sendo usada pelo servidor da web para comunicação (como 80)</td>
-                    </tr>
-                    <tr>
-                        <td>SERVER_SIGNATURE</td>
-                        <td>Retorna a versão do servidor e o nome do host virtual que são adicionados às páginas geradas pelo servidor</td>
-                    </tr>
-                    <tr>
-                        <td>PATH_TRANSLATED</td>
-                        <td>Retorna o caminho baseado no sistema de arquivos para script atual</td>
-                    </tr>
-                    <tr>
-                        <td>SCRIPT_NAME</td>
-                        <td>Retorna o caminho do script atual</td>
-                    </tr>
-                    <tr>
-                        <td>SCRIPT_URI</td>
-                        <td>Retorna o URI da página atual</td>
-                    </tr>
-                </table>
+                <div class="scroll">
+                    <table>
+                        <tr style="position: fixed; background-color: grey;">
+                            <th>Elemento/código</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td>PHP_SELF</td>
+                            <td>Retorna o nome do arquivo do script atualmente em execução</td>
+                        </tr>
+                        <tr>
+                            <td>GATEWAY_INTERFACE</td>
+                            <td>Retorna a versão da Common Geteway Interface (CGI) que o servidor esta usando</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_ADDR</td>
+                            <td>Retorna o endereço de IP do host</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_NAME</td>
+                            <td>Retorna o servidor host</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_SOFTWARE</td>
+                            <td>Retorna a string de indentificação do servidor</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_PROTOCOL</td>
+                            <td>Retorna o nome e a revisão do protocolo de informções</td>
+                        </tr>
+                        <tr>
+                            <td>REQUEST_METHOD</td>
+                            <td>Retorna o método de solicitação usado para acessar a página</td>
+                        </tr>
+                        <tr>
+                            <td>REQUEST_TIME</td>
+                            <td>Retorna o carimbo de data / hora do início da soliciatação</td>
+                        </tr>
+                        <tr>
+                            <td>QUERT_STRING</td>
+                            <td>Retorna a string de consulta se a página for acessada por meio de uma string de consulta</td>
+                        </tr>
+                        <tr>
+                            <td>HTTP_ACCEPT</td>
+                            <td>Retorna o cabeçalho aceito da solicitação atual</td>
+                        </tr>
+                        <tr>
+                            <td>HTTP_ACCEPT_CHARSET</td>
+                            <td>Retorna o cabeçalho Accept_Charset da solicitação atual (como utf-8, ISO-8859-1)</td>
+                        </tr>
+                        <tr>
+                            <td>HTTP_HOST</td>
+                            <td>Retorna o cabeçalho atual do host atual da solicitação</td>
+                        </tr>
+                        <tr>
+                            <td>HTTP_REFERER</td>
+                            <td>Retorna o URL completo da página atual (não confiável porque nem todos os agentes de usuário o suportam)</td>
+                        </tr>
+                        <tr>
+                            <td>HTTPS</td>
+                            <td>O script é consultado por meio de um protocolo HTTP seguro</td>
+                        </tr>
+                        <tr>
+                            <td>REMOTE_ADDR</td>
+                            <td>Retorna o indereçõ de IP de onde o usuário está visualizando a página atual</td>
+                        </tr>
+                        <tr>
+                            <td>REMOTE_HOST</td>
+                            <td>Retorna o nome do host de onde o usuário está visualizando a página atual</td>
+                        </tr>
+                        <tr>
+                            <td>REMOTE_PORT</td>
+                            <td>Retorna a porta que está sendo usada na máquina do usuário para se comunicar com o servidor web</td>
+                        </tr>
+                        <tr>
+                            <td>SCRIPT_FILE</td>
+                            <td>Retorna o caminho absoluto do script atualmente em execução</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_ADMIN</td>
+                            <td>Retorna o valor dado à direita SERVER_ADMIN no arquivo de configuração do servidor web (se o seu script for executado em um host virtual, será o valor definido para aquele host virtual)</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_PORT</td>
+                            <td>Retorna a porta na máquina servidora que está sendo usada pelo servidor da web para comunicação (como 80)</td>
+                        </tr>
+                        <tr>
+                            <td>SERVER_SIGNATURE</td>
+                            <td>Retorna a versão do servidor e o nome do host virtual que são adicionados às páginas geradas pelo servidor</td>
+                        </tr>
+                        <tr>
+                            <td>PATH_TRANSLATED</td>
+                            <td>Retorna o caminho baseado no sistema de arquivos para script atual</td>
+                        </tr>
+                        <tr>
+                            <td>SCRIPT_NAME</td>
+                            <td>Retorna o caminho do script atual</td>
+                        </tr>
+                        <tr>
+                            <td>SCRIPT_URI</td>
+                            <td>Retorna o URI da página atual</td>
+                        </tr>
+                    </table>
+                </div>
             </section><hr>
             
             <section>
@@ -1177,15 +1177,98 @@ $car3 = "Toyota";</pre>
                 <header>
                     <h2>Metacaracteres</h2>
                 </header>
-                <p></p>
+                <p>São caracteres com signifcado especial:</p>
+                <table>
+                    <tr>
+                        <td>Metacaracteres</td>
+                        <td>Descrição</td>
+                    </tr>
+                    <tr>
+                        <td>|</td>
+                        <td>Encontre uma correspondência para qualquer um dos padrões separados por |, como em: gato|cachorro|peixe</td>
+                    </tr>
+                    <tr>
+                        <td>.</td>
+                        <td>Encontra apenas uma instância de qualquer personagem</td>
+                    </tr>
+                    <tr>
+                        <td>^</td>
+                        <td>Encontra uma correspondência no início de uma string, como em: ^Hello</td>
+                    </tr>
+                    <tr>
+                        <td>$</td>
+                        <td>Encontra uma correpondência no final de uma string, como em: World $</td>
+                    </tr>
+                    <tr>
+                        <td>\d</td>
+                        <td>Encontre um dígito</td>
+                    </tr>
+                    <tr>
+                        <td>\s</td>
+                        <td>Encontre um caractere de espaço em branco</td>
+                    </tr>
+                    <tr>
+                        <td>\b</td>
+                        <td>Encontre uma correpondência no início de uma palavra como esta: bWORD, ou no final de uma palavra, como esta: WORD\b</td>
+                    </tr>
+                    <tr>
+                        <td>\uxxxx</td>
+                        <td>Encontre um caractere Unicode especifico pelo número hexadecimal</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Quantificadores</h2>
+                </header>
+                <p>Define quantidade:</p>
+                <table>
+                    <tr>
+                        <th>Quantificadores</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>n+</td>
+                        <td>Corresponde a qualquer string que contenha pelo menos um n</td>
+                    </tr>
+                    <tr>
+                        <td>n*</td>
+                        <td>Corresponde a qualquer string que contenha zero ou mais ocorrências de n</td>
+                    </tr>
+                    <tr>
+                        <td>n?</td>
+                        <td>Corresponde a qualquer string que contenha zero ou uma correspondência de n</td>
+                    </tr>
+                    <tr>
+                        <td>n{x}</td>
+                        <td>Corresponde a qualquer string que contenha uma sequência de X e Y n's</td>
+                    </tr>
+                    <tr>
+                        <td>n{x,y}</td>
+                        <td>Corresponde a qualquer string que contenha uma sequência de X e Y n's</td>
+                    </tr>
+                    <tr>
+                        <td>n{x,}</td>
+                        <td>Corresponde a qualquer string que contenha uma sequência de pelo menos X n's</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Agrupamento</h2>
+                </header>
+                <p>Você pode usar parênteses <b>()</b> para aplicar quantificadores a padrões inteiros. Eles também podem ser usados para selecionar partes do padrão a serem usadas como correspondência.</p>
             </section>
         </section>
-
-
+        
+        
 
 
 
         <div class="irtopo"><a href="#irtop">Subir</a></div>
+        <address> <a class="next" href="pag_2.html">Próxima Página</a></address>
         
     </body>
 </html>

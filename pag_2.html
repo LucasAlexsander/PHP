@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale='">
+        <title>Página 2</title>
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        
+        <header>
+            <h1 id="irtopo">Continuação PHP</h1>
+        </header>
+
+        <a href="#forms"><li class="menu1">PHP Forms</li></a>
+        <a href="#validacao"><li class="menu1">Validação de Formulário</li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+        <a href="#"><li class="menu1"></li></a>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="forms">PHP Forms</h1>
+                </header>
+                <p>As superglobais PHP $_GET e $_POST são usadas para coletar dados de formulário.</p>
+                <p>Quando o usuário preenche um formulário e clica em enviar, os dados do formulário são enviados para um processamento de um arquivo PHP. Podendo ser escolhido o method.</p>
+                <p>Para exibir os dados enviados, você precisa simplesmente ecoar todas as variáveis. O "welcome.php" tem a seguinte aparência:</p>
+                <form action="form.php" method="post">
+                    Name: <input type="text" name="name"><br>
+                    E-mail: <input type="text" name="email"><br>
+                    Idade: <input type="number" name="age"><br>
+                    <input type="submit">
+                </form>
+            </section>
+
+            <section>
+                <header>
+                    <h2>GET vs POST</h2>
+                </header>
+                <p>Ambos criam uma matriz (por exemplo, matriz (chave1 => valor1, chave2 => valor2, chave3 => valor3, ...)). Esta matriz contém pares de chaves / valor, onde as chaves são os nomes dos controladores do formulário e os valores são os dados de entrada do usuário.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h3>GET</h3>
+                </header>
+                <p>Os dados são visíveis na URL, tendo também limite da quantidade de informações a serem enviadas, limitação de 2.000 caracteres.</p>
+                <p>Sendo usado para enviar dados não confidenciais.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h3>POST</h3>
+                </header>
+                <p>As informações enviadas pelo post são <strong>invisíveis para outras pessoas</strong> e não tem limite de informações a enviar.</p>
+                <p>Além disso, o POST oferece suporte a funcionalidades avançadas, como suporte para entrada binária de várias partes durante o upload de arquivos para o servidor.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h1 id="validacao">Validação de Formulário</h1>
+                </header>
+                <div class="mark">
+                    <p><strong>Pense em SEGURANÇA ao processar formulários</strong></p>                    
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validação de Formulário</h2>
+                </header>
+                <form action="form.php" method="post">
+                    Name: <input type="text" name="name"><br><br>
+                    E-mail: <input type="text" name="email"><br><br>
+                    Website: <input type="text" name="website"><br><br>
+                    Comentário: <textarea name="comentario" rows="10" cols="30"></textarea><br><br>
+                    Gênero: <input type="radio" name="gender" value="Feminino">Feminino
+                    <input type="radio" name="gender" value="Masculino">Masculino
+                    <input type="radio" name="gedner" value="Outro">Outro
+                    <br>
+                    <input type="submit" value="Enviar">
+                </form>
+                <br><br>
+                <div class="mark">
+                    <p>Usamos o $_POST para pegar o dado especifico do formulário</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validar dados de Formulário</h2>
+                </header>
+                <p>Para sua segurança, ao criar um formulário lembre-se de colocar as seguintes informções:</p>
+                <ul>
+                    <li><strong>htmlspacialchar()</strong> - fará com que mude os caracteres caso alguem tente invadir seu site, trocando a &lt; por <b>& lt</b></li>
+                    <li><strong>trim()</strong> - Retira caracteres desnecessários (espaços extras, tabulação, nova linha) dos dados entrado pelo usuário</li>
+                    <li><strong>stripslashes()</strong> - Remove as barras invertidas (\) dos dados entrado pelo usuário</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <header>
+                    <h1>Forumlário com Campos Obrigatórios</h1>
+                </header>
+                <p>Para criarmos um formulário obrigatório podemos fazer de dois modos, adcionando <b>required</b> no final do <i>input</i> ou adicionando <b>if</b> e mais uma variável para cada variável indifcando erro, e colocar o <b>empty()</b>, que se o valor for vázio você adiciona nada a ele, caso o contrário ele  recebe o dado correspondente do formulário. Feito isso, no formulário você colocará a variável de erro, no final, caso o usuário entre com nada, aparecerá um erro na tela.</p>
+                <h3>Variáveis em PHP:</h3>
+                <img src="img\php_variavel.png" alt="Variaveis em PHP" width="440" height="42"><br>
+                <h3>Usando if no formulário:</h3>
+                <img src="img\if_formulario.png" alt="Usando if em formulário PHP" width="381" height="247"><br>
+                <h3>Estrutura das perguntas no formulário:</h3>
+                <img src="img\perguntas_formulario.png" alt="Perguntas que aparecerão na tela no formulário" width="785" height="65"><br>
+            </section><hr><br>
+        </section>
+
+
+        
+
+        <address><a class="next" href="index.html">Página Anterior</a></address>
+        <div class="irtopo"><a href="#irtopo">Subir</a></div>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 .mark {
-    background-color: rgba(255, 255, 0, 0.479);
+    background-color: rgba(255, 255, 53, 0.356);
     padding: 0.1vw;
 }
 
@@ -26,7 +26,7 @@ hr {
 
 a:link, a:visited, a:active {            
     color: black;
-    font-size: medium;
+    /*font-size: medium;*/
     text-decoration: none;
 }
     
@@ -39,7 +39,7 @@ a:hover {
 .menu1 {
     color:black;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 17px;
     
 }
 .menu1:hover {
@@ -49,7 +49,7 @@ a:hover {
 .code {
     background-color: black;
     color: white;
-    padding:0.1vw;
+    padding: 0.1px;
 }
 body {
     font-size: 18px;
@@ -110,4 +110,19 @@ tr:nth-child(even) { /*Deixa a tabela listrada*/
 }
 .next:hover {
     color: darkblue;
+}
+
+.menu2 {
+    background-color: black;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.menu2_text {
+    float:left;
+    color: white;
+    text-align: right;
+    padding: 16px;
+    text-decoration: none;
+    font-size: x-large;
 }

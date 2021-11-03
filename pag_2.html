@@ -2,34 +2,75 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale='">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Página 2</title>
 
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="php_function.php">
+        <style>
+            .left {
+                width: 20vw;
+                height: 100%;
+                padding: 8px 3px;
+                margin: 3px;
+                float: left;
+                position: fixed;
+                font-size: small;
+                overflow-y: scroll;
+                background-color: lightgray;
+                border: 1px solid grey;
+            }
+            .meio {
+                border: 1px solid black;
+                height: 90%;
+                padding: 10px 10px;
+                width: 75vw;
+                float: right;
+            }
+            .topo {
+                height: 10%;
+                display: block;
+                float: none;
+            }
+            .menu3 {
+                display: inline-block;
+                float: left;
+                width: 100%;
+            }
+        </style>
     </head>
 
-    <body>
+    <body style="overflow-x: hidden;">
+
+        <ul class="menu2 topo menu3">
+            <li class="menu2_text">Página 1</li>
+            <li class="menu2_text">Página 2</li>
+        </ul>
+    
+        <div class="left sumario">
+            <h2 style="text-align: center;"><ins>Sumário</ins></h2>
+            <a href="#forms"><li class="menu1">PHP Forms</li></a>
+            <a href="#validacao"><li class="menu1">Validação de Formulário</li></a>
+            <a href="#url"><li class="menu1">URL / e-mail do formulário</li></a>
+            <a href="#advanced"><li class="menu1">PHP Advanced</li></a>
+            <a href="#arquivos"><li class="menu1">Arquivos de inclusão</li></a>
+            <a href="#arquivolido"><li class="menu1">Arquivo Aberto / lido</li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+        </div>
         
-        <header>
-            <h1 id="irtopo">Continuação PHP</h1>
-        </header>
 
-        <a href="#forms"><li class="menu1">PHP Forms</li></a>
-        <a href="#validacao"><li class="menu1">Validação de Formulário</li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-        <a href="#"><li class="menu1"></li></a>
-
-        <section>
+        <div class="meio">
+            <section>
+                <header>
+                    <h1 id="irtopo">Continuação PHP</h1>
+                </header>
             <section>
                 <header>
                     <h1 id="forms">PHP Forms</h1>
@@ -126,10 +167,308 @@
             </section><hr><br>
         </section>
 
+        <section>
+            <section>
+                <header>
+                    <h1 id="url">URL / e-mail do formulário</h1>
+                    <h2>Validar Nome</h2>
+                </header>
+                <p>Para validarmos um nome ou qualquer outra coisa, usamos o <b>preg_match()</b>, pois ele pesquisa uma string para o padrão, retornando verdadeiro se o padrão existir e falso caso o contrário.</p>
+                <p>No código abaixo mostra uma maneira simples de validarmos um nome contém apenas letras, travessões, apóstrofos e espaços em branco. Caso o valor deste campo não for valido, armazene uma mensagem de erro.</p>
+                <div class="code">
+                    <pre>$name = test_input($_POST["name"]);
+if(!preg_macth("/^[a-zA-Z-' ]*$/", $name)) {
+    $nameErr = "Somente letras e espaços em branco.";
+}</pre>
+                </div>
+            </section>
 
+            <section>
+                <header>
+                    <h2>Validar e-mail</h2>
+                </header>
+                <p>Uma maneira mais fácil e segura de validar se um e-mail está bem formado é usar a função <b>filter_var()</b>.</p>
+                <p>No código abaixo, o e-mail não estiver bem formado, armazene uma mensagem de erro:</p>
+                <div class="code">
+                    <pre>$email = test_input($_POST["email"]);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Formato de e-mail inválido!";
+}</pre>
+                </div>                
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validar URL</h2>
+                </header>
+                <p>O código a seguir mostra uma maneira de verificar a sintaxe de um endereço URL (esta expressão regular também permite traços no URL). Se a sintaxe do endereço de URL não for valida, digite uma mensagem de erro:</p>
+                <div class="code">
+                    <pre>$website = text_input($_POST["website"]);
+if (!preg_macth("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+    $websiteErr = "URL inválida!";
+}</pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validar nome, e-mail e URL</h2>
+                </header>
+                <p>Neste caso iremos juntar todos os passos anteriores e aplicar todos em um código, ficando com esta aparência:</p>
+                <img src="" alt="" width="" height="">
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1>Formulário Completo</h1>
+                    <h2>Mantenha os valores na forma</h2>
+                </header>
+                <p>Para mostrar os valores em campos de entradas depois que o usuário clica no botão enviar, adicionamos um pequeno script PHP dentro do atributo de valor dos seguintes campos de entrada: nome, email, website. No campo textarea do comentário, colocamos o script entre as tags &lt;textarea&gt; e &lt;/textarea&gt;. O pequeno script produz o valor das variáveis $name, $email, $website e $comment.</p>
+                <p>Em seguida, também precisamos mostral qual botão de opção foi marcado. Para isso, devemos manipular o atributo marcado (não o atributo de valor para os botões de opção):</p>
+                <img src="img\formulario_completo.png" alt="Exemplo de um formulário completo no PHP" width="870" height="413">
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="advanced">PHP Advanced</h1>
+                    <h2>Data e Hora</h2>
+                </header>
+                <p>Usamos a função <b>data()</b> para formatar uma data e / ou hora.</p>
+                <h3>Sintaxe</h3>
+                <div class="code">
+                    <p>data(format, timestamp)</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Marque um encotro</h2>
+                </header>
+                <p>o parâmetro <i>format</i> é necessário da função date(), onde especifica como formatar a data/hora.</p>
+                <p>Alguns caracteres que estão comumente usados para data:</p>
+                <ul>
+                    <li>d - Representa o dia do mês (01 - 31)</li>
+                    <li>m - Representa um mês (01 - 12)</li>
+                    <li>Y - Representa um ano (em quatro dígitos)</li>
+                    <li>l ('L' minúsculo) - Representa o dia da semana</li>
+                </ul>
+                <p>Podemos usar alguns caracteres para separa-los, como, "/", "-", ".".</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Ano automático de direitos autorias</h2>
+                </header>
+                <p>Use a <b>date()</b> para atulizar automaticamente o ano dos direitos autorais em seu site:</p><br>
+                <h3>Exemplo:</h3>
+                <div class="code">
+                    <pre>%copy; 2010- &lt;?php echo date("Y");?></pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Ganhe um tempo</h2>
+                </header>
+                <p>Alguns caracteres comumnete usados para hórarios:</p>
+                <ul>
+                    <li>H - formato de 24 horas de um hora (00 a 23)</li>
+                    <li>h - formato de 12 horas de uma hora com zeros à esquerda (01 a 12)</li>
+                    <li>i - minutos com zeros à esquerda (00 a 59)</li>
+                    <li>s - segundos com zeros à esquerda (00 a 59)</li>
+                    <li>a - ante meridiem minúsculo e Post meridiem (am ou pm)</li>
+                </ul>
+                <h3>Exemplo:</h3>
+                <div class="code">
+                    <pre>&lt;?php echo "As horas são: " . date("h:i:sa");?></pre>
+                </div><br><br>
+                <div class="mark">
+                    <p>Observe que a função date() retornará a data/hora atual do servidor</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Obtenha um fuso horário</h2>
+                </header>
+                <p>Se a hora que você colocou em seu site não estiver correta, provavelmente é porque seu servidor está em outro pais ou configurado para um fuso horário diferente.</p>
+                <p>Portanto, se você precisa que o horário esteja correto de acordo com um local específico, você pode definir o fuso horário que deseja usar.</p>
+                <p>O exemplo abaixo define o fuso horário para "America / New_York" e, em seguida, exibe a hora atual no formato especificado:</p>
+                <div class="code">
+                    <pre>&lt;?php date_default_timezone_set("America/New_York");
+echo "O tempo é: " . date("h: i: sa");
+?>
+                    </pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Crie uma data com mktime()</h2>
+                </header>
+                <p>O parâmentro opcional <i>timestamp</i> na função data () especifica um timestamp. Se omitido, a data e hora atuais serão usadas (como nos exemplos acima).</p>
+                <p>A <b>mktime()</b> retorna o caminho da data / hora Unix para uma data. O carimbo da data / hora Unix contém o número de segundos entre a época do Unix (1 Janeiro de 2020 00:00:00 GMT) e a hora especificada.</p>
+                <h3>Sintaxe</h3>
+                <div class="code">
+                    <p>mktime (hour, minute, second, month, day, year)</p>
+                </div>
+                <p>O exemplo abaixo cria uma data e hora com a <b>data()</b> de vários parâmetros na <b>mktime()</b>:</p>
+                <h3>Exemplo:</h3>
+                <div class="code">
+                    <pre>&lt;?php
+$d=mktime(11, 14, 54, 8, 12, 2014);
+echo "Data criada " . data("d-m-Y h:i:sa", %d);
+?&gt;
+                    </pre>
+                </div>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Crie uma data a partir de uma string com strtotime()</h2>
+                </header>
+                <p>A <b>strtotime()</b> é usada para converter uma string de data legível por humanos em um carimbo de data/hora Unix (o número de segundos desde 1º de Janeiro de 1970 00:00:00 GMT).</p>
+                <h3>Sintaxe</h3>
+                <div class="code">
+                    <p>strtotime(time, now)</p>
+                </div>
+                <h3>Exemplo</h3>
+                <div class="code">
+                    <pre>
+                        &lt;?php
+                        %d=strtotime("10:30pm April 15 2014");
+                        echo "A data criada foi: ". date("d-m-Y h:i:sa", $d);
+                        ?&gt;
+                    </pre>
+                </div>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="arquivos">Arquivos de inclusão</h1>
+                </header>
+                <p>A instrução <b>include</b>( ou <b>require</b>) pega todo o texto / código / marcação existente no arquivo especificado e os copia para o arquivo que usa a instrução include.</p>
+                <p>Incluir arquivos é muito útil quando você deseja incluir o mesmo PHP, HTML ou texto em várias páginas de um site.</p>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Include e Require</h2>
+                </header>
+                <p>É possível inserir o conteúdo de um arquivo PHP em outro arquivo PHP (antes que o servidor o execute), com a instrução include ou querire.</p>
+                <p><strong>As instruções include e require são identicas, exceto em caso de falha:</strong></p>
+                <ul>
+                    <li><b>require</b> - Irá produzir um erro fatal (E_COMPILE_ERROR) e para o script.</li>
+                    <li><b>include</b> - Só produzirá um aviso (E_WARRING) e o script continuará.</li>
+                </ul>
+                <p>Portanto, se você quiser que a executação continue e mostre aos usuários a saída, mesmo se o arquivo de inclusão estiver ausente, use a instrução include. Caso contrário, no caso do FrameWork, CMS ou uma codificação de aplicativo PHP complexa, sempre use a instrução <b>require</b> para incluir um arquivo de chave para o fluxo de execucão. Isso ajudará a evitar o comprometimento da segurança e integridade do aplicativo, caso um arquivo de chave esteja acidentalemente perdido.</p>
+                <p>Incluir arquivos economiza muito trabalho. Isso significa que você pode criar um cabeçalho, rodapé ou arquivo de menu padrão para todas as suas páginas da web. Então, quando o cabeçalho precisar ser atualizado, você só precisa atualizar o arquivo de inclusão do cabeçalho.</p>
+                <h3>Sintaxe</h3>
+                <div class="code">
+                    <pre>
+                        include 'filename';
+                            or
+                        require 'filename';</pre>
+                </div>
+                <h3>Include exemplo:</h3>
+                <p>Suponha que temos um arquivo de rodapé padrão chamado "footer.php", que se parece com isto:</p>
+                <div class="code">
+                    <pre>
+                        &lt;?php
+                        echo "&lt;p&gt;Copyright &copy; 1999-" . date("Y") . "W3Schools.com&lt;p&gt;;"
+                        ?&gt;</pre>
+                </div>
+                <p>Usando no HTML:</p>
+                <img src="img\footer.png" alt="Exemplo do uso do include no HTML" width="442" height="237">
+            </section>
+
+            <section>
+                <header>
+                    <h3>Exemplo 2:</h3>
+                </header>
+                <p>Suponha que temos um arquivo de menu padrão chamado "menu.php":</p>
+                <img src="img\menu_include.png" alt="Usando o include para colocar o menu no HTML" width="497" height="169">
+                <p>Todas as páginas do site devem usar esse arquivo de menu. Veja como isso pode ser feito (estamos usando um elemento &lt;div&gt; para que o menu possa ser facilmente estilizado com CSS posteriormente):</p>
+                <img src="img\html_menu.png" alt="Usando o include para colocar o menu no HTML" width="448" height="280">
+            </section>
+
+            <section>
+                <header>
+                    <h3>Exemplo 3:</h3>
+                </header>
+                <p>Suponha que você tem um arquivo chamado "vars.php", com algumas variáveis definidas:</p>
+                <img src="img\exemplo3_include.png" alt="Usando o include" width="237" height="101">
+                <p>Então, se incluirmos o arquivo "vargs.php", as variáveis podem ser usadas no arquivo de chamada:</p>
+                <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
+            </section>
+
+            <section>
+                <header>
+                    Include vs Require
+                </header>
+                <p>O <b>require</b> também é usada para incluir um arquivo de código no PHP.</p>
+                <p>No entanto, há uma grande diferença entre incluir e exigir; quando um arquivo é incluído com o <b>include</b> e o PHP não consegue encontrá-lo, o script continuará a ser executado:</p>
+                <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
+                <p>Se fizermos o mesmo com o <b>require</b>, a instrução echo não será executada porque a execução do script termina depois que a <b>require</b> retorna um erro fatal:</p>
+                <img src="img/exemplo_require.png" alt="Usando o require no HTML" width="334" height="238">
+                <div class="mark">
+                    <p>Use o <b>require</b> quando o arquivo for exibido pelo aplicativo.</p>
+                    <p>Use o <b>include</b> quando o arquivo não for necessário e o aplicativo deve continuar quando o arquivo não for encontrado.</p>
+                </div>
+            </section>
+        </section><hr>
         
+        <section>
+            <section>
+                <header>
+                    <h1>Manipulação de arquivos</h1>
+                </header>
+                <p>PHP tem várias funções para criar, ler, enviar e editar arquivos.</p>
+                <div class="mark">
+                    <h3>Tenha cuidado ao manipular arquivos</h3>
+                    <p>Os erros mais comuns ao manipularmos algum arquivo são,editar o arquivo errado, encher o disco rígido com dados inúteis e exibir o conteúdo de um arquivo acidentamente.</p>
+                </div>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Função readfile()</h2>
+                </header>
+                <p>A <b>readfile()</b> lê um arquivo e o grava no buffer de saída.</p>
+                <p>Suponha que temos um texto chamado "webdictionary.txt", armazenado no servidor, que se prarece com este:</p>
+                <img src="img\exemplo_de_servidor.png" alt="Exemplo de um servidor" width="359" height="168">
+                <p>O código para ler o arquivo e gravá-lo no buffer de saída é o seguinte (a <b>readfile()</b> função retorna o número de bytes lidos em caso de sucesso):</p>
+                <img src="img\readfile_exemplo.png" alt="Exemplo do uso do readfile" width="330" height="80">
+                <p>O <b>readfile</b> é útil se tudo o que você deseja fazer é abrir um arquivo e ler o seu conteúdo.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h1 id="arquivolido">Arquivo Aberto / lido</h1>
+                </header>
+                <p></p>
+            </section>
+        </section>
+
+
+
+
+
 
         <address><a class="next" href="index.html">Página Anterior</a></address>
         <div class="irtopo"><a href="#irtopo">Subir</a></div>
+    </div>
+        
+
+
+        
+
+
     </body>
 </html>

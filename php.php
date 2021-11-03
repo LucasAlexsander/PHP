@@ -311,8 +311,8 @@ echo "<br><hr>";
 ?>
 
 <?php
-echo $_POST["name"];
-echo "<br>";
-echo $_POST["email"];
-echo "<br>";
+echo "Hoje é: ", date("d-m-Y"), "<br>";
+echo "Hoje é: ", date("d/m/Y"), "<br>";
+echo "Hoje é: ", date("d.m.Y"), "<br>";
+echo "A data de hoje é: ", date("l"), "<br><hr>";
 ?>

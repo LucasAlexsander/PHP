@@ -54,12 +54,12 @@
             <a href="#url"><li class="menu1">URL / e-mail do formulário</li></a>
             <a href="#advanced"><li class="menu1">PHP Advanced</li></a>
             <a href="#arquivos"><li class="menu1">Arquivos de inclusão</li></a>
+            <a href="#manipulacao"><li class="menu1">Manipulação de arquivos</li></a>
             <a href="#arquivolido"><li class="menu1">Arquivo Aberto / lido</li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
+            <a href="#upload"><li class="menu1">Upload de Arquivos</li></a>
+            <a href="#cookies"><li class="menu1">Cookies</li></a>
+            <a href="#sessao"><li class="menu1">Sessões</li></a>
+            <a href="#filtros"><li class="menu1">Filtros</li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
@@ -346,7 +346,7 @@ echo "Data criada " . data("d-m-Y h:i:sa", %d);
                     </pre>
                 </div>
             </section>
-        </section>
+        </section><hr>
 
         <section>
             <section>
@@ -427,7 +427,7 @@ echo "Data criada " . data("d-m-Y h:i:sa", %d);
         <section>
             <section>
                 <header>
-                    <h1>Manipulação de arquivos</h1>
+                    <h1 id="manipulacao">Manipulação de arquivos</h1>
                 </header>
                 <p>PHP tem várias funções para criar, ler, enviar e editar arquivos.</p>
                 <div class="mark">
@@ -446,15 +446,410 @@ echo "Data criada " . data("d-m-Y h:i:sa", %d);
                 <p>O código para ler o arquivo e gravá-lo no buffer de saída é o seguinte (a <b>readfile()</b> função retorna o número de bytes lidos em caso de sucesso):</p>
                 <img src="img\readfile_exemplo.png" alt="Exemplo do uso do readfile" width="330" height="80">
                 <p>O <b>readfile</b> é útil se tudo o que você deseja fazer é abrir um arquivo e ler o seu conteúdo.</p>
-            </section>
+            </section><hr>
 
             <section>
                 <header>
                     <h1 id="arquivolido">Arquivo Aberto / lido</h1>
                 </header>
-                <p></p>
+                <p>Para abrirmos um arquivo usamos a função <b>fopen()</b>, esta quando usamos esta função podemos fazer mais coisas que o <b>readfile()</b>.</p>
+                <p>O primeiro parâmetro quando usamos o <b>fopen()</b> contém o nome do arquivo entre aspas, e segundo especifica qual modo será aberto. Caso não conseguimos abrir o arquivo podemos deixar uma mensagem, como no exemplo abaixo:</p>
+                <div class="code">
+                    <pre>
+    &lt;?php
+    $myfile = fopen ("texte.txt", "r") or die ("Não foi possível abrir o arquivo!");
+    echo fread($myfile, filezie("texte.txt"));
+    fclose($myfile);
+    ?&gt;</pre>
+                </div>
+                <p>Podemos abrir os arquivos da seguinte forma:</p>
+                <table>
+                    <tr>
+                        <th>Modos</th>
+                        <th>Descrição</th>
+                    </tr>
+                    <tr>
+                        <td>r</td>
+                        <td><strong>Abre o arquivo somente para leitura.</strong> O ponteiro do arquivo começa no início do arquivo.</td>
+                    </tr>
+                    <tr>
+                        <td>w</td>
+                        <td><strong>Abre o arquivo somente para escrita.</strong> Apaga o conteúdo do arquivo ou cria um novo arquivo se não existir. O ponteiro do arquivo começa no início do arquivo.</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td><strong>Abre o arquivo somente para escrita.</strong> Os dados existentes no arquivo são preservados. O ponteiro do arquivo começa no final do arquivo. Cria um novo arquivo caso não exista.</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td><strong>Cria um novo arquivo somente para escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
+                    </tr>
+                    <tr>
+                        <td>r+</td>
+                        <td><strong>Abre um arquivo para leitura / escita.</strong> O ponteiro do arquivo começa no início.</td>
+                    </tr>
+                    <tr>
+                        <td>w+</td>
+                        <td><strong>Abre um arquivo para leitura / escrita.</strong> Apaga o conteúdo do arquivo e cria um novo se ele não existir. O ponteiro do arquivo começa no início.</td>
+                    </tr>
+                    <tr>
+                        <td>a+</td>
+                        <td><strong>Abre um arquivo para leitura / escrita.</strong> Os dados presentes no arquivo são preservados e cria um arquivo se não existir. O ponteiro do arquivo começa no final.</td>
+                    </tr>
+                    <tr>
+                        <td>x+</td>
+                        <td><strong>Cria um novo arquivo para leitura / escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <header>
+                    <h2>fread() - Arquivo para leitura</h2>
+                </header>
+                <p>A função <b>fread()</b> lê a partir de um arquivo aberto. O primeiro parâmetro contém o nome do arquivo a ser lido e o segundo especifica o número máximo de bytes a serem lidos.</p>
+                <p>Podemos usar no segundo parâmetro o <b>filesize()</b>, onde ele vai ler até o final do arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo entre aspas.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>fclose() - Fechar arquivos</h2>
+                </header>
+                <p>A função <b>fclose()</b> fecha os arquivos abertos. Para usa-la é bem simples, quando você terminar de modificar o arquivo, você colocará na próxima linhas, <b>fclose()</b> e dentro o nome do arquivo.</p>
+                <div class="mark">
+                    <p>É uma boa pratica sempre fechar o arquivo depois de manipulalo, pois deixa-lo aberto pode fazer com que o programa gaste mais memórias atoa.</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>fgets() - Ler uma linha</h2>
+                </header>
+                <p>A função <b>fgets()</b> é usada para ler uma única linha de um arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo. Após chamarmos a função, o ponteiro do arquivo foi para a próxima linha.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>feof() - End-Of-File</h2>
+                </header>
+                <p>Esta função verifica se o fim do arquivo foi atingido. Sendo útil para percorrer dados de comprimento deseconhecido. A função abaixo lê linha por linha, até que o final do arquivo seja alcançado:</p>
+                <div class="code">
+                    <pre>
+    &lt;?php
+    $myfile = fopen("text.txt", "r") or die ("Não foi possível abrir o arquivo!");
+    while (!feof($myfile)) {
+        echo fgets($myfile) . "&lt;br&gt;";
+    }
+    fclose($myfile);
+    ?&gt;
+                    </pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>fgetc() - Leitura de único caractere</h2>
+                </header>
+                <p>Esta função é parecida com a anterior, podem esta, ela lê somente um caracter do arquivo. Podemos usar esta função no exemplo anterior, no caso ela vai ler um caracter por caracter até o final do arquivo.</p>
+                <p>Após o seu uso, o ponteiro do arquivo se move para o próximo caracter.</p>
             </section>
         </section>
+
+        <section>
+            <header>
+                <h1>Criação / Escrita de arquivo</h1>
+            </header>
+            <section>
+                <header>
+                    <h2>fopen() - Abrir um arquivo</h2>
+                </header>
+                <p>Podemos usar a função <b>fopen()</b> para criamos um arquivo. Caso você tente abrir um arquivo que não existe, ele irá ser criado por causa da função, desde que o arquivo seja aberto para gravação (w) ou anexação (a).</p>
+                <p><strong>OBS:</strong> Caso você tente criar um arquivo e dê erros, verifique se você concedeu ao seu arquivo PHP acesso ao gravar informações no disco rígido.</p>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>fwrite() - Escrever no arquivo</h2>
+                </header>
+                <p>Esta função é usada para escrever no arquivo. No seu primeiro parâmetro deve conter o nome do arquivo, e o segundo a string a ser gravada.</p>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Sobrescrita</h2>
+                </header>
+                <p>Se usarmos a mesma função com o mesmo arquivo e inserirmos algumas informações, os dados anteriores serão apagados e os novos ficarão lá.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="upload">Upload de Arquivos</h1>
+            </header>
+
+            <section>
+                <header>
+                    <h2>Configure o arquivo "php.ini"</h2>
+                </header>
+                <p>Primeiro, devemos certificar que o PHP está configurado para permitir uploads de arquivos. No seu arquivo "php.ini", procure a <b>file_uploads</b> e defina-a como Ativado / On.</p>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Crie um formulário</h2>
+                </header>
+                <p>Em seguida, crie um formulário que permita que o usuário envie arquivo de imagem que desejam enviar:</p>
+                <img src="img\formulario_upload.png" alt="Exemplo de upload de arquivos em PHP" width="604" height="278">
+                <p>Algumas regras a serem seguidas para o formulário acima:</p>
+                <ul>
+                    <li>Certifique-se que o formulário usa o metodo "post".</li>
+                    <li>O formulário também precisa do seguinte atributo: enctype = "multipart / form-data". Ele especifica qual tipo de conteúdo usar ao enviar o formulário.</li>
+                </ul>
+                <p>Sem os requisitos acima, o upload do arquivo não funionará.</p>
+                <p>Outras coisas a ser observadas:</p>
+                <ul>
+                    <li>O atributo type = "file" da tag &lt;input&gt; mostra o campo de entrada como um controle de seleção de arquivo, com um botão  "Browser" próximo ao controle de entrada.</li>
+                </ul>
+                <p>O formulário acima envia os dados para um arquivo chamado "upload.php". Iremos mostrar a seguir.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Criando um script para upload de arquivos</h2>
+                </header>
+                <p>O arquivo mencionado anterior, "upload.php" contém o seguinte código:</p>
+                <img src="img\codigo_para_upload_de_arquivos.png" alt="Código em HTML para upload de arquivos" width="652" height="389">
+                <p>Explicação das linhas do código:</p>
+                <ul>
+                    <li>$target_dir = "uploads/" - especifica o diretório onde o arquivo será colocado</li>
+                    <li>$target_file - especifica o caminho do arquivo a ser carregado</li>
+                    <li>$uploadOk = 1 - ainda não é usado</li>
+                    <li>$imageFileType contém a extensão do arquivo do arquivo (em letras minúsculas)</li>
+                    <li>Em seguida, verifica se o arquivo de imagem é uma imagem real ou uma imagem falsa</li>
+                </ul>
+                <div class="mark">
+                    <p><strong>Nota:</strong> Você precisará criar um novo diretório chamado "uploads" no diretório onde o arquivo "uploads.php" reside. Os arquivos carregados serão salvos lá.</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Verifique se o arquivo já existe</h2>
+                </header>
+                <p>Primeiro, vamos verificar se o arquivo já existe na pasta "uploads". Em caso afirmativo, uma mensagem de erro é exibida e $uploadOk é definido como 0:</p>
+                <div class="code">
+                    <pre>
+    //Checando se a pasta existe
+    if (file_exists($target_file)) {
+        echo "Desculpe, arquivo inexistente.";
+        $uploadOk = 0;
+    }</pre>
+                </div>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Limitando o tamanho do arquivo</h2>
+                </header>
+                <p>O campo de arquivo denominado em nosso formulário HTML acima é denominado "fileToUpload".</p>
+                <p>Agora, queremos verifica o tamanho do arquivo. Se o arquivo tiver mais de 500 KB, uma mensagem de erro será exibida e $upload será definido como 0:</p>
+                <div class="code">
+                    <pre>
+    //Checando o tamanho do arquivo
+    if ($_FILE["fileToUpload"]["size"] > 500000) {
+        echoo "Desculpe, seu arquivo é muito grande.";
+        $uploadOk = 0;
+    }</pre>
+                </div>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Uplaod completo do arquivo</h2>
+                </header>
+                <p>Agoora para termos um arquivo completo para nosso upload, precisamos juntar todos os códigos. Isso deixará-lo completo.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="cookies">Cookies</h1>
+            </header>
+
+            <section>
+                <header>
+                    <h2>O que é um Cookies</h2>
+                </header>
+                <p>Usado pra identicar um usuário. É um pequeno arquivo que o servidor incorpora no computador do usuário. Cada vez que o mesmo computador solicitar uma página com um navegador, ele também enviará o cookie. Com o PHP, você pode criar e recuperar valores de cookies.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Criar Cookies</h2>
+                </header>
+                <p>Para criamos usamos a função <b>setcookie()</b>.</p>
+                <h3>Sintaxe:</h3>
+                <div class="code">
+                    <p>setcookie(name, value, expire, path, domain, secure, httponly);</p>
+                </div>
+                <p><strong>OBS:</strong> Apensa o parâmetro de nomes é obrigatório, o resto é opcional.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Cria / recuperar um cookie</h2>
+                </header>
+                <p>O exemplo a seguir cria um cookie denomidado "usuario" com o valor "Lucas Alexsander". O cookie ira expirar após 30 dias (86400 * 30). O "/" significa que o cookie está disponível em todo o site (caso contrário, selecione o diretório de sua preferência).</p>
+                <p>Em seguida, recuperamos o valor do cookie "usuario" (usando a variável global $_COOKIE). Também usamos a <b>isset()</b> para descobrir se o cookie está definido:</p>
+                <img src="img\cookie.png" alt="Exemplo de aplicação de um cookie no PHP" width="787" height="434">
+                <p>O <b>setcookie()</b> deve aparecer antes da tag &lt;html&gt;.</p>
+                <p><strong>Nota:</strong> O valor do cookie é automaticamente codificado por URL ao enviar o cookie e automaticamente decodificado quando recebido (para evitar a codificação de URL, use em seu lugar <b>setrawcookie()</b>).</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Modificando um Cookie</h2>
+                </header>
+                <p>Para modifica-lo, basta alterar os dados inseridos dentro da função <b>setcookie()</b>.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Excluir um Cookie</h2>
+                </header>
+                <p>Para excluir, basta alterar a data da função <b>setcookie()</b> para uma data no passado.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Verifique se os Cookies estão habilitados</h2>
+                </header>
+                <p>Para verificarmos, iremos usar o count() para verificar se existe mais de um dado dentro do cookie ele está habilitado, caso contrário, desabilitado.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="sessao">Sessões</h1>
+            </header>
+            <p>Uma sessão é uma forma de armazenar informções (em variáveis) a serem usadas em varias páginas.</p>
+            <p>Ao contrário de um cookie, as informações não são armazenadas no computador do usuário.</p>
+            <section>
+                <header>
+                    <h2>O que é uma Sessão?</h2>
+                </header>
+                <p>Ao trabalhar em um aplicativo, você o abre, faz alterações e logo em seguida o fecha. Isso é muito parecido com uma sessão. Mas temos um problema, quando fazemos isso em um computador, ele sabe quem você é, mas quando fazemos isso na web, ela não te reconhece, porque endereço HTTP não mantém o estado.</p>
+                <p>As variáveis de sessão resolvem este problema, pois elas armazenam informações do usuário para serem usadas em várias páginas (por exemplo, nome de usuário, cor favorita etc...). Por padrão, as variáveis de sessão duram até que o usuário feche o navegador.</p>
+                <p>Então, as variáveis de sessão contêm informações de um único usuário e estão disponíveis para todas as páginas em um aplicativo.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Iniciar um Sessão</h2>
+                </header>
+                <p>Uma sessão é iniciada usando <b>session_start()</b>. Variáveis de sessão são definidas com a variável global: $_SESSION.</p>
+                <p>Vamos criar uma página chamada "demo_session1.php". Nesta página, iniciaremos uma nova sessão e definimos algumas variáveis de sessão:</p>
+                <img src="img\sessao.png" alt="Exemplo de uma sessão no PHP simples" width="481" height="392">
+                <p><strong>OBS:</strong> A varável de sessão deve ficar antes do início da tag HTML.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Obter valores de variáveis de sessão</h2>
+                </header>
+                <p>A seguir, criaremos outra página chamada "demo_session2". A partir desta página, acessaremos as informações da sessão que definimos na primeira página ("demo_session1").</p>
+                <p>Observer que as variáveis de sessão não são passadas individualemente para cada nova página, em vez disso, são recuperadas da sessão que abrimos no início de cada página (<b>sesscion_start()</b>).</p>
+                <p>Observe que todos os valores das variáveis são armazenadas na variável global: $_SESSION:</p>
+                <img src="img\sessao(1).png" alt="Passando informções de uma página para outras" width="481" height="392">
+                <p>Outra maneira de passarmos essas informações é usando a variável global dentro do <b>print_r()</b>. Exemplo:</p>
+                <img src="img\sessao(2).png" alt="Outro modo de passar informações de uma página para a outra" width="301" height="302">
+                <div class="mark">
+                    <p><strong>Como funciona? Como ele sabe que sou eu?</strong></p>
+                    <p>A maioria das sessões define uma chave de usuário no computador que se parece com isso: 765487cf34ert8dede5a562e4f3a7e12. Em seguida, quando uma sessão é aberta em outra página, ela verifica o computador em busca de uma chave de usuário. Se houve correspondência, ela acessa aquela sessão, caso contrário, ele inícia uma nova sessão.</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Modificar uma variável de uma Sessão</h2>
+                </header>
+                <p>Para alterar a variável de uma sessão basta substitui-la na nova página usando a variável global $_SESSION.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Destrua uma sessão</h2>
+                </header>
+                <p>Para removermos todas as variáveis de uma sessão e destruir, use <b>session_unset()</b> e <b>session_destroy()</b>:</p>
+                <ul>
+                    <li>session_unset() - Remove todas as variáveis da sessão</li>
+                    <li>session_destroy() - Destroi a a sessão</li>
+                </ul>
+            </section>
+        </section><hr>
+
+        <section>
+            <header>
+                <h1 id="filtros">Filtros</h1>
+            </header>
+            <p>Validating data = Determina se os dados estão na forma adaqueda</p>
+            <p>Sanitilizing data = Remove qualquer caractere ilegal dos dados</p>
+            <section>
+                <header>
+                    <h2>A extensão do filtro</h2>
+                </header>
+                <p>Filtros são usados para validar e higienizar a entrada externa.</p>
+                <p>A extensão do filtro tem muitas das funções necessárias para verificar a entrada do usuário e é projetada para tornar a validação de dados mais fácil e rápida.</p>
+                <p>A função <b>filter_list()</b> pode ser usada para listar o que a extensão do filtro oferece:</p>
+                <img src="img\filter.png" alt="Exemplo de aplicação do filter em PHP" width="739" height="256">
+            </section>
+
+            <section>
+                <header>
+                    <h2>Por que usar filtros?</h2>
+                </header>
+                <p>Muitos aplicativos da web recebem entradas externas. A entrada / dados externos podem ser:</p>
+                <ul>
+                    <li>Entrada do usuário a partir de um formulário</li>
+                    <li>Cookies</li>
+                    <li>Dados de serviços da web</li>
+                    <li>Variáveis de servidor</li>
+                    <li>Resultados da consulta de banco de dados</li>
+                </ul>
+                <div class="mark">
+                    <p><strong>Você deve sempre validar os dados externos!</strong></p>
+                    <p>Dados inválidados enviados podem levar a problemas de segurança e quebrar sua página web. Ao usar filtros, você pode ter certeza que seu aplicativo receberá a entrada correta!</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>filter_var()</h2>
+                </header>
+                <p>A função <b>filter_var()</b> valida e limpa os dados. Filtrando uma única variável com um filtro especifico. São necessários dois dados:</p>
+                <ul>
+                    <li>A variável que você deseja verificar</li>
+                    <li>O tipo de cheque a usar</li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Sanitize a String</h2>
+                </header>
+                <p>A função <b>filter_var()</b> pode ser usada para remover todas as tags HTML de uma string.</p>
+                <img src="img\sanitize.png" alt="Usando o filter_var() para remover todas as tags HTML" width="508" height="127">
+            </section>
+        </section>
+
+
+
+
+
+
+
+
+
 
 
 

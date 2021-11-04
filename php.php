@@ -316,3 +316,14 @@ echo "Hoje é: ", date("d/m/Y"), "<br>";
 echo "Hoje é: ", date("d.m.Y"), "<br>";
 echo "A data de hoje é: ", date("l"), "<br><hr>";
 ?>
+
+<?php
+setcookie("usuario", "test", time() + 3600, "/");
+
+if (count($_COOKIE) > 0) {
+    echo "Cookie enable";
+} else {
+    echo "Cookie desable";
+}
+echo "<br>";
+?>

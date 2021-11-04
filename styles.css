@@ -107,6 +107,7 @@ tr:nth-child(even) { /*Deixa a tabela listrada*/
 
 .next {
     color: blue;
+    font-size: small;
 }
 .next:hover {
     color: darkblue;

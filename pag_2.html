@@ -60,9 +60,24 @@
             <a href="#cookies"><li class="menu1">Cookies</li></a>
             <a href="#sessao"><li class="menu1">Sessões</li></a>
             <a href="#filtros"><li class="menu1">Filtros</li></a>
+            <a href="#advancedfilter"><li class="menu1">Filtro Avançado</li></a>
+            <a href="#retorno"><li class="menu1">Função de retorno de chamada</li></a>
+            <a href="#excecoes"><li class="menu1">Exceções</li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+            <a href="#"><li class="menu1"></li></a>
+
         </div>
         
 
@@ -839,8 +854,253 @@ echo "Data criada " . data("d-m-Y h:i:sa", %d);
                 </header>
                 <p>A função <b>filter_var()</b> pode ser usada para remover todas as tags HTML de uma string.</p>
                 <img src="img\sanitize.png" alt="Usando o filter_var() para remover todas as tags HTML" width="508" height="127">
+                <p>Assim removendo as tags h1 - h6.</p>
             </section>
-        </section>
+
+            <section>
+                <header>
+                    <h2>Validar um inteiro</h2>
+                </header>
+                <p>Podemos usar a função <b>filter_var()</b> para verificar se a variável é inteira ou não. Para verificarmos, colocamos primeiro a variável e logo em seguida FILTER_VALIDATE_INT.</p>
+                <h3>Filter_var() e o problema com 0</h3>
+                <p>Se colocarmos um 0 usando o código que foi dito acima, a função retorna "Não é inteiro". Para resolvermos isso, temos que colocar duas condições para o <b>if</b>, uma sendo a mesma que a de cima "<i>if (filter_var($int, FILTER_VALIDATE_INT) == true || filter_var($int, FILTER_VALIDATE_INT) == 0)</i>, temos que colocar que a condição tem que ser igual a zero.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Limpe e valide um endereço de e-mail</h2>
+                </header>
+                <p>Usamos o filter_var() junto com o FILTER_SANITIZE_EMAIL para limpar todos os caracteres ilegais do e-mail, logo em seguida, vamos verificar o e-mail usando filter_var e FILTER_VALIDATE_EMAIL.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Limpe e valide um URL</h2>
+                </header>
+                <p>Para efetuarmos essa limpesa usamos praticamente o mesmo código para limpar o e-mail, mas trocamos o final dele para URL, feito isso será praticamente a mesma coisa.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id=advancedfilter>Filtro Avançado</h1>
+                    <h2>Validar um número inteiro dentro de um intervalo</h2>
+                </header>
+                <p>Vamos usar o filter_var() para verificar se uma variável é do tipo INT e entre 1 a 200:</p>                 
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validar endereço IPv6</h2>
+                </header>
+                <p>Para validarmos um ip, vamos usar o FILTER_VALIDATE_IP e o FILTER_FLAG_IPV6, passando por esses teste vamos conseguir saber se o ip é valido ou não.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Validar URL - deve conter QueryString</h2>
+                </header>
+                <p>O exemplo a seguir usa a função <b>filter_var()</b> para verificar se a variável $url é um URL com uma string de consulta:</p>
+                <img src="img\filter_var.png" alt="Usando o filter_var() para verificar se uma variável url é uma URL com uma string de consulta" width="755" height="216">
+            </section>
+
+            <section>
+                <header>
+                    <h2>Remover caracteres com valor ASCII>127</h2>
+                </header>
+                <p>Vamos usar o filter_var juntamente com FILTER_SANITIZE_STRING e FILTER_FLAG_STRIP_HIGH para remover todos as tags e os caracteres com valor ASCC&gt;127. </p>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="retorno">Função de retorno de chamada</h1>
+                </header>
+                <p>É um função que é passada de argumento para outra função. Qualquer função existente pode ser usada como função de retorno de chamada. Para usar uma função como retorno, passe uma string contendo o nome da função como o argumento de outra função.</p>
+                <p><b>array_map()</b> função para calcular o comprimento de cada string em uma matriz.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Retorno de chamada em funções definidas pelo usuário</h2>
+                </header>
+                <p>Funções e métodos definidos pelo usuário também podem ser funções de retorno de chamada como argumentos. Para usar funções de retorno de chamada dentro de uma função ou método definido pelo usuário, chame-o adcionando parênteses à variáveis e passe os argumentos como nas funções normais.</p>
+                <p>Podendo chamar um função dentro de outra função mas para isso não colocamos o <i>$</i>.</p>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="json">JSON</h1>
+                </header>
+                <p>JSON, significa JavaScript Object Notation e é uma sintaxe para armazenar e trocar dados. Como o formato JSON é um formato baseado em texto, ele pode ser facilmente enviado de um servidor e usado como formato de dados por qualquer linguagem de programação.</p>
+                <p>Duas funções de JSON:</p>
+                <ul>
+                    <li><b>json_encode()</b></li>
+                    <li><b>json_decode()</b></li>
+                </ul>
+            </section>
+
+            <section>
+                <header>
+                    <h2>json_encode()</h2>
+                </header>
+                <p>É usado para codificar uma valor para o formato JSON.</p>
+                <p>Podemos codificar uma matriz associativa em um objeto JSON.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>json_decode()</h2>
+                </header>
+                <p>É usada para decodificar um objeto JSON em um obejto PHP ou um array associativo.</p>
+                <div class="code">
+                    <p>var_dump(json_deconde($jsonobj));</p>
+                </div>
+                <p>A função <b>json_decode()</b> retorna um objeto por padrão. Tendo em segundo parâmetro e, quando definido como verdadeiro, os obsjeto JSON são codificados em matrizes associativas.</p>
+                <div class="code">
+                    <p>var_dump(json_decode($jsonobj, true));</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Acessando os valores decodificados</h2>
+                </header>
+                <p>Exemplo para acessar valores de um objeto:</p>
+                <img src="img\json_decode.png" alt="Exemplo para acessar valores de um objeto usando json_decode()" width="564" height="213">
+                <p>Outro exemplo para acessar valores de uma matriz associativa:</p>
+                <img src="img\json_decode(1).png" alt="Exemplo para acessar valores de uma matriz associativa usando json_decode()" width="484" height="213">
+            </section>
+
+            <section>
+                <header>
+                    <h2>Looping pelos valores</h2>
+                </header>
+                <p>Você também pode percorrer os valores com loop <b>feach()</b>:</p>
+                <img src="img\feach.png" alt="Usando o feach() para percorrer todo o looping da matriz do json" width="
+                452" height="213">
+            </section>
+
+            <section>
+                <h2>Um rápido resumo do feach()</h2>
+                <img src="img\feach(1).png" alt="Resumo do uso do looping feach()" width="609" height="213">
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="excecoes">Exceções</h1>
+                </header>
+                <p>Uma exceção é um objeto que descreve um erro ou comportamento inesperado de um script. Exceções são lançadas por muitas funções e classes.</p>
+                <p>Funções e classes criadas pelo usuário também podem lançar exceções. As exceções são boas maneiras de interromper uma função quando ela encontra dados que ela não pode usar.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Lançando uma exceção</h2>
+                </header>
+                <p>A instrução <b>throw</b> permite que uma função ou método definido pelo usuário lance uma exceção. Quando uma exceção é lançada, o código a seguir não será executado.</p>
+                <p>Se uma exceção não for detectada, um erro fatal ocorrerá com uma mensagem "Exceção não detectada".</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>A declaração try...catch</h2>
+                </header>
+                <p>Para evitar um erro do <b>throw</b> podemos usar, <b>try...catch</b> para capturar exceções e continuar o processo.</p>
+                <h3>Sintaxe:</h3>
+                <div class="code">
+                    <pre>
+    try {
+        código que pode lançar <b>throw</b> exceção
+    } catch (Exceção $e) {
+        código que é executado quando uma exceção é detectada
+    }</pre>
+                </div>
+                <p>O bloco catch indica que tipo de exceção deve ser capturada e o nome da variável que pode ser usada para acessar a exceção. No exemplo acima, o tipo de exceção é <b>Exception</b> e o nome da variável é <b>$e</b>.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Try...catch...finally</h2>
+                </header>
+                <p>A intrução <b>try...catch...finally</b> pode ser usada para capturar exceções. O código no bloco <b>finally</b> sempre será executado, independentemente se uma exceção foi detectada. Se <b>finally</b> estiver presente, o bloqueio <b>catch</b> é opcional.</p>
+                <h3>Sintaxe:</h3>
+                <div class="code">
+                    <pre>
+    <b>try</b>{
+        código que pode lançar <b>throw</b> exceção
+    } <b>catch</b> (Exception $e) {
+        código que é executado quando uma exceção é detectada
+    } <b>finally</b> {
+        código que sempre é executado, independentemente de uma exceção ter sido detectada
+    }</pre>
+                </div>
+                <p>Podemos deixar uma mensagem no <b>finally</b> como por exemplo, "Processo terminado".</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Objeto de exceção</h2>
+                </header>
+                <p>Objetivo de exceção contém informações sobre erro ou comportamento inesperado que a função encontrou.</p>
+                <h3>Sintaxe:</h3>
+                <div class="code">
+                    <p>&nbsp;new Exception (message, code, previous)</p>
+                </div>
+                <h3>Valores de Parâmetros</h3>
+                <table>
+                    <th>Parâmetros</th>
+                    <th>Descrição</th>
+                    <tr>
+                        <td>message / mensagem</td>
+                        <td>Opcional. Uma string que descreve por que a exceção foi lançada.</td>
+                    </tr>
+                    <tr>
+                        <td>code / código</td>
+                        <td>Optional. Um número inteiro pode ser usado para distinguir facilmente esta exceção de outras do mesmo tipo</td>
+                    </tr>
+                    <tr>
+                        <td>previous / anterior</td>
+                        <td>Opcional. Se esta exceção foi lançada em um bloco catch de outra exceção, é recomendado passar essa exceção para este parâmetro.</td>
+                    </tr>
+                </table>
+                <h3>Métodos</h3>
+                <p>Ao capturar uma exceção, a tabela a seguir mostra alguns métodos que podem ser usados para obter informações sobre exceção:</p>
+                <table>
+                    <th>Método</th>
+                    <th>Descrição</th>
+                    <tr>
+                        <td>getMessage()</td>
+                        <td>Retorna uma string que descreve por que a exceção foi lançada</td>
+                    </tr>
+                    <tr>
+                        <td>getPrevious()</td>
+                        <td>Se esta exceção foi dispensada por outra, este método retorna a exceção anterior</td>
+                    </tr>
+                    <tr>
+                        <td>getCode()</td>
+                        <td>Retorna o código de exceção</td>
+                    </tr>
+                    <tr>
+                        <td>getFile()</td>
+                        <td>Retorna o caminho completo do arquivo no qual a exceção foi lançada</td>
+                    </tr>
+                    <tr>
+                        <td>getLine()</td>
+                        <td>Retorna o número de linha da linha do código que lançou a exceção</td>
+                    </tr>
+                </table><br>
+                <h3>Exemplo:</h3>
+                <p>Informações de saída sobre uma excption que foi lançada:</p>
+                <img src="img\exemplos_excecao.png" alt="Exemplos com alguns métodos de Exception" width="618" height="434">
+            </section>
+        </section><hr>
 
 
 

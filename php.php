@@ -325,5 +325,145 @@ if (count($_COOKIE) > 0) {
 } else {
     echo "Cookie desable";
 }
-echo "<br>";
+echo "<br><hr>";
 ?>
+<?php
+$str = "<h1>Olá, mundo!</h1>";
+echo ("Antes, $str");
+$str = filter_var($str, FILTER_SANITIZE_STRING);
+echo ("Depois, $str");
+echo ("<br><hr>");
+?>
+
+<?php
+$int = 0;
+if (filter_var($int, FILTER_VALIDATE_INT) == true || filter_var($int, FILTER_VALIDATE_INT) == 0) {
+    echo "É um inteiro";
+} else {
+    echo "Não é inteiro";
+}
+echo "<br><hr>";
+?>
+
+<?php
+$email = "lucas10barbosa_@hotmail.com";
+//Limpando os caracteres ilegais
+$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+//Verificando se o e-mail é valido
+if (filter_var($email, FILTER_VALIDATE_EMAIL) == true) {
+    echo ("$email : é válido.");
+} else {
+    echo ("$email : não é válido.");
+}
+echo ("<br><hr>");
+?>
+
+<?php
+$url = "https://www.google.com";
+//Limpando os caracteres ilegais para url
+$url = filter_var($url, FILTER_SANITIZE_URL);
+//Verificando se o endereço url é legal
+if (filter_var($url, FILTER_VALIDATE_URL) == true) {
+    echo ("$url é valido.");
+} else {
+    echo ("$url não é valido.");
+}
+echo ("<hr><br>");
+?>
+
+<?php
+$int = 122;
+$max = 200;
+$min = 1;
+
+if (filter_var($int, FILTER_VALIDATE_INT, array("options" => array("min_range" => $min, "max_range" => $max))) == true) {
+    echo ("O valor está entre os valos $min e $max.");
+} else {
+    echo ("O valor não esta entre os valores $min e $max");
+}
+echo ("<br><hr>");
+?>
+
+<?php
+$ip = "2001:0db8:85a3:08d3:1319:8a2e:0370:7334";
+
+if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) == true) {
+    echo ("O endereço de IPv6 é valido.");
+} else {
+    echo ("O endereço de IPv6 não é valido.");
+}
+echo ("<br><hr>");
+?>
+
+<?php
+$url = "https://www.google.com";
+
+if (filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) == true) {
+    echo ("$url é uma URL valida com string de consulta.");
+} else {
+    echo ("$url não é uma URL valida com string de consulta.");
+}
+echo ("<br><hr>");
+?>
+
+<?php
+$str = "<h1>Hello WorldÆØÅ!</h1>";
+$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+echo ("Antes: $str \nDepois: $newstr");
+echo ("<br><hr>");
+?>
+
+<?php
+function retorno ($item) {
+    return strlen($item);
+}
+
+$string = ["maça", "banana", "pera", "goiaba"];
+$lengths = array_map("retorno", $string);
+print_r ($lengths);
+echo ("<br><hr>");
+?>
+
+<?php 
+function exclaim ($str) {
+    return $str . "! ";
+}
+
+function ask ($str) {
+    return $str . "? ";
+}
+
+function printFormatted($str, $format) {
+    //Chamando a $format novamente
+    echo $format($str);
+}
+
+//Passando "exclaim" e "ask" para as funções de retorno do printFormatted()
+printFormatted("Olá, mundo", "exclaim");
+printFormatted("Olá, mundo", "ask");
+echo ("<br><hr>");
+//Para adcionarmos uma função dentro de outra não precisamos colocar o $
+?>
+
+<?php
+function dividir ($dividendo, $divisor) {
+    if ($divisor == 0) {
+        throw new Exception("Divisor igual a zero", 1);
+    }
+    return $dividendo / $divisor;
+}
+
+try {
+    echo dividir (5,0);
+} catch (Exception $ex) {
+    $code = $ex -> getCode();
+    $mensagem = $ex -> getMessage();
+    $file = $ex -> getFile();
+    $linha = $ex -> getLine();
+    echo ("Exceção landaça no $file na linha $linha: [código $code] $mensagem<br>");
+} finally {
+    echo "Processo encerrado!";
+}
+echo ("<br><hr>");
+?>
+

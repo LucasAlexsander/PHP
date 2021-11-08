@@ -63,8 +63,8 @@
             <a href="#advancedfilter"><li class="menu1">Filtro Avançado</li></a>
             <a href="#retorno"><li class="menu1">Função de retorno de chamada</li></a>
             <a href="#excecoes"><li class="menu1">Exceções</li></a>
-            <a href="#"><li class="menu1"></li></a>
-            <a href="#"><li class="menu1"></li></a>
+            <a href="#oop"><li class="menu1">Programação Orientada Objeto</li></a>
+            <a href="#modificadores"><li class="menu1">Modificadores de Acesso</li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
             <a href="#"><li class="menu1"></li></a>
@@ -1101,6 +1101,245 @@ echo "Data criada " . data("d-m-Y h:i:sa", %d);
                 <img src="img\exemplos_excecao.png" alt="Exemplos com alguns métodos de Exception" width="618" height="434">
             </section>
         </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="oop">OOP - Programação Orientada Objeto</h1>
+                </header>
+                <p>A programação procedural trata de escrever procedimentos ou funções que realizam operações nos dados, enquanto a programação orientada a objeto trata da criação de objetos que contêm dados e funções.</p>
+                <p>A programação orientada a objetos tem mais vantagens sobre a programação procedural:</p>
+                <ul>
+                    <li>POO é mais rápido e fácil de executar</li>
+                    <li>POO fornece uma estrutura clara para os programas</li>
+                    <li>POO ajuda a manter o código PHP DRY ("Don't Repeat Yourself") e torna o código mais fácil de manter, modificar e depurar.</li>
+                    <li>POO torna possível criar aplicativos totalmente reutilizáveis com menos códigos e menor tempo de desenvolvimento</li>
+                </ul>
+                <p><strong>Dica:</strong> O princípio "Don't Repeat Yourself" (DRY) é sobre reduzir a repetição do código. Você deve extrair os códigos comuns para o aplicativo, colocá-lo em um único lugar e reutilizá-los em vez de repeti-los.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>O que são classes e objetos?</h2>
+                </header>
+                <p>Classes e objetos são os dois aspectos principais da programação orientada objetos.</p>
+                <p>Observe a ilustração a seguir para ver a diferença entre classe e objeto:</p>
+                <table class="mrg">
+                    <tr>
+                        <th>Classe</th>
+                        <th>Obejto</th>
+                    </tr>
+                    <tr>
+                        <td>Fruta</td>
+                        <td>Maçã<br>Banana<br> Manga</td>
+                    </tr>
+                </table>
+                <p>Podemos fazer isso com várias coisas, como carro, moto, infinitas coisas.</p>
+                <p>Portanto, uma classe é o modelo para objetos e um objeto é uma instância de classe.</p>
+                <p>Quando os objetos individuais são criados, eles herdam todas as propriedades presentes nas classes, mas para cada objeto terá um valor específico.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Classe e Objeto</h2>
+                </header>
+                <p>Vamos supor que temos uma classe chamada Fruta. Uma fruta pode ter propriedades como cor, peso, nome, etc. Podemos definir esses valores para cada fruta em específico, usando variáveis como $nome, $cor, $peso.</p>
+                <p>Quando os objetos individuais (maçã, banana, manga, etc.) são criados, eles herdam todas as propriedades e comportamentos da classe, mas sempre, cada objeto portando valores diferentes.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Definindo Class</h2>
+                </header>
+                <p>Para definirmos uma classe, fazemos parecido com a função, mas usamos o <b>class</b>, seguida pelo nome da classe e um par de chaves ({}). Onde dentro dessas chaves irá ter as propriedades e métodos.</p>
+                <div class="code">
+                    <pre>
+    class Fruta {
+        //código aqui 
+    }</pre>
+                </div>
+                <p>Abaixo, declaramos uma classe chamada Fruta que consiste em duas propriedades ($nome, $cor) e dois métodos set_name() e get_name() para definir e obeter o valor da propriedade $nome.</p>
+                <div class="code">
+                    <pre>
+    class Fruta {
+        //Propriedades
+        public $nome;
+        public $cor;
+    
+        //Métodos
+        function set_name($nome) {
+            $this ->name = $nome;
+        }
+        function get_name() {
+            return $this -> name;
+        }
+    }</pre>
+                </div>
+                <div class="mark">
+                    <p><strong>Nota:</strong> Em uma classe, as variáveis são chamadas de propriedades e as funções de métodos.</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Definir Objetos</h2>
+                </header>
+                <p>Podemos criar vários objetos de uma classe. Cada objeto possui todas as propriedades e métodos da classe, mas elas terão valores diferentes.</p>
+                <p>Os objetos de uma classe são criados usando <b>new</b>.</p>
+                <p>Ficando como o exemplo abaixo:</p>
+                <div class="code">
+                    <p>$banana = new Fruta();</p>
+                    <p>$manga = new Fruta();</p>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>A palavra-chave $this</h2>
+                </header>
+                <p>A palavra-chave <b>$this</b> refere-se ao objeto atual e só está disponível dentro de métodos.</p>
+                <div class="code">
+                    <pre>
+    class Fruta {
+        public $nome;
+    }
+    $banana = new Fruta();</pre>
+                </div>
+                <p>Então, onde podemos alterar o valor da propriedade $nome? Existe duas maneiras:</p>
+                <p>1. Dentro da class (adionanando um método set-name() e usando o $this)</p>
+                <div class="code">
+                    <pre>
+    class Fruta {
+        public $nome;
+
+        fuction set_name($name) {
+            $this -> name = $name;
+        }
+    }
+    $banana = new Fruta();
+    $banana->set_name("Banana");
+    echo $banana->name;</pre>
+                </div>
+                <p>2. Fora da classe (alterando diretamento o valor da propriedade)</p>
+                <div class="code">
+                    <pre>
+    class Fruta {
+        public nome;
+    }
+    $banana = new Fruta();
+    $banana -> name = "Banana";
+    echo $banana->name;</pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>instanceof</h2>
+                </header>
+                <p>Você pode usar a palavra-chave <b>instanceof</b> para verificar se um objeto pertence a uma classe específica:</p>
+                <div class="code">
+                    <pre>
+    $banana = new Fruta();
+    var_dump($banana instanceof Fruta);</pre>
+                </div>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Construct</h2>
+                </header>
+                <p>Um construct permite inicializar as propriedades de um objeto na criação do objeto.</p>
+                <p>Se você criar uma função <b>_-contruct</b> o PHP a chamará automaticamente quando você criar um objeto de classe.</p>
+                <p>Observe que a função começa com dois sublinhando (__).</p>
+                <p>Nesta função <b>__construtc</b> podemos adicionar mais de um valor dentro do seu parênteses, e assim atribuir valores para eles nas propriedades. Ele também fará com que não precise chamar um método de set_name(), por exemplo. O que reduz a quantidade do código.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Destruct</h2>
+                </header>
+                <p>Um destruct é chamado quando um objeto é destruído ou o script é interrompido ou encerrado.</p>
+                <p>Se você criar uma função <b>__destruct()</b>, o PHP a chamará automaticamente no final do script. Ele também começa com dois sublinhados (__).</p>
+                <div class="code">
+                    <p><strong>Dica:</strong> Como construct e destruct ajudam a reduzir a quantidade de código, eles são muito úteis!</p>
+                </div>
+            </section>
+        </section><hr>
+
+        <section>
+            <section>
+                <header>
+                    <h1 id="modificadores">Modificadores de Acesso</h1>
+                </header>
+                <p>Propriedades e métodos podem ter modificadores de acesso que controlam onde eles podem ser acessados.</p>
+                <p>Existe três tipos de acesso:</p>
+                <ul>
+                    <li><b>public</b> - a propriedade ou método pode ser acessado de qualquer lugar. Este é o padrão</li>
+                    <li><b>protected</b> - a propriedade ou método pode ser acessado dentro e por classes derivadas dessa clase</li>
+                    <li><b>private</b> - a propriedade ou método SÓ pode ser acessado dentro da classe</li>
+                </ul>
+                <p>Tentar atribuir um valor para variáveis com modificadores de acesso configurado como private e protected, fora da classe resultará em erro. Isso também vale para os métodos, mesmo com as variáveis configuradas como public.</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Herança</h2>
+                </header>
+                <p>Herança em POO = Quando uma classe deriva de outra classe.</p>
+                <p>As classes filhas herdará todas as propriedades e métodos públicos da classe pai. Além disso, ele pode ter suas próprias propriedades e métodos.</p>
+                <p>Uma classe herdada é definida usando a palavra-chave <b>extends</b>.</p>
+                <div class="code">
+                    <pre>
+    class Stramberry extends Fruit {
+        public function message() {
+            echo "Am I a fruit or a berry? ";
+        }
+    }
+    $stramberry = new Stramberry("Stramberry, "red");
+    $stramberry-> message();
+    $stramberry-> intro();</pre>
+                </div>
+                <h3>Explicando o exemplo:</h3>
+                <p>A classe Stramberry é herdada da classe Fruit.</p>
+                <p>Isso significa qua a classe Stramberry pode usar as propriedades public $name, $color, bem como os métodos públicos __construct() e intro () da classe Fruit por causa da herança.</p>
+                <p>A classe Stramberry também usou seu próprio método: message().</p>
+            </section>
+
+            <section>
+                <header>
+                    <h2>Herança e o Modificador de Acesso Protegido</h2>
+                </header>
+                <p>Aprendemos que <b>protected</b> tanto propriedade quanto métodos podem ser acessados dentro da classe e por classes derivadas dessas classes.</p>
+                <p>Heranças não conseguem ter acesso a propriedades ou métodos, com protected, mas podemos chamar o método ou propriedade com o modificador <b>protected</b> para dentro do objeto filho, basta no final da linha de código inserirmos o <b>$this -> </b>, logo em seguida, o nome do método ou propriedade.</p>
+                <div class="code">
+                    <pre>
+    class Morango extends Fruta {
+        public function mensagem() {
+            echo "Olá";
+        //Chamando o método protected
+        $this -> intro();
+    }</pre>
+                </div>
+            </section>
+            
+            <section>
+                <header>
+                    <h2>Substituindo Métodos Herdados</h2>
+                </header>
+                <p>Os métodos herdados podem ser substituídos redefinindo os métodos (use o mesmo nome) na classe filha.</p>
+                <p>Veja o exemplo abaixo. Os métodos __construct() e intr() na classe filha (Strawberry) irão substituir os métodos __construct() e intro() na classe pai(Fruit).</p>
+                <img src="img\herdando_classe.png" alt="Substituindo métodos herdados no PHP" width="895" height="572">
+            </section>
+
+            <section>
+                <header>
+                    <h2>A palavra-chave final</h2>
+                </header>
+                <p>
+                    
+                </p>
+            </section>
+        </section>
 
 
 

@@ -443,6 +443,8 @@ printFormatted("Olá, mundo", "exclaim");
 printFormatted("Olá, mundo", "ask");
 echo ("<br><hr>");
 //Para adcionarmos uma função dentro de outra não precisamos colocar o $
+//FIXME: É necessário corrigir isso
+//TODO: Remover isso na versão v2.0.0
 ?>
 
 <?php
@@ -465,5 +467,20 @@ try {
     echo "Processo encerrado!";
 }
 echo ("<br><hr>");
+?>
+
+
+<?php 
+class Fruit {
+    public $name;
+    protected $color;
+    private $weight;
+}
+
+$mango = new Fruit();
+$mango->name = "Mango"; //Ok
+//TODO: Erro proposital
+$mango->color = "Yellow"; //Erro
+$mango->weigth = '300'; //Erro
 ?>
 

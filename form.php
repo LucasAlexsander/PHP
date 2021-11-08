@@ -8,6 +8,7 @@
         <br>
 
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+
                 Name: <input type="text" name="name" required><br><br>
                 E-mail: <input type="text" name="email" required><br><br>
                 Website: <input type="text" name="website" required><br><br>

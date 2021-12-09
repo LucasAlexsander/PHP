@@ -9,22 +9,20 @@
         <link rel="stylesheet" href="php_function.php">
         <style>
             .left {
-                width: 20vw;
+                margin: 0px 5px;
+                width: calc(100% - 80%);
                 height: 100%;
                 padding: 8px 3px;
-                margin: 3px;
-                float: left;
                 position: fixed;
-                font-size: small;
-                overflow-y: scroll;
+                font-size: 13px;
                 background-color: lightgray;
-                border: 1px solid grey;
+                border: 1px solid black;
             }
             .meio {
                 border: 1px solid black;
                 height: 90%;
                 padding: 10px 10px;
-                width: 75vw;
+                width: calc(100% - 22%);
                 float: right;
             }
             .topo {
@@ -42,10 +40,6 @@
 
     <body style="overflow-x: hidden;">
 
-        <ul class="menu2 topo menu3">
-            <li class="menu2_text">Página 1</li>
-            <li class="menu2_text">Página 2</li>
-        </ul>
     
         <div class="left sumario">
             <h2 style="text-align: center;"><ins>Sumário</ins></h2>
@@ -81,1281 +75,1275 @@
         </div>
         
 
-        <div class="meio">
-            <section>
-                <header>
-                    <h1 id="irtopo">Continuação PHP</h1>
-                </header>
-            <section>
-                <header>
-                    <h1 id="forms">PHP Forms</h1>
-                </header>
-                <p>As superglobais PHP $_GET e $_POST são usadas para coletar dados de formulário.</p>
-                <p>Quando o usuário preenche um formulário e clica em enviar, os dados do formulário são enviados para um processamento de um arquivo PHP. Podendo ser escolhido o method.</p>
-                <p>Para exibir os dados enviados, você precisa simplesmente ecoar todas as variáveis. O "welcome.php" tem a seguinte aparência:</p>
-                <form action="form.php" method="post">
-                    Name: <input type="text" name="name"><br>
-                    E-mail: <input type="text" name="email"><br>
-                    Idade: <input type="number" name="age"><br>
-                    <input type="submit">
-                </form>
-            </section>
-
-            <section>
-                <header>
-                    <h2>GET vs POST</h2>
-                </header>
-                <p>Ambos criam uma matriz (por exemplo, matriz (chave1 => valor1, chave2 => valor2, chave3 => valor3, ...)). Esta matriz contém pares de chaves / valor, onde as chaves são os nomes dos controladores do formulário e os valores são os dados de entrada do usuário.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h3>GET</h3>
-                </header>
-                <p>Os dados são visíveis na URL, tendo também limite da quantidade de informações a serem enviadas, limitação de 2.000 caracteres.</p>
-                <p>Sendo usado para enviar dados não confidenciais.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h3>POST</h3>
-                </header>
-                <p>As informações enviadas pelo post são <strong>invisíveis para outras pessoas</strong> e não tem limite de informações a enviar.</p>
-                <p>Além disso, o POST oferece suporte a funcionalidades avançadas, como suporte para entrada binária de várias partes durante o upload de arquivos para o servidor.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h1 id="validacao">Validação de Formulário</h1>
-                </header>
-                <div class="mark">
-                    <p><strong>Pense em SEGURANÇA ao processar formulários</strong></p>                    
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validação de Formulário</h2>
-                </header>
-                <form action="form.php" method="post">
-                    Name: <input type="text" name="name"><br><br>
-                    E-mail: <input type="text" name="email"><br><br>
-                    Website: <input type="text" name="website"><br><br>
-                    Comentário: <textarea name="comentario" rows="10" cols="30"></textarea><br><br>
-                    Gênero: <input type="radio" name="gender" value="Feminino">Feminino
-                    <input type="radio" name="gender" value="Masculino">Masculino
-                    <input type="radio" name="gedner" value="Outro">Outro
-                    <br>
-                    <input type="submit" value="Enviar">
-                </form>
-                <br><br>
-                <div class="mark">
-                    <p>Usamos o $_POST para pegar o dado especifico do formulário</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar dados de Formulário</h2>
-                </header>
-                <p>Para sua segurança, ao criar um formulário lembre-se de colocar as seguintes informções:</p>
-                <ul>
-                    <li><strong>htmlspacialchar()</strong> - fará com que mude os caracteres caso alguem tente invadir seu site, trocando a &lt; por <b>& lt</b></li>
-                    <li><strong>trim()</strong> - Retira caracteres desnecessários (espaços extras, tabulação, nova linha) dos dados entrado pelo usuário</li>
-                    <li><strong>stripslashes()</strong> - Remove as barras invertidas (\) dos dados entrado pelo usuário</li>
-                </ul>
-            </section>
-        </section>
-
-        <section>
-            <section>
-                <header>
-                    <h1>Forumlário com Campos Obrigatórios</h1>
-                </header>
-                <p>Para criarmos um formulário obrigatório podemos fazer de dois modos, adcionando <b>required</b> no final do <i>input</i> ou adicionando <b>if</b> e mais uma variável para cada variável indifcando erro, e colocar o <b>empty()</b>, que se o valor for vázio você adiciona nada a ele, caso o contrário ele  recebe o dado correspondente do formulário. Feito isso, no formulário você colocará a variável de erro, no final, caso o usuário entre com nada, aparecerá um erro na tela.</p>
-                <h3>Variáveis em PHP:</h3>
-                <img src="img\php_variavel.png" alt="Variaveis em PHP" width="440" height="42"><br>
-                <h3>Usando if no formulário:</h3>
-                <img src="img\if_formulario.png" alt="Usando if em formulário PHP" width="381" height="247"><br>
-                <h3>Estrutura das perguntas no formulário:</h3>
-                <img src="img\perguntas_formulario.png" alt="Perguntas que aparecerão na tela no formulário" width="785" height="65"><br>
-            </section><hr><br>
-        </section>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="url">URL / e-mail do formulário</h1>
-                    <h2>Validar Nome</h2>
-                </header>
-                <p>Para validarmos um nome ou qualquer outra coisa, usamos o <b>preg_match()</b>, pois ele pesquisa uma string para o padrão, retornando verdadeiro se o padrão existir e falso caso o contrário.</p>
-                <p>No código abaixo mostra uma maneira simples de validarmos um nome contém apenas letras, travessões, apóstrofos e espaços em branco. Caso o valor deste campo não for valido, armazene uma mensagem de erro.</p>
-                <div class="code">
-                    <pre>$name = test_input($_POST["name"]);
-if(!preg_macth("/^[a-zA-Z-' ]*$/", $name)) {
-    $nameErr = "Somente letras e espaços em branco.";
-}</pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar e-mail</h2>
-                </header>
-                <p>Uma maneira mais fácil e segura de validar se um e-mail está bem formado é usar a função <b>filter_var()</b>.</p>
-                <p>No código abaixo, o e-mail não estiver bem formado, armazene uma mensagem de erro:</p>
-                <div class="code">
-                    <pre>$email = test_input($_POST["email"]);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $emailErr = "Formato de e-mail inválido!";
-}</pre>
-                </div>                
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar URL</h2>
-                </header>
-                <p>O código a seguir mostra uma maneira de verificar a sintaxe de um endereço URL (esta expressão regular também permite traços no URL). Se a sintaxe do endereço de URL não for valida, digite uma mensagem de erro:</p>
-                <div class="code">
-                    <pre>$website = text_input($_POST["website"]);
-if (!preg_macth("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
-    $websiteErr = "URL inválida!";
-}</pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar nome, e-mail e URL</h2>
-                </header>
-                <p>Neste caso iremos juntar todos os passos anteriores e aplicar todos em um código, ficando com esta aparência:</p>
-                <img src="" alt="" width="" height="">
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1>Formulário Completo</h1>
-                    <h2>Mantenha os valores na forma</h2>
-                </header>
-                <p>Para mostrar os valores em campos de entradas depois que o usuário clica no botão enviar, adicionamos um pequeno script PHP dentro do atributo de valor dos seguintes campos de entrada: nome, email, website. No campo textarea do comentário, colocamos o script entre as tags &lt;textarea&gt; e &lt;/textarea&gt;. O pequeno script produz o valor das variáveis $name, $email, $website e $comment.</p>
-                <p>Em seguida, também precisamos mostral qual botão de opção foi marcado. Para isso, devemos manipular o atributo marcado (não o atributo de valor para os botões de opção):</p>
-                <img src="img\formulario_completo.png" alt="Exemplo de um formulário completo no PHP" width="870" height="413">
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="advanced">PHP Advanced</h1>
-                    <h2>Data e Hora</h2>
-                </header>
-                <p>Usamos a função <b>data()</b> para formatar uma data e / ou hora.</p>
-                <h3>Sintaxe</h3>
-                <div class="code">
-                    <p>data(format, timestamp)</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Marque um encotro</h2>
-                </header>
-                <p>o parâmetro <i>format</i> é necessário da função date(), onde especifica como formatar a data/hora.</p>
-                <p>Alguns caracteres que estão comumente usados para data:</p>
-                <ul>
-                    <li>d - Representa o dia do mês (01 - 31)</li>
-                    <li>m - Representa um mês (01 - 12)</li>
-                    <li>Y - Representa um ano (em quatro dígitos)</li>
-                    <li>l ('L' minúsculo) - Representa o dia da semana</li>
-                </ul>
-                <p>Podemos usar alguns caracteres para separa-los, como, "/", "-", ".".</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Ano automático de direitos autorias</h2>
-                </header>
-                <p>Use a <b>date()</b> para atulizar automaticamente o ano dos direitos autorais em seu site:</p><br>
-                <h3>Exemplo:</h3>
-                <div class="code">
-                    <pre>%copy; 2010- &lt;?php echo date("Y");?></pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Ganhe um tempo</h2>
-                </header>
-                <p>Alguns caracteres comumnete usados para hórarios:</p>
-                <ul>
-                    <li>H - formato de 24 horas de um hora (00 a 23)</li>
-                    <li>h - formato de 12 horas de uma hora com zeros à esquerda (01 a 12)</li>
-                    <li>i - minutos com zeros à esquerda (00 a 59)</li>
-                    <li>s - segundos com zeros à esquerda (00 a 59)</li>
-                    <li>a - ante meridiem minúsculo e Post meridiem (am ou pm)</li>
-                </ul>
-                <h3>Exemplo:</h3>
-                <div class="code">
-                    <pre>&lt;?php echo "As horas são: " . date("h:i:sa");?></pre>
-                </div><br><br>
-                <div class="mark">
-                    <p>Observe que a função date() retornará a data/hora atual do servidor</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Obtenha um fuso horário</h2>
-                </header>
-                <p>Se a hora que você colocou em seu site não estiver correta, provavelmente é porque seu servidor está em outro pais ou configurado para um fuso horário diferente.</p>
-                <p>Portanto, se você precisa que o horário esteja correto de acordo com um local específico, você pode definir o fuso horário que deseja usar.</p>
-                <p>O exemplo abaixo define o fuso horário para "America / New_York" e, em seguida, exibe a hora atual no formato especificado:</p>
-                <div class="code">
-                    <pre>&lt;?php date_default_timezone_set("America/New_York");
-echo "O tempo é: " . date("h: i: sa");
-?>
-                    </pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Crie uma data com mktime()</h2>
-                </header>
-                <p>O parâmentro opcional <i>timestamp</i> na função data () especifica um timestamp. Se omitido, a data e hora atuais serão usadas (como nos exemplos acima).</p>
-                <p>A <b>mktime()</b> retorna o caminho da data / hora Unix para uma data. O carimbo da data / hora Unix contém o número de segundos entre a época do Unix (1 Janeiro de 2020 00:00:00 GMT) e a hora especificada.</p>
-                <h3>Sintaxe</h3>
-                <div class="code">
-                    <p>mktime (hour, minute, second, month, day, year)</p>
-                </div>
-                <p>O exemplo abaixo cria uma data e hora com a <b>data()</b> de vários parâmetros na <b>mktime()</b>:</p>
-                <h3>Exemplo:</h3>
-                <div class="code">
-                    <pre>&lt;?php
-$d=mktime(11, 14, 54, 8, 12, 2014);
-echo "Data criada " . data("d-m-Y h:i:sa", %d);
-?&gt;
-                    </pre>
-                </div>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Crie uma data a partir de uma string com strtotime()</h2>
-                </header>
-                <p>A <b>strtotime()</b> é usada para converter uma string de data legível por humanos em um carimbo de data/hora Unix (o número de segundos desde 1º de Janeiro de 1970 00:00:00 GMT).</p>
-                <h3>Sintaxe</h3>
-                <div class="code">
-                    <p>strtotime(time, now)</p>
-                </div>
-                <h3>Exemplo</h3>
-                <div class="code">
-                    <pre>
-                        &lt;?php
-                        %d=strtotime("10:30pm April 15 2014");
-                        echo "A data criada foi: ". date("d-m-Y h:i:sa", $d);
-                        ?&gt;
-                    </pre>
-                </div>
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="arquivos">Arquivos de inclusão</h1>
-                </header>
-                <p>A instrução <b>include</b>( ou <b>require</b>) pega todo o texto / código / marcação existente no arquivo especificado e os copia para o arquivo que usa a instrução include.</p>
-                <p>Incluir arquivos é muito útil quando você deseja incluir o mesmo PHP, HTML ou texto em várias páginas de um site.</p>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Include e Require</h2>
-                </header>
-                <p>É possível inserir o conteúdo de um arquivo PHP em outro arquivo PHP (antes que o servidor o execute), com a instrução include ou querire.</p>
-                <p><strong>As instruções include e require são identicas, exceto em caso de falha:</strong></p>
-                <ul>
-                    <li><b>require</b> - Irá produzir um erro fatal (E_COMPILE_ERROR) e para o script.</li>
-                    <li><b>include</b> - Só produzirá um aviso (E_WARRING) e o script continuará.</li>
-                </ul>
-                <p>Portanto, se você quiser que a executação continue e mostre aos usuários a saída, mesmo se o arquivo de inclusão estiver ausente, use a instrução include. Caso contrário, no caso do FrameWork, CMS ou uma codificação de aplicativo PHP complexa, sempre use a instrução <b>require</b> para incluir um arquivo de chave para o fluxo de execucão. Isso ajudará a evitar o comprometimento da segurança e integridade do aplicativo, caso um arquivo de chave esteja acidentalemente perdido.</p>
-                <p>Incluir arquivos economiza muito trabalho. Isso significa que você pode criar um cabeçalho, rodapé ou arquivo de menu padrão para todas as suas páginas da web. Então, quando o cabeçalho precisar ser atualizado, você só precisa atualizar o arquivo de inclusão do cabeçalho.</p>
-                <h3>Sintaxe</h3>
-                <div class="code">
-                    <pre>
-                        include 'filename';
-                            or
-                        require 'filename';</pre>
-                </div>
-                <h3>Include exemplo:</h3>
-                <p>Suponha que temos um arquivo de rodapé padrão chamado "footer.php", que se parece com isto:</p>
-                <div class="code">
-                    <pre>
-                        &lt;?php
-                        echo "&lt;p&gt;Copyright &copy; 1999-" . date("Y") . "W3Schools.com&lt;p&gt;;"
-                        ?&gt;</pre>
-                </div>
-                <p>Usando no HTML:</p>
-                <img src="img\footer.png" alt="Exemplo do uso do include no HTML" width="442" height="237">
-            </section>
-
-            <section>
-                <header>
-                    <h3>Exemplo 2:</h3>
-                </header>
-                <p>Suponha que temos um arquivo de menu padrão chamado "menu.php":</p>
-                <img src="img\menu_include.png" alt="Usando o include para colocar o menu no HTML" width="497" height="169">
-                <p>Todas as páginas do site devem usar esse arquivo de menu. Veja como isso pode ser feito (estamos usando um elemento &lt;div&gt; para que o menu possa ser facilmente estilizado com CSS posteriormente):</p>
-                <img src="img\html_menu.png" alt="Usando o include para colocar o menu no HTML" width="448" height="280">
-            </section>
-
-            <section>
-                <header>
-                    <h3>Exemplo 3:</h3>
-                </header>
-                <p>Suponha que você tem um arquivo chamado "vars.php", com algumas variáveis definidas:</p>
-                <img src="img\exemplo3_include.png" alt="Usando o include" width="237" height="101">
-                <p>Então, se incluirmos o arquivo "vargs.php", as variáveis podem ser usadas no arquivo de chamada:</p>
-                <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
-            </section>
-
-            <section>
-                <header>
-                    Include vs Require
-                </header>
-                <p>O <b>require</b> também é usada para incluir um arquivo de código no PHP.</p>
-                <p>No entanto, há uma grande diferença entre incluir e exigir; quando um arquivo é incluído com o <b>include</b> e o PHP não consegue encontrá-lo, o script continuará a ser executado:</p>
-                <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
-                <p>Se fizermos o mesmo com o <b>require</b>, a instrução echo não será executada porque a execução do script termina depois que a <b>require</b> retorna um erro fatal:</p>
-                <img src="img/exemplo_require.png" alt="Usando o require no HTML" width="334" height="238">
-                <div class="mark">
-                    <p>Use o <b>require</b> quando o arquivo for exibido pelo aplicativo.</p>
-                    <p>Use o <b>include</b> quando o arquivo não for necessário e o aplicativo deve continuar quando o arquivo não for encontrado.</p>
-                </div>
-            </section>
-        </section><hr>
-        
-        <section>
-            <section>
-                <header>
-                    <h1 id="manipulacao">Manipulação de arquivos</h1>
-                </header>
-                <p>PHP tem várias funções para criar, ler, enviar e editar arquivos.</p>
-                <div class="mark">
-                    <h3>Tenha cuidado ao manipular arquivos</h3>
-                    <p>Os erros mais comuns ao manipularmos algum arquivo são,editar o arquivo errado, encher o disco rígido com dados inúteis e exibir o conteúdo de um arquivo acidentamente.</p>
-                </div>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Função readfile()</h2>
-                </header>
-                <p>A <b>readfile()</b> lê um arquivo e o grava no buffer de saída.</p>
-                <p>Suponha que temos um texto chamado "webdictionary.txt", armazenado no servidor, que se prarece com este:</p>
-                <img src="img\exemplo_de_servidor.png" alt="Exemplo de um servidor" width="359" height="168">
-                <p>O código para ler o arquivo e gravá-lo no buffer de saída é o seguinte (a <b>readfile()</b> função retorna o número de bytes lidos em caso de sucesso):</p>
-                <img src="img\readfile_exemplo.png" alt="Exemplo do uso do readfile" width="330" height="80">
-                <p>O <b>readfile</b> é útil se tudo o que você deseja fazer é abrir um arquivo e ler o seu conteúdo.</p>
-            </section><hr>
-
-            <section>
-                <header>
-                    <h1 id="arquivolido">Arquivo Aberto / lido</h1>
-                </header>
-                <p>Para abrirmos um arquivo usamos a função <b>fopen()</b>, esta quando usamos esta função podemos fazer mais coisas que o <b>readfile()</b>.</p>
-                <p>O primeiro parâmetro quando usamos o <b>fopen()</b> contém o nome do arquivo entre aspas, e segundo especifica qual modo será aberto. Caso não conseguimos abrir o arquivo podemos deixar uma mensagem, como no exemplo abaixo:</p>
-                <div class="code">
-                    <pre>
-    &lt;?php
-    $myfile = fopen ("texte.txt", "r") or die ("Não foi possível abrir o arquivo!");
-    echo fread($myfile, filezie("texte.txt"));
-    fclose($myfile);
-    ?&gt;</pre>
-                </div>
-                <p>Podemos abrir os arquivos da seguinte forma:</p>
-                <table>
-                    <tr>
-                        <th>Modos</th>
-                        <th>Descrição</th>
-                    </tr>
-                    <tr>
-                        <td>r</td>
-                        <td><strong>Abre o arquivo somente para leitura.</strong> O ponteiro do arquivo começa no início do arquivo.</td>
-                    </tr>
-                    <tr>
-                        <td>w</td>
-                        <td><strong>Abre o arquivo somente para escrita.</strong> Apaga o conteúdo do arquivo ou cria um novo arquivo se não existir. O ponteiro do arquivo começa no início do arquivo.</td>
-                    </tr>
-                    <tr>
-                        <td>a</td>
-                        <td><strong>Abre o arquivo somente para escrita.</strong> Os dados existentes no arquivo são preservados. O ponteiro do arquivo começa no final do arquivo. Cria um novo arquivo caso não exista.</td>
-                    </tr>
-                    <tr>
-                        <td>x</td>
-                        <td><strong>Cria um novo arquivo somente para escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
-                    </tr>
-                    <tr>
-                        <td>r+</td>
-                        <td><strong>Abre um arquivo para leitura / escita.</strong> O ponteiro do arquivo começa no início.</td>
-                    </tr>
-                    <tr>
-                        <td>w+</td>
-                        <td><strong>Abre um arquivo para leitura / escrita.</strong> Apaga o conteúdo do arquivo e cria um novo se ele não existir. O ponteiro do arquivo começa no início.</td>
-                    </tr>
-                    <tr>
-                        <td>a+</td>
-                        <td><strong>Abre um arquivo para leitura / escrita.</strong> Os dados presentes no arquivo são preservados e cria um arquivo se não existir. O ponteiro do arquivo começa no final.</td>
-                    </tr>
-                    <tr>
-                        <td>x+</td>
-                        <td><strong>Cria um novo arquivo para leitura / escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
-                    </tr>
-                </table>
-            </section>
-
-            <section>
-                <header>
-                    <h2>fread() - Arquivo para leitura</h2>
-                </header>
-                <p>A função <b>fread()</b> lê a partir de um arquivo aberto. O primeiro parâmetro contém o nome do arquivo a ser lido e o segundo especifica o número máximo de bytes a serem lidos.</p>
-                <p>Podemos usar no segundo parâmetro o <b>filesize()</b>, onde ele vai ler até o final do arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo entre aspas.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>fclose() - Fechar arquivos</h2>
-                </header>
-                <p>A função <b>fclose()</b> fecha os arquivos abertos. Para usa-la é bem simples, quando você terminar de modificar o arquivo, você colocará na próxima linhas, <b>fclose()</b> e dentro o nome do arquivo.</p>
-                <div class="mark">
-                    <p>É uma boa pratica sempre fechar o arquivo depois de manipulalo, pois deixa-lo aberto pode fazer com que o programa gaste mais memórias atoa.</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>fgets() - Ler uma linha</h2>
-                </header>
-                <p>A função <b>fgets()</b> é usada para ler uma única linha de um arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo. Após chamarmos a função, o ponteiro do arquivo foi para a próxima linha.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>feof() - End-Of-File</h2>
-                </header>
-                <p>Esta função verifica se o fim do arquivo foi atingido. Sendo útil para percorrer dados de comprimento deseconhecido. A função abaixo lê linha por linha, até que o final do arquivo seja alcançado:</p>
-                <div class="code">
-                    <pre>
-    &lt;?php
-    $myfile = fopen("text.txt", "r") or die ("Não foi possível abrir o arquivo!");
-    while (!feof($myfile)) {
-        echo fgets($myfile) . "&lt;br&gt;";
-    }
-    fclose($myfile);
-    ?&gt;
-                    </pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>fgetc() - Leitura de único caractere</h2>
-                </header>
-                <p>Esta função é parecida com a anterior, podem esta, ela lê somente um caracter do arquivo. Podemos usar esta função no exemplo anterior, no caso ela vai ler um caracter por caracter até o final do arquivo.</p>
-                <p>Após o seu uso, o ponteiro do arquivo se move para o próximo caracter.</p>
-            </section>
-        </section>
-
-        <section>
-            <header>
-                <h1>Criação / Escrita de arquivo</h1>
-            </header>
-            <section>
-                <header>
-                    <h2>fopen() - Abrir um arquivo</h2>
-                </header>
-                <p>Podemos usar a função <b>fopen()</b> para criamos um arquivo. Caso você tente abrir um arquivo que não existe, ele irá ser criado por causa da função, desde que o arquivo seja aberto para gravação (w) ou anexação (a).</p>
-                <p><strong>OBS:</strong> Caso você tente criar um arquivo e dê erros, verifique se você concedeu ao seu arquivo PHP acesso ao gravar informações no disco rígido.</p>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>fwrite() - Escrever no arquivo</h2>
-                </header>
-                <p>Esta função é usada para escrever no arquivo. No seu primeiro parâmetro deve conter o nome do arquivo, e o segundo a string a ser gravada.</p>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Sobrescrita</h2>
-                </header>
-                <p>Se usarmos a mesma função com o mesmo arquivo e inserirmos algumas informações, os dados anteriores serão apagados e os novos ficarão lá.</p>
-            </section>
-        </section><hr>
-
-        <section>
-            <header>
-                <h1 id="upload">Upload de Arquivos</h1>
-            </header>
-
-            <section>
-                <header>
-                    <h2>Configure o arquivo "php.ini"</h2>
-                </header>
-                <p>Primeiro, devemos certificar que o PHP está configurado para permitir uploads de arquivos. No seu arquivo "php.ini", procure a <b>file_uploads</b> e defina-a como Ativado / On.</p>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Crie um formulário</h2>
-                </header>
-                <p>Em seguida, crie um formulário que permita que o usuário envie arquivo de imagem que desejam enviar:</p>
-                <img src="img\formulario_upload.png" alt="Exemplo de upload de arquivos em PHP" width="604" height="278">
-                <p>Algumas regras a serem seguidas para o formulário acima:</p>
-                <ul>
-                    <li>Certifique-se que o formulário usa o metodo "post".</li>
-                    <li>O formulário também precisa do seguinte atributo: enctype = "multipart / form-data". Ele especifica qual tipo de conteúdo usar ao enviar o formulário.</li>
-                </ul>
-                <p>Sem os requisitos acima, o upload do arquivo não funionará.</p>
-                <p>Outras coisas a ser observadas:</p>
-                <ul>
-                    <li>O atributo type = "file" da tag &lt;input&gt; mostra o campo de entrada como um controle de seleção de arquivo, com um botão  "Browser" próximo ao controle de entrada.</li>
-                </ul>
-                <p>O formulário acima envia os dados para um arquivo chamado "upload.php". Iremos mostrar a seguir.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Criando um script para upload de arquivos</h2>
-                </header>
-                <p>O arquivo mencionado anterior, "upload.php" contém o seguinte código:</p>
-                <img src="img\codigo_para_upload_de_arquivos.png" alt="Código em HTML para upload de arquivos" width="652" height="389">
-                <p>Explicação das linhas do código:</p>
-                <ul>
-                    <li>$target_dir = "uploads/" - especifica o diretório onde o arquivo será colocado</li>
-                    <li>$target_file - especifica o caminho do arquivo a ser carregado</li>
-                    <li>$uploadOk = 1 - ainda não é usado</li>
-                    <li>$imageFileType contém a extensão do arquivo do arquivo (em letras minúsculas)</li>
-                    <li>Em seguida, verifica se o arquivo de imagem é uma imagem real ou uma imagem falsa</li>
-                </ul>
-                <div class="mark">
-                    <p><strong>Nota:</strong> Você precisará criar um novo diretório chamado "uploads" no diretório onde o arquivo "uploads.php" reside. Os arquivos carregados serão salvos lá.</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Verifique se o arquivo já existe</h2>
-                </header>
-                <p>Primeiro, vamos verificar se o arquivo já existe na pasta "uploads". Em caso afirmativo, uma mensagem de erro é exibida e $uploadOk é definido como 0:</p>
-                <div class="code">
-                    <pre>
-    //Checando se a pasta existe
-    if (file_exists($target_file)) {
-        echo "Desculpe, arquivo inexistente.";
-        $uploadOk = 0;
-    }</pre>
-                </div>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Limitando o tamanho do arquivo</h2>
-                </header>
-                <p>O campo de arquivo denominado em nosso formulário HTML acima é denominado "fileToUpload".</p>
-                <p>Agora, queremos verifica o tamanho do arquivo. Se o arquivo tiver mais de 500 KB, uma mensagem de erro será exibida e $upload será definido como 0:</p>
-                <div class="code">
-                    <pre>
-    //Checando o tamanho do arquivo
-    if ($_FILE["fileToUpload"]["size"] > 500000) {
-        echoo "Desculpe, seu arquivo é muito grande.";
-        $uploadOk = 0;
-    }</pre>
-                </div>
-            </section>
-            
-            <section>
-                <header>
-                    <h2>Uplaod completo do arquivo</h2>
-                </header>
-                <p>Agoora para termos um arquivo completo para nosso upload, precisamos juntar todos os códigos. Isso deixará-lo completo.</p>
-            </section>
-        </section><hr>
-
-        <section>
-            <header>
-                <h1 id="cookies">Cookies</h1>
-            </header>
-
-            <section>
-                <header>
-                    <h2>O que é um Cookies</h2>
-                </header>
-                <p>Usado pra identicar um usuário. É um pequeno arquivo que o servidor incorpora no computador do usuário. Cada vez que o mesmo computador solicitar uma página com um navegador, ele também enviará o cookie. Com o PHP, você pode criar e recuperar valores de cookies.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Criar Cookies</h2>
-                </header>
-                <p>Para criamos usamos a função <b>setcookie()</b>.</p>
-                <h3>Sintaxe:</h3>
-                <div class="code">
-                    <p>setcookie(name, value, expire, path, domain, secure, httponly);</p>
-                </div>
-                <p><strong>OBS:</strong> Apensa o parâmetro de nomes é obrigatório, o resto é opcional.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Cria / recuperar um cookie</h2>
-                </header>
-                <p>O exemplo a seguir cria um cookie denomidado "usuario" com o valor "Lucas Alexsander". O cookie ira expirar após 30 dias (86400 * 30). O "/" significa que o cookie está disponível em todo o site (caso contrário, selecione o diretório de sua preferência).</p>
-                <p>Em seguida, recuperamos o valor do cookie "usuario" (usando a variável global $_COOKIE). Também usamos a <b>isset()</b> para descobrir se o cookie está definido:</p>
-                <img src="img\cookie.png" alt="Exemplo de aplicação de um cookie no PHP" width="787" height="434">
-                <p>O <b>setcookie()</b> deve aparecer antes da tag &lt;html&gt;.</p>
-                <p><strong>Nota:</strong> O valor do cookie é automaticamente codificado por URL ao enviar o cookie e automaticamente decodificado quando recebido (para evitar a codificação de URL, use em seu lugar <b>setrawcookie()</b>).</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Modificando um Cookie</h2>
-                </header>
-                <p>Para modifica-lo, basta alterar os dados inseridos dentro da função <b>setcookie()</b>.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Excluir um Cookie</h2>
-                </header>
-                <p>Para excluir, basta alterar a data da função <b>setcookie()</b> para uma data no passado.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Verifique se os Cookies estão habilitados</h2>
-                </header>
-                <p>Para verificarmos, iremos usar o count() para verificar se existe mais de um dado dentro do cookie ele está habilitado, caso contrário, desabilitado.</p>
-            </section>
-        </section><hr>
-
-        <section>
-            <header>
-                <h1 id="sessao">Sessões</h1>
-            </header>
-            <p>Uma sessão é uma forma de armazenar informções (em variáveis) a serem usadas em varias páginas.</p>
-            <p>Ao contrário de um cookie, as informações não são armazenadas no computador do usuário.</p>
-            <section>
-                <header>
-                    <h2>O que é uma Sessão?</h2>
-                </header>
-                <p>Ao trabalhar em um aplicativo, você o abre, faz alterações e logo em seguida o fecha. Isso é muito parecido com uma sessão. Mas temos um problema, quando fazemos isso em um computador, ele sabe quem você é, mas quando fazemos isso na web, ela não te reconhece, porque endereço HTTP não mantém o estado.</p>
-                <p>As variáveis de sessão resolvem este problema, pois elas armazenam informações do usuário para serem usadas em várias páginas (por exemplo, nome de usuário, cor favorita etc...). Por padrão, as variáveis de sessão duram até que o usuário feche o navegador.</p>
-                <p>Então, as variáveis de sessão contêm informações de um único usuário e estão disponíveis para todas as páginas em um aplicativo.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Iniciar um Sessão</h2>
-                </header>
-                <p>Uma sessão é iniciada usando <b>session_start()</b>. Variáveis de sessão são definidas com a variável global: $_SESSION.</p>
-                <p>Vamos criar uma página chamada "demo_session1.php". Nesta página, iniciaremos uma nova sessão e definimos algumas variáveis de sessão:</p>
-                <img src="img\sessao.png" alt="Exemplo de uma sessão no PHP simples" width="481" height="392">
-                <p><strong>OBS:</strong> A varável de sessão deve ficar antes do início da tag HTML.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Obter valores de variáveis de sessão</h2>
-                </header>
-                <p>A seguir, criaremos outra página chamada "demo_session2". A partir desta página, acessaremos as informações da sessão que definimos na primeira página ("demo_session1").</p>
-                <p>Observer que as variáveis de sessão não são passadas individualemente para cada nova página, em vez disso, são recuperadas da sessão que abrimos no início de cada página (<b>sesscion_start()</b>).</p>
-                <p>Observe que todos os valores das variáveis são armazenadas na variável global: $_SESSION:</p>
-                <img src="img\sessao(1).png" alt="Passando informções de uma página para outras" width="481" height="392">
-                <p>Outra maneira de passarmos essas informações é usando a variável global dentro do <b>print_r()</b>. Exemplo:</p>
-                <img src="img\sessao(2).png" alt="Outro modo de passar informações de uma página para a outra" width="301" height="302">
-                <div class="mark">
-                    <p><strong>Como funciona? Como ele sabe que sou eu?</strong></p>
-                    <p>A maioria das sessões define uma chave de usuário no computador que se parece com isso: 765487cf34ert8dede5a562e4f3a7e12. Em seguida, quando uma sessão é aberta em outra página, ela verifica o computador em busca de uma chave de usuário. Se houve correspondência, ela acessa aquela sessão, caso contrário, ele inícia uma nova sessão.</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Modificar uma variável de uma Sessão</h2>
-                </header>
-                <p>Para alterar a variável de uma sessão basta substitui-la na nova página usando a variável global $_SESSION.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Destrua uma sessão</h2>
-                </header>
-                <p>Para removermos todas as variáveis de uma sessão e destruir, use <b>session_unset()</b> e <b>session_destroy()</b>:</p>
-                <ul>
-                    <li>session_unset() - Remove todas as variáveis da sessão</li>
-                    <li>session_destroy() - Destroi a a sessão</li>
-                </ul>
-            </section>
-        </section><hr>
-
-        <section>
-            <header>
-                <h1 id="filtros">Filtros</h1>
-            </header>
-            <p>Validating data = Determina se os dados estão na forma adaqueda</p>
-            <p>Sanitilizing data = Remove qualquer caractere ilegal dos dados</p>
-            <section>
-                <header>
-                    <h2>A extensão do filtro</h2>
-                </header>
-                <p>Filtros são usados para validar e higienizar a entrada externa.</p>
-                <p>A extensão do filtro tem muitas das funções necessárias para verificar a entrada do usuário e é projetada para tornar a validação de dados mais fácil e rápida.</p>
-                <p>A função <b>filter_list()</b> pode ser usada para listar o que a extensão do filtro oferece:</p>
-                <img src="img\filter.png" alt="Exemplo de aplicação do filter em PHP" width="739" height="256">
-            </section>
-
-            <section>
-                <header>
-                    <h2>Por que usar filtros?</h2>
-                </header>
-                <p>Muitos aplicativos da web recebem entradas externas. A entrada / dados externos podem ser:</p>
-                <ul>
-                    <li>Entrada do usuário a partir de um formulário</li>
-                    <li>Cookies</li>
-                    <li>Dados de serviços da web</li>
-                    <li>Variáveis de servidor</li>
-                    <li>Resultados da consulta de banco de dados</li>
-                </ul>
-                <div class="mark">
-                    <p><strong>Você deve sempre validar os dados externos!</strong></p>
-                    <p>Dados inválidados enviados podem levar a problemas de segurança e quebrar sua página web. Ao usar filtros, você pode ter certeza que seu aplicativo receberá a entrada correta!</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>filter_var()</h2>
-                </header>
-                <p>A função <b>filter_var()</b> valida e limpa os dados. Filtrando uma única variável com um filtro especifico. São necessários dois dados:</p>
-                <ul>
-                    <li>A variável que você deseja verificar</li>
-                    <li>O tipo de cheque a usar</li>
-                </ul>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Sanitize a String</h2>
-                </header>
-                <p>A função <b>filter_var()</b> pode ser usada para remover todas as tags HTML de uma string.</p>
-                <img src="img\sanitize.png" alt="Usando o filter_var() para remover todas as tags HTML" width="508" height="127">
-                <p>Assim removendo as tags h1 - h6.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar um inteiro</h2>
-                </header>
-                <p>Podemos usar a função <b>filter_var()</b> para verificar se a variável é inteira ou não. Para verificarmos, colocamos primeiro a variável e logo em seguida FILTER_VALIDATE_INT.</p>
-                <h3>Filter_var() e o problema com 0</h3>
-                <p>Se colocarmos um 0 usando o código que foi dito acima, a função retorna "Não é inteiro". Para resolvermos isso, temos que colocar duas condições para o <b>if</b>, uma sendo a mesma que a de cima "<i>if (filter_var($int, FILTER_VALIDATE_INT) == true || filter_var($int, FILTER_VALIDATE_INT) == 0)</i>, temos que colocar que a condição tem que ser igual a zero.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Limpe e valide um endereço de e-mail</h2>
-                </header>
-                <p>Usamos o filter_var() junto com o FILTER_SANITIZE_EMAIL para limpar todos os caracteres ilegais do e-mail, logo em seguida, vamos verificar o e-mail usando filter_var e FILTER_VALIDATE_EMAIL.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Limpe e valide um URL</h2>
-                </header>
-                <p>Para efetuarmos essa limpesa usamos praticamente o mesmo código para limpar o e-mail, mas trocamos o final dele para URL, feito isso será praticamente a mesma coisa.</p>
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id=advancedfilter>Filtro Avançado</h1>
-                    <h2>Validar um número inteiro dentro de um intervalo</h2>
-                </header>
-                <p>Vamos usar o filter_var() para verificar se uma variável é do tipo INT e entre 1 a 200:</p>                 
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar endereço IPv6</h2>
-                </header>
-                <p>Para validarmos um ip, vamos usar o FILTER_VALIDATE_IP e o FILTER_FLAG_IPV6, passando por esses teste vamos conseguir saber se o ip é valido ou não.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Validar URL - deve conter QueryString</h2>
-                </header>
-                <p>O exemplo a seguir usa a função <b>filter_var()</b> para verificar se a variável $url é um URL com uma string de consulta:</p>
-                <img src="img\filter_var.png" alt="Usando o filter_var() para verificar se uma variável url é uma URL com uma string de consulta" width="755" height="216">
-            </section>
-
-            <section>
-                <header>
-                    <h2>Remover caracteres com valor ASCII>127</h2>
-                </header>
-                <p>Vamos usar o filter_var juntamente com FILTER_SANITIZE_STRING e FILTER_FLAG_STRIP_HIGH para remover todos as tags e os caracteres com valor ASCC&gt;127. </p>
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="retorno">Função de retorno de chamada</h1>
-                </header>
-                <p>É um função que é passada de argumento para outra função. Qualquer função existente pode ser usada como função de retorno de chamada. Para usar uma função como retorno, passe uma string contendo o nome da função como o argumento de outra função.</p>
-                <p><b>array_map()</b> função para calcular o comprimento de cada string em uma matriz.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Retorno de chamada em funções definidas pelo usuário</h2>
-                </header>
-                <p>Funções e métodos definidos pelo usuário também podem ser funções de retorno de chamada como argumentos. Para usar funções de retorno de chamada dentro de uma função ou método definido pelo usuário, chame-o adcionando parênteses à variáveis e passe os argumentos como nas funções normais.</p>
-                <p>Podendo chamar um função dentro de outra função mas para isso não colocamos o <i>$</i>.</p>
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="json">JSON</h1>
-                </header>
-                <p>JSON, significa JavaScript Object Notation e é uma sintaxe para armazenar e trocar dados. Como o formato JSON é um formato baseado em texto, ele pode ser facilmente enviado de um servidor e usado como formato de dados por qualquer linguagem de programação.</p>
-                <p>Duas funções de JSON:</p>
-                <ul>
-                    <li><b>json_encode()</b></li>
-                    <li><b>json_decode()</b></li>
-                </ul>
-            </section>
-
-            <section>
-                <header>
-                    <h2>json_encode()</h2>
-                </header>
-                <p>É usado para codificar uma valor para o formato JSON.</p>
-                <p>Podemos codificar uma matriz associativa em um objeto JSON.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>json_decode()</h2>
-                </header>
-                <p>É usada para decodificar um objeto JSON em um obejto PHP ou um array associativo.</p>
-                <div class="code">
-                    <p>var_dump(json_deconde($jsonobj));</p>
-                </div>
-                <p>A função <b>json_decode()</b> retorna um objeto por padrão. Tendo em segundo parâmetro e, quando definido como verdadeiro, os obsjeto JSON são codificados em matrizes associativas.</p>
-                <div class="code">
-                    <p>var_dump(json_decode($jsonobj, true));</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Acessando os valores decodificados</h2>
-                </header>
-                <p>Exemplo para acessar valores de um objeto:</p>
-                <img src="img\json_decode.png" alt="Exemplo para acessar valores de um objeto usando json_decode()" width="564" height="213">
-                <p>Outro exemplo para acessar valores de uma matriz associativa:</p>
-                <img src="img\json_decode(1).png" alt="Exemplo para acessar valores de uma matriz associativa usando json_decode()" width="484" height="213">
-            </section>
-
-            <section>
-                <header>
-                    <h2>Looping pelos valores</h2>
-                </header>
-                <p>Você também pode percorrer os valores com loop <b>feach()</b>:</p>
-                <img src="img\feach.png" alt="Usando o feach() para percorrer todo o looping da matriz do json" width="
-                452" height="213">
-            </section>
-
-            <section>
-                <h2>Um rápido resumo do feach()</h2>
-                <img src="img\feach(1).png" alt="Resumo do uso do looping feach()" width="609" height="213">
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="excecoes">Exceções</h1>
-                </header>
-                <p>Uma exceção é um objeto que descreve um erro ou comportamento inesperado de um script. Exceções são lançadas por muitas funções e classes.</p>
-                <p>Funções e classes criadas pelo usuário também podem lançar exceções. As exceções são boas maneiras de interromper uma função quando ela encontra dados que ela não pode usar.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Lançando uma exceção</h2>
-                </header>
-                <p>A instrução <b>throw</b> permite que uma função ou método definido pelo usuário lance uma exceção. Quando uma exceção é lançada, o código a seguir não será executado.</p>
-                <p>Se uma exceção não for detectada, um erro fatal ocorrerá com uma mensagem "Exceção não detectada".</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>A declaração try...catch</h2>
-                </header>
-                <p>Para evitar um erro do <b>throw</b> podemos usar, <b>try...catch</b> para capturar exceções e continuar o processo.</p>
-                <h3>Sintaxe:</h3>
-                <div class="code">
-                    <pre>
-    try {
-        código que pode lançar <b>throw</b> exceção
-    } catch (Exceção $e) {
-        código que é executado quando uma exceção é detectada
-    }</pre>
-                </div>
-                <p>O bloco catch indica que tipo de exceção deve ser capturada e o nome da variável que pode ser usada para acessar a exceção. No exemplo acima, o tipo de exceção é <b>Exception</b> e o nome da variável é <b>$e</b>.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Try...catch...finally</h2>
-                </header>
-                <p>A intrução <b>try...catch...finally</b> pode ser usada para capturar exceções. O código no bloco <b>finally</b> sempre será executado, independentemente se uma exceção foi detectada. Se <b>finally</b> estiver presente, o bloqueio <b>catch</b> é opcional.</p>
-                <h3>Sintaxe:</h3>
-                <div class="code">
-                    <pre>
-    <b>try</b>{
-        código que pode lançar <b>throw</b> exceção
-    } <b>catch</b> (Exception $e) {
-        código que é executado quando uma exceção é detectada
-    } <b>finally</b> {
-        código que sempre é executado, independentemente de uma exceção ter sido detectada
-    }</pre>
-                </div>
-                <p>Podemos deixar uma mensagem no <b>finally</b> como por exemplo, "Processo terminado".</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Objeto de exceção</h2>
-                </header>
-                <p>Objetivo de exceção contém informações sobre erro ou comportamento inesperado que a função encontrou.</p>
-                <h3>Sintaxe:</h3>
-                <div class="code">
-                    <p>&nbsp;new Exception (message, code, previous)</p>
-                </div>
-                <h3>Valores de Parâmetros</h3>
-                <table>
-                    <th>Parâmetros</th>
-                    <th>Descrição</th>
-                    <tr>
-                        <td>message / mensagem</td>
-                        <td>Opcional. Uma string que descreve por que a exceção foi lançada.</td>
-                    </tr>
-                    <tr>
-                        <td>code / código</td>
-                        <td>Optional. Um número inteiro pode ser usado para distinguir facilmente esta exceção de outras do mesmo tipo</td>
-                    </tr>
-                    <tr>
-                        <td>previous / anterior</td>
-                        <td>Opcional. Se esta exceção foi lançada em um bloco catch de outra exceção, é recomendado passar essa exceção para este parâmetro.</td>
-                    </tr>
-                </table>
-                <h3>Métodos</h3>
-                <p>Ao capturar uma exceção, a tabela a seguir mostra alguns métodos que podem ser usados para obter informações sobre exceção:</p>
-                <table>
-                    <th>Método</th>
-                    <th>Descrição</th>
-                    <tr>
-                        <td>getMessage()</td>
-                        <td>Retorna uma string que descreve por que a exceção foi lançada</td>
-                    </tr>
-                    <tr>
-                        <td>getPrevious()</td>
-                        <td>Se esta exceção foi dispensada por outra, este método retorna a exceção anterior</td>
-                    </tr>
-                    <tr>
-                        <td>getCode()</td>
-                        <td>Retorna o código de exceção</td>
-                    </tr>
-                    <tr>
-                        <td>getFile()</td>
-                        <td>Retorna o caminho completo do arquivo no qual a exceção foi lançada</td>
-                    </tr>
-                    <tr>
-                        <td>getLine()</td>
-                        <td>Retorna o número de linha da linha do código que lançou a exceção</td>
-                    </tr>
-                </table><br>
-                <h3>Exemplo:</h3>
-                <p>Informações de saída sobre uma excption que foi lançada:</p>
-                <img src="img\exemplos_excecao.png" alt="Exemplos com alguns métodos de Exception" width="618" height="434">
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="oop">OOP - Programação Orientada Objeto</h1>
-                </header>
-                <p>A programação procedural trata de escrever procedimentos ou funções que realizam operações nos dados, enquanto a programação orientada a objeto trata da criação de objetos que contêm dados e funções.</p>
-                <p>A programação orientada a objetos tem mais vantagens sobre a programação procedural:</p>
-                <ul>
-                    <li>POO é mais rápido e fácil de executar</li>
-                    <li>POO fornece uma estrutura clara para os programas</li>
-                    <li>POO ajuda a manter o código PHP DRY ("Don't Repeat Yourself") e torna o código mais fácil de manter, modificar e depurar.</li>
-                    <li>POO torna possível criar aplicativos totalmente reutilizáveis com menos códigos e menor tempo de desenvolvimento</li>
-                </ul>
-                <p><strong>Dica:</strong> O princípio "Don't Repeat Yourself" (DRY) é sobre reduzir a repetição do código. Você deve extrair os códigos comuns para o aplicativo, colocá-lo em um único lugar e reutilizá-los em vez de repeti-los.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>O que são classes e objetos?</h2>
-                </header>
-                <p>Classes e objetos são os dois aspectos principais da programação orientada objetos.</p>
-                <p>Observe a ilustração a seguir para ver a diferença entre classe e objeto:</p>
-                <table class="mrg">
-                    <tr>
-                        <th>Classe</th>
-                        <th>Obejto</th>
-                    </tr>
-                    <tr>
-                        <td>Fruta</td>
-                        <td>Maçã<br>Banana<br> Manga</td>
-                    </tr>
-                </table>
-                <p>Podemos fazer isso com várias coisas, como carro, moto, infinitas coisas.</p>
-                <p>Portanto, uma classe é o modelo para objetos e um objeto é uma instância de classe.</p>
-                <p>Quando os objetos individuais são criados, eles herdam todas as propriedades presentes nas classes, mas para cada objeto terá um valor específico.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Classe e Objeto</h2>
-                </header>
-                <p>Vamos supor que temos uma classe chamada Fruta. Uma fruta pode ter propriedades como cor, peso, nome, etc. Podemos definir esses valores para cada fruta em específico, usando variáveis como $nome, $cor, $peso.</p>
-                <p>Quando os objetos individuais (maçã, banana, manga, etc.) são criados, eles herdam todas as propriedades e comportamentos da classe, mas sempre, cada objeto portando valores diferentes.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Definindo Class</h2>
-                </header>
-                <p>Para definirmos uma classe, fazemos parecido com a função, mas usamos o <b>class</b>, seguida pelo nome da classe e um par de chaves ({}). Onde dentro dessas chaves irá ter as propriedades e métodos.</p>
-                <div class="code">
-                    <pre>
-    class Fruta {
-        //código aqui 
-    }</pre>
-                </div>
-                <p>Abaixo, declaramos uma classe chamada Fruta que consiste em duas propriedades ($nome, $cor) e dois métodos set_name() e get_name() para definir e obeter o valor da propriedade $nome.</p>
-                <div class="code">
-                    <pre>
-    class Fruta {
-        //Propriedades
-        public $nome;
-        public $cor;
+        <div class="container">
+            <div class="meio">
+                <section>
+                    <header>
+                        <h1 id="irtopo">Continuação PHP</h1>
+                    </header>
+                <section>
+                    <header>
+                        <h1 id="forms">PHP Forms</h1>
+                    </header>
+                    <p>As superglobais PHP $_GET e $_POST são usadas para coletar dados de formulário.</p>
+                    <p>Quando o usuário preenche um formulário e clica em enviar, os dados do formulário são enviados para um processamento de um arquivo PHP. Podendo ser escolhido o method.</p>
+                    <p>Para exibir os dados enviados, você precisa simplesmente ecoar todas as variáveis. O "welcome.php" tem a seguinte aparência:</p>
+                    <form action="form.php" method="post">
+                        Name: <input type="text" name="name"><br>
+                        E-mail: <input type="text" name="email"><br>
+                        Idade: <input type="number" name="age"><br>
+                        <input type="submit">
+                    </form>
+                </section>
     
-        //Métodos
-        function set_name($nome) {
-            $this ->name = $nome;
-        }
-        function get_name() {
-            return $this -> name;
-        }
+                <section>
+                    <header>
+                        <h2>GET vs POST</h2>
+                    </header>
+                    <p>Ambos criam uma matriz (por exemplo, matriz (chave1 => valor1, chave2 => valor2, chave3 => valor3, ...)). Esta matriz contém pares de chaves / valor, onde as chaves são os nomes dos controladores do formulário e os valores são os dados de entrada do usuário.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h3>GET</h3>
+                    </header>
+                    <p>Os dados são visíveis na URL, tendo também limite da quantidade de informações a serem enviadas, limitação de 2.000 caracteres.</p>
+                    <p>Sendo usado para enviar dados não confidenciais.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h3>POST</h3>
+                    </header>
+                    <p>As informações enviadas pelo post são <strong>invisíveis para outras pessoas</strong> e não tem limite de informações a enviar.</p>
+                    <p>Além disso, o POST oferece suporte a funcionalidades avançadas, como suporte para entrada binária de várias partes durante o upload de arquivos para o servidor.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h1 id="validacao">Validação de Formulário</h1>
+                    </header>
+                    <div class="mark">
+                        <p><strong>Pense em SEGURANÇA ao processar formulários</strong></p>                    
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validação de Formulário</h2>
+                    </header>
+                    <form action="form.php" method="post">
+                        Name: <input type="text" name="name"><br><br>
+                        E-mail: <input type="text" name="email"><br><br>
+                        Website: <input type="text" name="website"><br><br>
+                        Comentário: <textarea name="comentario" rows="10" cols="30"></textarea><br><br>
+                        Gênero: <input type="radio" name="gender" value="Feminino">Feminino
+                        <input type="radio" name="gender" value="Masculino">Masculino
+                        <input type="radio" name="gedner" value="Outro">Outro
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                    <br><br>
+                    <div class="mark">
+                        <p>Usamos o $_POST para pegar o dado especifico do formulário</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar dados de Formulário</h2>
+                    </header>
+                    <p>Para sua segurança, ao criar um formulário lembre-se de colocar as seguintes informções:</p>
+                    <ul>
+                        <li><strong>htmlspacialchar()</strong> - fará com que mude os caracteres caso alguem tente invadir seu site, trocando a &lt; por <b>& lt</b></li>
+                        <li><strong>trim()</strong> - Retira caracteres desnecessários (espaços extras, tabulação, nova linha) dos dados entrado pelo usuário</li>
+                        <li><strong>stripslashes()</strong> - Remove as barras invertidas (\) dos dados entrado pelo usuário</li>
+                    </ul>
+                </section>
+            </section>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1>Forumlário com Campos Obrigatórios</h1>
+                    </header>
+                    <p>Para criarmos um formulário obrigatório podemos fazer de dois modos, adcionando <b>required</b> no final do <i>input</i> ou adicionando <b>if</b> e mais uma variável para cada variável indifcando erro, e colocar o <b>empty()</b>, que se o valor for vázio você adiciona nada a ele, caso o contrário ele  recebe o dado correspondente do formulário. Feito isso, no formulário você colocará a variável de erro, no final, caso o usuário entre com nada, aparecerá um erro na tela.</p>
+                    <h3>Variáveis em PHP:</h3>
+                    <img src="img\php_variavel.png" alt="Variaveis em PHP" width="440" height="42"><br>
+                    <h3>Usando if no formulário:</h3>
+                    <img src="img\if_formulario.png" alt="Usando if em formulário PHP" width="381" height="247"><br>
+                    <h3>Estrutura das perguntas no formulário:</h3>
+                    <img src="img\perguntas_formulario.png" alt="Perguntas que aparecerão na tela no formulário" width="785" height="65"><br>
+                </section><hr><br>
+            </section>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="url">URL / e-mail do formulário</h1>
+                        <h2>Validar Nome</h2>
+                    </header>
+                    <p>Para validarmos um nome ou qualquer outra coisa, usamos o <b>preg_match()</b>, pois ele pesquisa uma string para o padrão, retornando verdadeiro se o padrão existir e falso caso o contrário.</p>
+                    <p>No código abaixo mostra uma maneira simples de validarmos um nome contém apenas letras, travessões, apóstrofos e espaços em branco. Caso o valor deste campo não for valido, armazene uma mensagem de erro.</p>
+                    <div class="code">
+                        <pre>$name = test_input($_POST["name"]);
+    if(!preg_macth("/^[a-zA-Z-' ]*$/", $name)) {
+        $nameErr = "Somente letras e espaços em branco.";
     }</pre>
-                </div>
-                <div class="mark">
-                    <p><strong>Nota:</strong> Em uma classe, as variáveis são chamadas de propriedades e as funções de métodos.</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Definir Objetos</h2>
-                </header>
-                <p>Podemos criar vários objetos de uma classe. Cada objeto possui todas as propriedades e métodos da classe, mas elas terão valores diferentes.</p>
-                <p>Os objetos de uma classe são criados usando <b>new</b>.</p>
-                <p>Ficando como o exemplo abaixo:</p>
-                <div class="code">
-                    <p>$banana = new Fruta();</p>
-                    <p>$manga = new Fruta();</p>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>A palavra-chave $this</h2>
-                </header>
-                <p>A palavra-chave <b>$this</b> refere-se ao objeto atual e só está disponível dentro de métodos.</p>
-                <div class="code">
-                    <pre>
-    class Fruta {
-        public $nome;
-    }
-    $banana = new Fruta();</pre>
-                </div>
-                <p>Então, onde podemos alterar o valor da propriedade $nome? Existe duas maneiras:</p>
-                <p>1. Dentro da class (adionanando um método set-name() e usando o $this)</p>
-                <div class="code">
-                    <pre>
-    class Fruta {
-        public $nome;
-
-        fuction set_name($name) {
-            $this -> name = $name;
-        }
-    }
-    $banana = new Fruta();
-    $banana->set_name("Banana");
-    echo $banana->name;</pre>
-                </div>
-                <p>2. Fora da classe (alterando diretamento o valor da propriedade)</p>
-                <div class="code">
-                    <pre>
-    class Fruta {
-        public nome;
-    }
-    $banana = new Fruta();
-    $banana -> name = "Banana";
-    echo $banana->name;</pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>instanceof</h2>
-                </header>
-                <p>Você pode usar a palavra-chave <b>instanceof</b> para verificar se um objeto pertence a uma classe específica:</p>
-                <div class="code">
-                    <pre>
-    $banana = new Fruta();
-    var_dump($banana instanceof Fruta);</pre>
-                </div>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Construct</h2>
-                </header>
-                <p>Um construct permite inicializar as propriedades de um objeto na criação do objeto.</p>
-                <p>Se você criar uma função <b>_-contruct</b> o PHP a chamará automaticamente quando você criar um objeto de classe.</p>
-                <p>Observe que a função começa com dois sublinhando (__).</p>
-                <p>Nesta função <b>__construtc</b> podemos adicionar mais de um valor dentro do seu parênteses, e assim atribuir valores para eles nas propriedades. Ele também fará com que não precise chamar um método de set_name(), por exemplo. O que reduz a quantidade do código.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Destruct</h2>
-                </header>
-                <p>Um destruct é chamado quando um objeto é destruído ou o script é interrompido ou encerrado.</p>
-                <p>Se você criar uma função <b>__destruct()</b>, o PHP a chamará automaticamente no final do script. Ele também começa com dois sublinhados (__).</p>
-                <div class="code">
-                    <p><strong>Dica:</strong> Como construct e destruct ajudam a reduzir a quantidade de código, eles são muito úteis!</p>
-                </div>
-            </section>
-        </section><hr>
-
-        <section>
-            <section>
-                <header>
-                    <h1 id="modificadores">Modificadores de Acesso</h1>
-                </header>
-                <p>Propriedades e métodos podem ter modificadores de acesso que controlam onde eles podem ser acessados.</p>
-                <p>Existe três tipos de acesso:</p>
-                <ul>
-                    <li><b>public</b> - a propriedade ou método pode ser acessado de qualquer lugar. Este é o padrão</li>
-                    <li><b>protected</b> - a propriedade ou método pode ser acessado dentro e por classes derivadas dessa clase</li>
-                    <li><b>private</b> - a propriedade ou método SÓ pode ser acessado dentro da classe</li>
-                </ul>
-                <p>Tentar atribuir um valor para variáveis com modificadores de acesso configurado como private e protected, fora da classe resultará em erro. Isso também vale para os métodos, mesmo com as variáveis configuradas como public.</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Herança</h2>
-                </header>
-                <p>Herança em POO = Quando uma classe deriva de outra classe.</p>
-                <p>As classes filhas herdará todas as propriedades e métodos públicos da classe pai. Além disso, ele pode ter suas próprias propriedades e métodos.</p>
-                <p>Uma classe herdada é definida usando a palavra-chave <b>extends</b>.</p>
-                <div class="code">
-                    <pre>
-    class Stramberry extends Fruit {
-        public function message() {
-            echo "Am I a fruit or a berry? ";
-        }
-    }
-    $stramberry = new Stramberry("Stramberry, "red");
-    $stramberry-> message();
-    $stramberry-> intro();</pre>
-                </div>
-                <h3>Explicando o exemplo:</h3>
-                <p>A classe Stramberry é herdada da classe Fruit.</p>
-                <p>Isso significa qua a classe Stramberry pode usar as propriedades public $name, $color, bem como os métodos públicos __construct() e intro () da classe Fruit por causa da herança.</p>
-                <p>A classe Stramberry também usou seu próprio método: message().</p>
-            </section>
-
-            <section>
-                <header>
-                    <h2>Herança e o Modificador de Acesso Protegido</h2>
-                </header>
-                <p>Aprendemos que <b>protected</b> tanto propriedade quanto métodos podem ser acessados dentro da classe e por classes derivadas dessas classes.</p>
-                <p>Heranças não conseguem ter acesso a propriedades ou métodos, com protected, mas podemos chamar o método ou propriedade com o modificador <b>protected</b> para dentro do objeto filho, basta no final da linha de código inserirmos o <b>$this -> </b>, logo em seguida, o nome do método ou propriedade.</p>
-                <div class="code">
-                    <pre>
-    class Morango extends Fruta {
-        public function mensagem() {
-            echo "Olá";
-        //Chamando o método protected
-        $this -> intro();
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar e-mail</h2>
+                    </header>
+                    <p>Uma maneira mais fácil e segura de validar se um e-mail está bem formado é usar a função <b>filter_var()</b>.</p>
+                    <p>No código abaixo, o e-mail não estiver bem formado, armazene uma mensagem de erro:</p>
+                    <div class="code">
+                        <pre>$email = test_input($_POST["email"]);
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Formato de e-mail inválido!";
     }</pre>
-                </div>
-            </section>
+                    </div>                
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar URL</h2>
+                    </header>
+                    <p>O código a seguir mostra uma maneira de verificar a sintaxe de um endereço URL (esta expressão regular também permite traços no URL). Se a sintaxe do endereço de URL não for valida, digite uma mensagem de erro:</p>
+                    <div class="code">
+                        <pre>$website = text_input($_POST["website"]);
+    if (!preg_macth("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+        $websiteErr = "URL inválida!";
+    }</pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar nome, e-mail e URL</h2>
+                    </header>
+                    <p>Neste caso iremos juntar todos os passos anteriores e aplicar todos em um código, ficando com esta aparência:</p>
+                    <img src="" alt="" width="" height="">
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1>Formulário Completo</h1>
+                        <h2>Mantenha os valores na forma</h2>
+                    </header>
+                    <p>Para mostrar os valores em campos de entradas depois que o usuário clica no botão enviar, adicionamos um pequeno script PHP dentro do atributo de valor dos seguintes campos de entrada: nome, email, website. No campo textarea do comentário, colocamos o script entre as tags &lt;textarea&gt; e &lt;/textarea&gt;. O pequeno script produz o valor das variáveis $name, $email, $website e $comment.</p>
+                    <p>Em seguida, também precisamos mostral qual botão de opção foi marcado. Para isso, devemos manipular o atributo marcado (não o atributo de valor para os botões de opção):</p>
+                    <img src="img\formulario_completo.png" alt="Exemplo de um formulário completo no PHP" width="870" height="413">
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="advanced">PHP Advanced</h1>
+                        <h2>Data e Hora</h2>
+                    </header>
+                    <p>Usamos a função <b>data()</b> para formatar uma data e / ou hora.</p>
+                    <h3>Sintaxe</h3>
+                    <div class="code">
+                        <p>data(format, timestamp)</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Marque um encotro</h2>
+                    </header>
+                    <p>o parâmetro <i>format</i> é necessário da função date(), onde especifica como formatar a data/hora.</p>
+                    <p>Alguns caracteres que estão comumente usados para data:</p>
+                    <ul>
+                        <li>d - Representa o dia do mês (01 - 31)</li>
+                        <li>m - Representa um mês (01 - 12)</li>
+                        <li>Y - Representa um ano (em quatro dígitos)</li>
+                        <li>l ('L' minúsculo) - Representa o dia da semana</li>
+                    </ul>
+                    <p>Podemos usar alguns caracteres para separa-los, como, "/", "-", ".".</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Ano automático de direitos autorias</h2>
+                    </header>
+                    <p>Use a <b>date()</b> para atulizar automaticamente o ano dos direitos autorais em seu site:</p><br>
+                    <h3>Exemplo:</h3>
+                    <div class="code">
+                        <pre>%copy; 2010- &lt;?php echo date("Y");?></pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Ganhe um tempo</h2>
+                    </header>
+                    <p>Alguns caracteres comumnete usados para hórarios:</p>
+                    <ul>
+                        <li>H - formato de 24 horas de um hora (00 a 23)</li>
+                        <li>h - formato de 12 horas de uma hora com zeros à esquerda (01 a 12)</li>
+                        <li>i - minutos com zeros à esquerda (00 a 59)</li>
+                        <li>s - segundos com zeros à esquerda (00 a 59)</li>
+                        <li>a - ante meridiem minúsculo e Post meridiem (am ou pm)</li>
+                    </ul>
+                    <h3>Exemplo:</h3>
+                    <div class="code">
+                        <pre>&lt;?php echo "As horas são: " . date("h:i:sa");?></pre>
+                    </div><br><br>
+                    <div class="mark">
+                        <p>Observe que a função date() retornará a data/hora atual do servidor</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Obtenha um fuso horário</h2>
+                    </header>
+                    <p>Se a hora que você colocou em seu site não estiver correta, provavelmente é porque seu servidor está em outro pais ou configurado para um fuso horário diferente.</p>
+                    <p>Portanto, se você precisa que o horário esteja correto de acordo com um local específico, você pode definir o fuso horário que deseja usar.</p>
+                    <p>O exemplo abaixo define o fuso horário para "America / New_York" e, em seguida, exibe a hora atual no formato especificado:</p>
+                    <div class="code">
+                        <pre>&lt;?php date_default_timezone_set("America/New_York");
+    echo "O tempo é: " . date("h: i: sa");
+    ?>
+                        </pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Crie uma data com mktime()</h2>
+                    </header>
+                    <p>O parâmentro opcional <i>timestamp</i> na função data () especifica um timestamp. Se omitido, a data e hora atuais serão usadas (como nos exemplos acima).</p>
+                    <p>A <b>mktime()</b> retorna o caminho da data / hora Unix para uma data. O carimbo da data / hora Unix contém o número de segundos entre a época do Unix (1 Janeiro de 2020 00:00:00 GMT) e a hora especificada.</p>
+                    <h3>Sintaxe</h3>
+                    <div class="code">
+                        <p>mktime (hour, minute, second, month, day, year)</p>
+                    </div>
+                    <p>O exemplo abaixo cria uma data e hora com a <b>data()</b> de vários parâmetros na <b>mktime()</b>:</p>
+                    <h3>Exemplo:</h3>
+                    <div class="code">
+                        <pre>&lt;?php
+    $d=mktime(11, 14, 54, 8, 12, 2014);
+    echo "Data criada " . data("d-m-Y h:i:sa", %d);
+    ?&gt;
+                        </pre>
+                    </div>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Crie uma data a partir de uma string com strtotime()</h2>
+                    </header>
+                    <p>A <b>strtotime()</b> é usada para converter uma string de data legível por humanos em um carimbo de data/hora Unix (o número de segundos desde 1º de Janeiro de 1970 00:00:00 GMT).</p>
+                    <h3>Sintaxe</h3>
+                    <div class="code">
+                        <p>strtotime(time, now)</p>
+                    </div>
+                    <h3>Exemplo</h3>
+                    <div class="code">
+                        <pre>
+                            &lt;?php
+                            %d=strtotime("10:30pm April 15 2014");
+                            echo "A data criada foi: ". date("d-m-Y h:i:sa", $d);
+                            ?&gt;
+                        </pre>
+                    </div>
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="arquivos">Arquivos de inclusão</h1>
+                    </header>
+                    <p>A instrução <b>include</b>( ou <b>require</b>) pega todo o texto / código / marcação existente no arquivo especificado e os copia para o arquivo que usa a instrução include.</p>
+                    <p>Incluir arquivos é muito útil quando você deseja incluir o mesmo PHP, HTML ou texto em várias páginas de um site.</p>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Include e Require</h2>
+                    </header>
+                    <p>É possível inserir o conteúdo de um arquivo PHP em outro arquivo PHP (antes que o servidor o execute), com a instrução include ou querire.</p>
+                    <p><strong>As instruções include e require são identicas, exceto em caso de falha:</strong></p>
+                    <ul>
+                        <li><b>require</b> - Irá produzir um erro fatal (E_COMPILE_ERROR) e para o script.</li>
+                        <li><b>include</b> - Só produzirá um aviso (E_WARRING) e o script continuará.</li>
+                    </ul>
+                    <p>Portanto, se você quiser que a executação continue e mostre aos usuários a saída, mesmo se o arquivo de inclusão estiver ausente, use a instrução include. Caso contrário, no caso do FrameWork, CMS ou uma codificação de aplicativo PHP complexa, sempre use a instrução <b>require</b> para incluir um arquivo de chave para o fluxo de execucão. Isso ajudará a evitar o comprometimento da segurança e integridade do aplicativo, caso um arquivo de chave esteja acidentalemente perdido.</p>
+                    <p>Incluir arquivos economiza muito trabalho. Isso significa que você pode criar um cabeçalho, rodapé ou arquivo de menu padrão para todas as suas páginas da web. Então, quando o cabeçalho precisar ser atualizado, você só precisa atualizar o arquivo de inclusão do cabeçalho.</p>
+                    <h3>Sintaxe</h3>
+                    <div class="code">
+                        <pre>
+                            include 'filename';
+                                or
+                            require 'filename';</pre>
+                    </div>
+                    <h3>Include exemplo:</h3>
+                    <p>Suponha que temos um arquivo de rodapé padrão chamado "footer.php", que se parece com isto:</p>
+                    <div class="code">
+                        <pre>
+                            &lt;?php
+                            echo "&lt;p&gt;Copyright &copy; 1999-" . date("Y") . "W3Schools.com&lt;p&gt;;"
+                            ?&gt;</pre>
+                    </div>
+                    <p>Usando no HTML:</p>
+                    <img src="img\footer.png" alt="Exemplo do uso do include no HTML" width="442" height="237">
+                </section>
+    
+                <section>
+                    <header>
+                        <h3>Exemplo 2:</h3>
+                    </header>
+                    <p>Suponha que temos um arquivo de menu padrão chamado "menu.php":</p>
+                    <img src="img\menu_include.png" alt="Usando o include para colocar o menu no HTML" width="497" height="169">
+                    <p>Todas as páginas do site devem usar esse arquivo de menu. Veja como isso pode ser feito (estamos usando um elemento &lt;div&gt; para que o menu possa ser facilmente estilizado com CSS posteriormente):</p>
+                    <img src="img\html_menu.png" alt="Usando o include para colocar o menu no HTML" width="448" height="280">
+                </section>
+    
+                <section>
+                    <header>
+                        <h3>Exemplo 3:</h3>
+                    </header>
+                    <p>Suponha que você tem um arquivo chamado "vars.php", com algumas variáveis definidas:</p>
+                    <img src="img\exemplo3_include.png" alt="Usando o include" width="237" height="101">
+                    <p>Então, se incluirmos o arquivo "vargs.php", as variáveis podem ser usadas no arquivo de chamada:</p>
+                    <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
+                </section>
+    
+                <section>
+                    <header>
+                        Include vs Require
+                    </header>
+                    <p>O <b>require</b> também é usada para incluir um arquivo de código no PHP.</p>
+                    <p>No entanto, há uma grande diferença entre incluir e exigir; quando um arquivo é incluído com o <b>include</b> e o PHP não consegue encontrá-lo, o script continuará a ser executado:</p>
+                    <img src="img\exemplo3_include(1).png" alt="Usando o include" width="367" height="237">
+                    <p>Se fizermos o mesmo com o <b>require</b>, a instrução echo não será executada porque a execução do script termina depois que a <b>require</b> retorna um erro fatal:</p>
+                    <img src="img/exemplo_require.png" alt="Usando o require no HTML" width="334" height="238">
+                    <div class="mark">
+                        <p>Use o <b>require</b> quando o arquivo for exibido pelo aplicativo.</p>
+                        <p>Use o <b>include</b> quando o arquivo não for necessário e o aplicativo deve continuar quando o arquivo não for encontrado.</p>
+                    </div>
+                </section>
+            </section><hr>
             
             <section>
-                <header>
-                    <h2>Substituindo Métodos Herdados</h2>
-                </header>
-                <p>Os métodos herdados podem ser substituídos redefinindo os métodos (use o mesmo nome) na classe filha.</p>
-                <p>Veja o exemplo abaixo. Os métodos __construct() e intr() na classe filha (Strawberry) irão substituir os métodos __construct() e intro() na classe pai(Fruit).</p>
-                <img src="img\herdando_classe.png" alt="Substituindo métodos herdados no PHP" width="895" height="572">
+                <section>
+                    <header>
+                        <h1 id="manipulacao">Manipulação de arquivos</h1>
+                    </header>
+                    <p>PHP tem várias funções para criar, ler, enviar e editar arquivos.</p>
+                    <div class="mark">
+                        <h3>Tenha cuidado ao manipular arquivos</h3>
+                        <p>Os erros mais comuns ao manipularmos algum arquivo são,editar o arquivo errado, encher o disco rígido com dados inúteis e exibir o conteúdo de um arquivo acidentamente.</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Função readfile()</h2>
+                    </header>
+                    <p>A <b>readfile()</b> lê um arquivo e o grava no buffer de saída.</p>
+                    <p>Suponha que temos um texto chamado "webdictionary.txt", armazenado no servidor, que se prarece com este:</p>
+                    <img src="img\exemplo_de_servidor.png" alt="Exemplo de um servidor" width="359" height="168">
+                    <p>O código para ler o arquivo e gravá-lo no buffer de saída é o seguinte (a <b>readfile()</b> função retorna o número de bytes lidos em caso de sucesso):</p>
+                    <img src="img\readfile_exemplo.png" alt="Exemplo do uso do readfile" width="330" height="80">
+                    <p>O <b>readfile</b> é útil se tudo o que você deseja fazer é abrir um arquivo e ler o seu conteúdo.</p>
+                </section><hr>
+    
+                <section>
+                    <header>
+                        <h1 id="arquivolido">Arquivo Aberto / lido</h1>
+                    </header>
+                    <p>Para abrirmos um arquivo usamos a função <b>fopen()</b>, esta quando usamos esta função podemos fazer mais coisas que o <b>readfile()</b>.</p>
+                    <p>O primeiro parâmetro quando usamos o <b>fopen()</b> contém o nome do arquivo entre aspas, e segundo especifica qual modo será aberto. Caso não conseguimos abrir o arquivo podemos deixar uma mensagem, como no exemplo abaixo:</p>
+                    <div class="code">
+                        <pre>
+        &lt;?php
+        $myfile = fopen ("texte.txt", "r") or die ("Não foi possível abrir o arquivo!");
+        echo fread($myfile, filezie("texte.txt"));
+        fclose($myfile);
+        ?&gt;</pre>
+                    </div>
+                    <p>Podemos abrir os arquivos da seguinte forma:</p>
+                    <table>
+                        <tr>
+                            <th>Modos</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td>r</td>
+                            <td><strong>Abre o arquivo somente para leitura.</strong> O ponteiro do arquivo começa no início do arquivo.</td>
+                        </tr>
+                        <tr>
+                            <td>w</td>
+                            <td><strong>Abre o arquivo somente para escrita.</strong> Apaga o conteúdo do arquivo ou cria um novo arquivo se não existir. O ponteiro do arquivo começa no início do arquivo.</td>
+                        </tr>
+                        <tr>
+                            <td>a</td>
+                            <td><strong>Abre o arquivo somente para escrita.</strong> Os dados existentes no arquivo são preservados. O ponteiro do arquivo começa no final do arquivo. Cria um novo arquivo caso não exista.</td>
+                        </tr>
+                        <tr>
+                            <td>x</td>
+                            <td><strong>Cria um novo arquivo somente para escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
+                        </tr>
+                        <tr>
+                            <td>r+</td>
+                            <td><strong>Abre um arquivo para leitura / escita.</strong> O ponteiro do arquivo começa no início.</td>
+                        </tr>
+                        <tr>
+                            <td>w+</td>
+                            <td><strong>Abre um arquivo para leitura / escrita.</strong> Apaga o conteúdo do arquivo e cria um novo se ele não existir. O ponteiro do arquivo começa no início.</td>
+                        </tr>
+                        <tr>
+                            <td>a+</td>
+                            <td><strong>Abre um arquivo para leitura / escrita.</strong> Os dados presentes no arquivo são preservados e cria um arquivo se não existir. O ponteiro do arquivo começa no final.</td>
+                        </tr>
+                        <tr>
+                            <td>x+</td>
+                            <td><strong>Cria um novo arquivo para leitura / escrita.</strong> Retorna FALSE e um erro caso o arquivo já exista.</td>
+                        </tr>
+                    </table>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>fread() - Arquivo para leitura</h2>
+                    </header>
+                    <p>A função <b>fread()</b> lê a partir de um arquivo aberto. O primeiro parâmetro contém o nome do arquivo a ser lido e o segundo especifica o número máximo de bytes a serem lidos.</p>
+                    <p>Podemos usar no segundo parâmetro o <b>filesize()</b>, onde ele vai ler até o final do arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo entre aspas.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>fclose() - Fechar arquivos</h2>
+                    </header>
+                    <p>A função <b>fclose()</b> fecha os arquivos abertos. Para usa-la é bem simples, quando você terminar de modificar o arquivo, você colocará na próxima linhas, <b>fclose()</b> e dentro o nome do arquivo.</p>
+                    <div class="mark">
+                        <p>É uma boa pratica sempre fechar o arquivo depois de manipulalo, pois deixa-lo aberto pode fazer com que o programa gaste mais memórias atoa.</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>fgets() - Ler uma linha</h2>
+                    </header>
+                    <p>A função <b>fgets()</b> é usada para ler uma única linha de um arquivo. Dentro do seu parâmetro você deve colocar o nome do arquivo. Após chamarmos a função, o ponteiro do arquivo foi para a próxima linha.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>feof() - End-Of-File</h2>
+                    </header>
+                    <p>Esta função verifica se o fim do arquivo foi atingido. Sendo útil para percorrer dados de comprimento deseconhecido. A função abaixo lê linha por linha, até que o final do arquivo seja alcançado:</p>
+                    <div class="code">
+                        <pre>
+        &lt;?php
+        $myfile = fopen("text.txt", "r") or die ("Não foi possível abrir o arquivo!");
+        while (!feof($myfile)) {
+            echo fgets($myfile) . "&lt;br&gt;";
+        }
+        fclose($myfile);
+        ?&gt;
+                        </pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>fgetc() - Leitura de único caractere</h2>
+                    </header>
+                    <p>Esta função é parecida com a anterior, podem esta, ela lê somente um caracter do arquivo. Podemos usar esta função no exemplo anterior, no caso ela vai ler um caracter por caracter até o final do arquivo.</p>
+                    <p>Após o seu uso, o ponteiro do arquivo se move para o próximo caracter.</p>
+                </section>
             </section>
-
+    
             <section>
                 <header>
-                    <h2>A palavra-chave final</h2>
+                    <h1>Criação / Escrita de arquivo</h1>
                 </header>
-                <p>
-                    
-                </p>
+                <section>
+                    <header>
+                        <h2>fopen() - Abrir um arquivo</h2>
+                    </header>
+                    <p>Podemos usar a função <b>fopen()</b> para criamos um arquivo. Caso você tente abrir um arquivo que não existe, ele irá ser criado por causa da função, desde que o arquivo seja aberto para gravação (w) ou anexação (a).</p>
+                    <p><strong>OBS:</strong> Caso você tente criar um arquivo e dê erros, verifique se você concedeu ao seu arquivo PHP acesso ao gravar informações no disco rígido.</p>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>fwrite() - Escrever no arquivo</h2>
+                    </header>
+                    <p>Esta função é usada para escrever no arquivo. No seu primeiro parâmetro deve conter o nome do arquivo, e o segundo a string a ser gravada.</p>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Sobrescrita</h2>
+                    </header>
+                    <p>Se usarmos a mesma função com o mesmo arquivo e inserirmos algumas informações, os dados anteriores serão apagados e os novos ficarão lá.</p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <header>
+                    <h1 id="upload">Upload de Arquivos</h1>
+                </header>
+    
+                <section>
+                    <header>
+                        <h2>Configure o arquivo "php.ini"</h2>
+                    </header>
+                    <p>Primeiro, devemos certificar que o PHP está configurado para permitir uploads de arquivos. No seu arquivo "php.ini", procure a <b>file_uploads</b> e defina-a como Ativado / On.</p>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Crie um formulário</h2>
+                    </header>
+                    <p>Em seguida, crie um formulário que permita que o usuário envie arquivo de imagem que desejam enviar:</p>
+                    <img src="img\formulario_upload.png" alt="Exemplo de upload de arquivos em PHP" width="604" height="278">
+                    <p>Algumas regras a serem seguidas para o formulário acima:</p>
+                    <ul>
+                        <li>Certifique-se que o formulário usa o metodo "post".</li>
+                        <li>O formulário também precisa do seguinte atributo: enctype = "multipart / form-data". Ele especifica qual tipo de conteúdo usar ao enviar o formulário.</li>
+                    </ul>
+                    <p>Sem os requisitos acima, o upload do arquivo não funionará.</p>
+                    <p>Outras coisas a ser observadas:</p>
+                    <ul>
+                        <li>O atributo type = "file" da tag &lt;input&gt; mostra o campo de entrada como um controle de seleção de arquivo, com um botão  "Browser" próximo ao controle de entrada.</li>
+                    </ul>
+                    <p>O formulário acima envia os dados para um arquivo chamado "upload.php". Iremos mostrar a seguir.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Criando um script para upload de arquivos</h2>
+                    </header>
+                    <p>O arquivo mencionado anterior, "upload.php" contém o seguinte código:</p>
+                    <img src="img\codigo_para_upload_de_arquivos.png" alt="Código em HTML para upload de arquivos" width="652" height="389">
+                    <p>Explicação das linhas do código:</p>
+                    <ul>
+                        <li>$target_dir = "uploads/" - especifica o diretório onde o arquivo será colocado</li>
+                        <li>$target_file - especifica o caminho do arquivo a ser carregado</li>
+                        <li>$uploadOk = 1 - ainda não é usado</li>
+                        <li>$imageFileType contém a extensão do arquivo do arquivo (em letras minúsculas)</li>
+                        <li>Em seguida, verifica se o arquivo de imagem é uma imagem real ou uma imagem falsa</li>
+                    </ul>
+                    <div class="mark">
+                        <p><strong>Nota:</strong> Você precisará criar um novo diretório chamado "uploads" no diretório onde o arquivo "uploads.php" reside. Os arquivos carregados serão salvos lá.</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Verifique se o arquivo já existe</h2>
+                    </header>
+                    <p>Primeiro, vamos verificar se o arquivo já existe na pasta "uploads". Em caso afirmativo, uma mensagem de erro é exibida e $uploadOk é definido como 0:</p>
+                    <div class="code">
+                        <pre>
+        //Checando se a pasta existe
+        if (file_exists($target_file)) {
+            echo "Desculpe, arquivo inexistente.";
+            $uploadOk = 0;
+        }</pre>
+                    </div>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Limitando o tamanho do arquivo</h2>
+                    </header>
+                    <p>O campo de arquivo denominado em nosso formulário HTML acima é denominado "fileToUpload".</p>
+                    <p>Agora, queremos verifica o tamanho do arquivo. Se o arquivo tiver mais de 500 KB, uma mensagem de erro será exibida e $upload será definido como 0:</p>
+                    <div class="code">
+                        <pre>
+        //Checando o tamanho do arquivo
+        if ($_FILE["fileToUpload"]["size"] > 500000) {
+            echoo "Desculpe, seu arquivo é muito grande.";
+            $uploadOk = 0;
+        }</pre>
+                    </div>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Uplaod completo do arquivo</h2>
+                    </header>
+                    <p>Agoora para termos um arquivo completo para nosso upload, precisamos juntar todos os códigos. Isso deixará-lo completo.</p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <header>
+                    <h1 id="cookies">Cookies</h1>
+                </header>
+    
+                <section>
+                    <header>
+                        <h2>O que é um Cookies</h2>
+                    </header>
+                    <p>Usado pra identicar um usuário. É um pequeno arquivo que o servidor incorpora no computador do usuário. Cada vez que o mesmo computador solicitar uma página com um navegador, ele também enviará o cookie. Com o PHP, você pode criar e recuperar valores de cookies.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Criar Cookies</h2>
+                    </header>
+                    <p>Para criamos usamos a função <b>setcookie()</b>.</p>
+                    <h3>Sintaxe:</h3>
+                    <div class="code">
+                        <p>setcookie(name, value, expire, path, domain, secure, httponly);</p>
+                    </div>
+                    <p><strong>OBS:</strong> Apensa o parâmetro de nomes é obrigatório, o resto é opcional.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Cria / recuperar um cookie</h2>
+                    </header>
+                    <p>O exemplo a seguir cria um cookie denomidado "usuario" com o valor "Lucas Alexsander". O cookie ira expirar após 30 dias (86400 * 30). O "/" significa que o cookie está disponível em todo o site (caso contrário, selecione o diretório de sua preferência).</p>
+                    <p>Em seguida, recuperamos o valor do cookie "usuario" (usando a variável global $_COOKIE). Também usamos a <b>isset()</b> para descobrir se o cookie está definido:</p>
+                    <img src="img\cookie.png" alt="Exemplo de aplicação de um cookie no PHP" width="787" height="434">
+                    <p>O <b>setcookie()</b> deve aparecer antes da tag &lt;html&gt;.</p>
+                    <p><strong>Nota:</strong> O valor do cookie é automaticamente codificado por URL ao enviar o cookie e automaticamente decodificado quando recebido (para evitar a codificação de URL, use em seu lugar <b>setrawcookie()</b>).</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Modificando um Cookie</h2>
+                    </header>
+                    <p>Para modifica-lo, basta alterar os dados inseridos dentro da função <b>setcookie()</b>.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Excluir um Cookie</h2>
+                    </header>
+                    <p>Para excluir, basta alterar a data da função <b>setcookie()</b> para uma data no passado.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Verifique se os Cookies estão habilitados</h2>
+                    </header>
+                    <p>Para verificarmos, iremos usar o count() para verificar se existe mais de um dado dentro do cookie ele está habilitado, caso contrário, desabilitado.</p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <header>
+                    <h1 id="sessao">Sessões</h1>
+                </header>
+                <p>Uma sessão é uma forma de armazenar informções (em variáveis) a serem usadas em varias páginas.</p>
+                <p>Ao contrário de um cookie, as informações não são armazenadas no computador do usuário.</p>
+                <section>
+                    <header>
+                        <h2>O que é uma Sessão?</h2>
+                    </header>
+                    <p>Ao trabalhar em um aplicativo, você o abre, faz alterações e logo em seguida o fecha. Isso é muito parecido com uma sessão. Mas temos um problema, quando fazemos isso em um computador, ele sabe quem você é, mas quando fazemos isso na web, ela não te reconhece, porque endereço HTTP não mantém o estado.</p>
+                    <p>As variáveis de sessão resolvem este problema, pois elas armazenam informações do usuário para serem usadas em várias páginas (por exemplo, nome de usuário, cor favorita etc...). Por padrão, as variáveis de sessão duram até que o usuário feche o navegador.</p>
+                    <p>Então, as variáveis de sessão contêm informações de um único usuário e estão disponíveis para todas as páginas em um aplicativo.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Iniciar um Sessão</h2>
+                    </header>
+                    <p>Uma sessão é iniciada usando <b>session_start()</b>. Variáveis de sessão são definidas com a variável global: $_SESSION.</p>
+                    <p>Vamos criar uma página chamada "demo_session1.php". Nesta página, iniciaremos uma nova sessão e definimos algumas variáveis de sessão:</p>
+                    <img src="img\sessao.png" alt="Exemplo de uma sessão no PHP simples" width="481" height="392">
+                    <p><strong>OBS:</strong> A varável de sessão deve ficar antes do início da tag HTML.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Obter valores de variáveis de sessão</h2>
+                    </header>
+                    <p>A seguir, criaremos outra página chamada "demo_session2". A partir desta página, acessaremos as informações da sessão que definimos na primeira página ("demo_session1").</p>
+                    <p>Observer que as variáveis de sessão não são passadas individualemente para cada nova página, em vez disso, são recuperadas da sessão que abrimos no início de cada página (<b>sesscion_start()</b>).</p>
+                    <p>Observe que todos os valores das variáveis são armazenadas na variável global: $_SESSION:</p>
+                    <img src="img\sessao(1).png" alt="Passando informções de uma página para outras" width="481" height="392">
+                    <p>Outra maneira de passarmos essas informações é usando a variável global dentro do <b>print_r()</b>. Exemplo:</p>
+                    <img src="img\sessao(2).png" alt="Outro modo de passar informações de uma página para a outra" width="301" height="302">
+                    <div class="mark">
+                        <p><strong>Como funciona? Como ele sabe que sou eu?</strong></p>
+                        <p>A maioria das sessões define uma chave de usuário no computador que se parece com isso: 765487cf34ert8dede5a562e4f3a7e12. Em seguida, quando uma sessão é aberta em outra página, ela verifica o computador em busca de uma chave de usuário. Se houve correspondência, ela acessa aquela sessão, caso contrário, ele inícia uma nova sessão.</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Modificar uma variável de uma Sessão</h2>
+                    </header>
+                    <p>Para alterar a variável de uma sessão basta substitui-la na nova página usando a variável global $_SESSION.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Destrua uma sessão</h2>
+                    </header>
+                    <p>Para removermos todas as variáveis de uma sessão e destruir, use <b>session_unset()</b> e <b>session_destroy()</b>:</p>
+                    <ul>
+                        <li>session_unset() - Remove todas as variáveis da sessão</li>
+                        <li>session_destroy() - Destroi a a sessão</li>
+                    </ul>
+                </section>
+            </section><hr>
+    
+            <section>
+                <header>
+                    <h1 id="filtros">Filtros</h1>
+                </header>
+                <p>Validating data = Determina se os dados estão na forma adaqueda</p>
+                <p>Sanitilizing data = Remove qualquer caractere ilegal dos dados</p>
+                <section>
+                    <header>
+                        <h2>A extensão do filtro</h2>
+                    </header>
+                    <p>Filtros são usados para validar e higienizar a entrada externa.</p>
+                    <p>A extensão do filtro tem muitas das funções necessárias para verificar a entrada do usuário e é projetada para tornar a validação de dados mais fácil e rápida.</p>
+                    <p>A função <b>filter_list()</b> pode ser usada para listar o que a extensão do filtro oferece:</p>
+                    <img src="img\filter.png" alt="Exemplo de aplicação do filter em PHP" width="739" height="256">
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Por que usar filtros?</h2>
+                    </header>
+                    <p>Muitos aplicativos da web recebem entradas externas. A entrada / dados externos podem ser:</p>
+                    <ul>
+                        <li>Entrada do usuário a partir de um formulário</li>
+                        <li>Cookies</li>
+                        <li>Dados de serviços da web</li>
+                        <li>Variáveis de servidor</li>
+                        <li>Resultados da consulta de banco de dados</li>
+                    </ul>
+                    <div class="mark">
+                        <p><strong>Você deve sempre validar os dados externos!</strong></p>
+                        <p>Dados inválidados enviados podem levar a problemas de segurança e quebrar sua página web. Ao usar filtros, você pode ter certeza que seu aplicativo receberá a entrada correta!</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>filter_var()</h2>
+                    </header>
+                    <p>A função <b>filter_var()</b> valida e limpa os dados. Filtrando uma única variável com um filtro especifico. São necessários dois dados:</p>
+                    <ul>
+                        <li>A variável que você deseja verificar</li>
+                        <li>O tipo de cheque a usar</li>
+                    </ul>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Sanitize a String</h2>
+                    </header>
+                    <p>A função <b>filter_var()</b> pode ser usada para remover todas as tags HTML de uma string.</p>
+                    <img src="img\sanitize.png" alt="Usando o filter_var() para remover todas as tags HTML" width="508" height="127">
+                    <p>Assim removendo as tags h1 - h6.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar um inteiro</h2>
+                    </header>
+                    <p>Podemos usar a função <b>filter_var()</b> para verificar se a variável é inteira ou não. Para verificarmos, colocamos primeiro a variável e logo em seguida FILTER_VALIDATE_INT.</p>
+                    <h3>Filter_var() e o problema com 0</h3>
+                    <p>Se colocarmos um 0 usando o código que foi dito acima, a função retorna "Não é inteiro". Para resolvermos isso, temos que colocar duas condições para o <b>if</b>, uma sendo a mesma que a de cima "<i>if (filter_var($int, FILTER_VALIDATE_INT) == true || filter_var($int, FILTER_VALIDATE_INT) == 0)</i>, temos que colocar que a condição tem que ser igual a zero.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Limpe e valide um endereço de e-mail</h2>
+                    </header>
+                    <p>Usamos o filter_var() junto com o FILTER_SANITIZE_EMAIL para limpar todos os caracteres ilegais do e-mail, logo em seguida, vamos verificar o e-mail usando filter_var e FILTER_VALIDATE_EMAIL.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Limpe e valide um URL</h2>
+                    </header>
+                    <p>Para efetuarmos essa limpesa usamos praticamente o mesmo código para limpar o e-mail, mas trocamos o final dele para URL, feito isso será praticamente a mesma coisa.</p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id=advancedfilter>Filtro Avançado</h1>
+                        <h2>Validar um número inteiro dentro de um intervalo</h2>
+                    </header>
+                    <p>Vamos usar o filter_var() para verificar se uma variável é do tipo INT e entre 1 a 200:</p>                 
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar endereço IPv6</h2>
+                    </header>
+                    <p>Para validarmos um ip, vamos usar o FILTER_VALIDATE_IP e o FILTER_FLAG_IPV6, passando por esses teste vamos conseguir saber se o ip é valido ou não.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Validar URL - deve conter QueryString</h2>
+                    </header>
+                    <p>O exemplo a seguir usa a função <b>filter_var()</b> para verificar se a variável $url é um URL com uma string de consulta:</p>
+                    <img src="img\filter_var.png" alt="Usando o filter_var() para verificar se uma variável url é uma URL com uma string de consulta" width="755" height="216">
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Remover caracteres com valor ASCII>127</h2>
+                    </header>
+                    <p>Vamos usar o filter_var juntamente com FILTER_SANITIZE_STRING e FILTER_FLAG_STRIP_HIGH para remover todos as tags e os caracteres com valor ASCC&gt;127. </p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="retorno">Função de retorno de chamada</h1>
+                    </header>
+                    <p>É um função que é passada de argumento para outra função. Qualquer função existente pode ser usada como função de retorno de chamada. Para usar uma função como retorno, passe uma string contendo o nome da função como o argumento de outra função.</p>
+                    <p><b>array_map()</b> função para calcular o comprimento de cada string em uma matriz.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Retorno de chamada em funções definidas pelo usuário</h2>
+                    </header>
+                    <p>Funções e métodos definidos pelo usuário também podem ser funções de retorno de chamada como argumentos. Para usar funções de retorno de chamada dentro de uma função ou método definido pelo usuário, chame-o adcionando parênteses à variáveis e passe os argumentos como nas funções normais.</p>
+                    <p>Podendo chamar um função dentro de outra função mas para isso não colocamos o <i>$</i>.</p>
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="json">JSON</h1>
+                    </header>
+                    <p>JSON, significa JavaScript Object Notation e é uma sintaxe para armazenar e trocar dados. Como o formato JSON é um formato baseado em texto, ele pode ser facilmente enviado de um servidor e usado como formato de dados por qualquer linguagem de programação.</p>
+                    <p>Duas funções de JSON:</p>
+                    <ul>
+                        <li><b>json_encode()</b></li>
+                        <li><b>json_decode()</b></li>
+                    </ul>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>json_encode()</h2>
+                    </header>
+                    <p>É usado para codificar uma valor para o formato JSON.</p>
+                    <p>Podemos codificar uma matriz associativa em um objeto JSON.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>json_decode()</h2>
+                    </header>
+                    <p>É usada para decodificar um objeto JSON em um obejto PHP ou um array associativo.</p>
+                    <div class="code">
+                        <p>var_dump(json_deconde($jsonobj));</p>
+                    </div>
+                    <p>A função <b>json_decode()</b> retorna um objeto por padrão. Tendo em segundo parâmetro e, quando definido como verdadeiro, os obsjeto JSON são codificados em matrizes associativas.</p>
+                    <div class="code">
+                        <p>var_dump(json_decode($jsonobj, true));</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Acessando os valores decodificados</h2>
+                    </header>
+                    <p>Exemplo para acessar valores de um objeto:</p>
+                    <img src="img\json_decode.png" alt="Exemplo para acessar valores de um objeto usando json_decode()" width="564" height="213">
+                    <p>Outro exemplo para acessar valores de uma matriz associativa:</p>
+                    <img src="img\json_decode(1).png" alt="Exemplo para acessar valores de uma matriz associativa usando json_decode()" width="484" height="213">
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Looping pelos valores</h2>
+                    </header>
+                    <p>Você também pode percorrer os valores com loop <b>feach()</b>:</p>
+                    <img src="img\feach.png" alt="Usando o feach() para percorrer todo o looping da matriz do json" width="
+                    452" height="213">
+                </section>
+    
+                <section>
+                    <h2>Um rápido resumo do feach()</h2>
+                    <img src="img\feach(1).png" alt="Resumo do uso do looping feach()" width="609" height="213">
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="excecoes">Exceções</h1>
+                    </header>
+                    <p>Uma exceção é um objeto que descreve um erro ou comportamento inesperado de um script. Exceções são lançadas por muitas funções e classes.</p>
+                    <p>Funções e classes criadas pelo usuário também podem lançar exceções. As exceções são boas maneiras de interromper uma função quando ela encontra dados que ela não pode usar.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Lançando uma exceção</h2>
+                    </header>
+                    <p>A instrução <b>throw</b> permite que uma função ou método definido pelo usuário lance uma exceção. Quando uma exceção é lançada, o código a seguir não será executado.</p>
+                    <p>Se uma exceção não for detectada, um erro fatal ocorrerá com uma mensagem "Exceção não detectada".</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>A declaração try...catch</h2>
+                    </header>
+                    <p>Para evitar um erro do <b>throw</b> podemos usar, <b>try...catch</b> para capturar exceções e continuar o processo.</p>
+                    <h3>Sintaxe:</h3>
+                    <div class="code">
+                        <pre>
+        try {
+            código que pode lançar <b>throw</b> exceção
+        } catch (Exceção $e) {
+            código que é executado quando uma exceção é detectada
+        }</pre>
+                    </div>
+                    <p>O bloco catch indica que tipo de exceção deve ser capturada e o nome da variável que pode ser usada para acessar a exceção. No exemplo acima, o tipo de exceção é <b>Exception</b> e o nome da variável é <b>$e</b>.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Try...catch...finally</h2>
+                    </header>
+                    <p>A intrução <b>try...catch...finally</b> pode ser usada para capturar exceções. O código no bloco <b>finally</b> sempre será executado, independentemente se uma exceção foi detectada. Se <b>finally</b> estiver presente, o bloqueio <b>catch</b> é opcional.</p>
+                    <h3>Sintaxe:</h3>
+                    <div class="code">
+                        <pre>
+        <b>try</b>{
+            código que pode lançar <b>throw</b> exceção
+        } <b>catch</b> (Exception $e) {
+            código que é executado quando uma exceção é detectada
+        } <b>finally</b> {
+            código que sempre é executado, independentemente de uma exceção ter sido detectada
+        }</pre>
+                    </div>
+                    <p>Podemos deixar uma mensagem no <b>finally</b> como por exemplo, "Processo terminado".</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Objeto de exceção</h2>
+                    </header>
+                    <p>Objetivo de exceção contém informações sobre erro ou comportamento inesperado que a função encontrou.</p>
+                    <h3>Sintaxe:</h3>
+                    <div class="code">
+                        <p>&nbsp;new Exception (message, code, previous)</p>
+                    </div>
+                    <h3>Valores de Parâmetros</h3>
+                    <table>
+                        <th>Parâmetros</th>
+                        <th>Descrição</th>
+                        <tr>
+                            <td>message / mensagem</td>
+                            <td>Opcional. Uma string que descreve por que a exceção foi lançada.</td>
+                        </tr>
+                        <tr>
+                            <td>code / código</td>
+                            <td>Optional. Um número inteiro pode ser usado para distinguir facilmente esta exceção de outras do mesmo tipo</td>
+                        </tr>
+                        <tr>
+                            <td>previous / anterior</td>
+                            <td>Opcional. Se esta exceção foi lançada em um bloco catch de outra exceção, é recomendado passar essa exceção para este parâmetro.</td>
+                        </tr>
+                    </table>
+                    <h3>Métodos</h3>
+                    <p>Ao capturar uma exceção, a tabela a seguir mostra alguns métodos que podem ser usados para obter informações sobre exceção:</p>
+                    <table>
+                        <th>Método</th>
+                        <th>Descrição</th>
+                        <tr>
+                            <td>getMessage()</td>
+                            <td>Retorna uma string que descreve por que a exceção foi lançada</td>
+                        </tr>
+                        <tr>
+                            <td>getPrevious()</td>
+                            <td>Se esta exceção foi dispensada por outra, este método retorna a exceção anterior</td>
+                        </tr>
+                        <tr>
+                            <td>getCode()</td>
+                            <td>Retorna o código de exceção</td>
+                        </tr>
+                        <tr>
+                            <td>getFile()</td>
+                            <td>Retorna o caminho completo do arquivo no qual a exceção foi lançada</td>
+                        </tr>
+                        <tr>
+                            <td>getLine()</td>
+                            <td>Retorna o número de linha da linha do código que lançou a exceção</td>
+                        </tr>
+                    </table><br>
+                    <h3>Exemplo:</h3>
+                    <p>Informações de saída sobre uma excption que foi lançada:</p>
+                    <img src="img\exemplos_excecao.png" alt="Exemplos com alguns métodos de Exception" width="618" height="434">
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="oop">OOP - Programação Orientada Objeto</h1>
+                    </header>
+                    <p>A programação procedural trata de escrever procedimentos ou funções que realizam operações nos dados, enquanto a programação orientada a objeto trata da criação de objetos que contêm dados e funções.</p>
+                    <p>A programação orientada a objetos tem mais vantagens sobre a programação procedural:</p>
+                    <ul>
+                        <li>POO é mais rápido e fácil de executar</li>
+                        <li>POO fornece uma estrutura clara para os programas</li>
+                        <li>POO ajuda a manter o código PHP DRY ("Don't Repeat Yourself") e torna o código mais fácil de manter, modificar e depurar.</li>
+                        <li>POO torna possível criar aplicativos totalmente reutilizáveis com menos códigos e menor tempo de desenvolvimento</li>
+                    </ul>
+                    <p><strong>Dica:</strong> O princípio "Don't Repeat Yourself" (DRY) é sobre reduzir a repetição do código. Você deve extrair os códigos comuns para o aplicativo, colocá-lo em um único lugar e reutilizá-los em vez de repeti-los.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>O que são classes e objetos?</h2>
+                    </header>
+                    <p>Classes e objetos são os dois aspectos principais da programação orientada objetos.</p>
+                    <p>Observe a ilustração a seguir para ver a diferença entre classe e objeto:</p>
+                    <table class="mrg">
+                        <tr>
+                            <th>Classe</th>
+                            <th>Obejto</th>
+                        </tr>
+                        <tr>
+                            <td>Fruta</td>
+                            <td>Maçã<br>Banana<br> Manga</td>
+                        </tr>
+                    </table>
+                    <p>Podemos fazer isso com várias coisas, como carro, moto, infinitas coisas.</p>
+                    <p>Portanto, uma classe é o modelo para objetos e um objeto é uma instância de classe.</p>
+                    <p>Quando os objetos individuais são criados, eles herdam todas as propriedades presentes nas classes, mas para cada objeto terá um valor específico.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Classe e Objeto</h2>
+                    </header>
+                    <p>Vamos supor que temos uma classe chamada Fruta. Uma fruta pode ter propriedades como cor, peso, nome, etc. Podemos definir esses valores para cada fruta em específico, usando variáveis como $nome, $cor, $peso.</p>
+                    <p>Quando os objetos individuais (maçã, banana, manga, etc.) são criados, eles herdam todas as propriedades e comportamentos da classe, mas sempre, cada objeto portando valores diferentes.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Definindo Class</h2>
+                    </header>
+                    <p>Para definirmos uma classe, fazemos parecido com a função, mas usamos o <b>class</b>, seguida pelo nome da classe e um par de chaves ({}). Onde dentro dessas chaves irá ter as propriedades e métodos.</p>
+                    <div class="code">
+                        <pre>
+        class Fruta {
+            //código aqui 
+        }</pre>
+                    </div>
+                    <p>Abaixo, declaramos uma classe chamada Fruta que consiste em duas propriedades ($nome, $cor) e dois métodos set_name() e get_name() para definir e obeter o valor da propriedade $nome.</p>
+                    <div class="code">
+                        <pre>
+        class Fruta {
+            //Propriedades
+            public $nome;
+            public $cor;
+        
+            //Métodos
+            function set_name($nome) {
+                $this ->name = $nome;
+            }
+            function get_name() {
+                return $this -> name;
+            }
+        }</pre>
+                    </div>
+                    <div class="mark">
+                        <p><strong>Nota:</strong> Em uma classe, as variáveis são chamadas de propriedades e as funções de métodos.</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Definir Objetos</h2>
+                    </header>
+                    <p>Podemos criar vários objetos de uma classe. Cada objeto possui todas as propriedades e métodos da classe, mas elas terão valores diferentes.</p>
+                    <p>Os objetos de uma classe são criados usando <b>new</b>.</p>
+                    <p>Ficando como o exemplo abaixo:</p>
+                    <div class="code">
+                        <p>$banana = new Fruta();</p>
+                        <p>$manga = new Fruta();</p>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>A palavra-chave $this</h2>
+                    </header>
+                    <p>A palavra-chave <b>$this</b> refere-se ao objeto atual e só está disponível dentro de métodos.</p>
+                    <div class="code">
+                        <pre>
+        class Fruta {
+            public $nome;
+        }
+        $banana = new Fruta();</pre>
+                    </div>
+                    <p>Então, onde podemos alterar o valor da propriedade $nome? Existe duas maneiras:</p>
+                    <p>1. Dentro da class (adionanando um método set-name() e usando o $this)</p>
+                    <div class="code">
+                        <pre>
+        class Fruta {
+            public $nome;
+    
+            fuction set_name($name) {
+                $this -> name = $name;
+            }
+        }
+        $banana = new Fruta();
+        $banana->set_name("Banana");
+        echo $banana->name;</pre>
+                    </div>
+                    <p>2. Fora da classe (alterando diretamento o valor da propriedade)</p>
+                    <div class="code">
+                        <pre>
+        class Fruta {
+            public nome;
+        }
+        $banana = new Fruta();
+        $banana -> name = "Banana";
+        echo $banana->name;</pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>instanceof</h2>
+                    </header>
+                    <p>Você pode usar a palavra-chave <b>instanceof</b> para verificar se um objeto pertence a uma classe específica:</p>
+                    <div class="code">
+                        <pre>
+        $banana = new Fruta();
+        var_dump($banana instanceof Fruta);</pre>
+                    </div>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Construct</h2>
+                    </header>
+                    <p>Um construct permite inicializar as propriedades de um objeto na criação do objeto.</p>
+                    <p>Se você criar uma função <b>_-contruct</b> o PHP a chamará automaticamente quando você criar um objeto de classe.</p>
+                    <p>Observe que a função começa com dois sublinhando (__).</p>
+                    <p>Nesta função <b>__construtc</b> podemos adicionar mais de um valor dentro do seu parênteses, e assim atribuir valores para eles nas propriedades. Ele também fará com que não precise chamar um método de set_name(), por exemplo. O que reduz a quantidade do código.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Destruct</h2>
+                    </header>
+                    <p>Um destruct é chamado quando um objeto é destruído ou o script é interrompido ou encerrado.</p>
+                    <p>Se você criar uma função <b>__destruct()</b>, o PHP a chamará automaticamente no final do script. Ele também começa com dois sublinhados (__).</p>
+                    <div class="code">
+                        <p><strong>Dica:</strong> Como construct e destruct ajudam a reduzir a quantidade de código, eles são muito úteis!</p>
+                    </div>
+                </section>
+            </section><hr>
+    
+            <section>
+                <section>
+                    <header>
+                        <h1 id="modificadores">Modificadores de Acesso</h1>
+                    </header>
+                    <p>Propriedades e métodos podem ter modificadores de acesso que controlam onde eles podem ser acessados.</p>
+                    <p>Existe três tipos de acesso:</p>
+                    <ul>
+                        <li><b>public</b> - a propriedade ou método pode ser acessado de qualquer lugar. Este é o padrão</li>
+                        <li><b>protected</b> - a propriedade ou método pode ser acessado dentro e por classes derivadas dessa clase</li>
+                        <li><b>private</b> - a propriedade ou método SÓ pode ser acessado dentro da classe</li>
+                    </ul>
+                    <p>Tentar atribuir um valor para variáveis com modificadores de acesso configurado como private e protected, fora da classe resultará em erro. Isso também vale para os métodos, mesmo com as variáveis configuradas como public.</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Herança</h2>
+                    </header>
+                    <p>Herança em POO = Quando uma classe deriva de outra classe.</p>
+                    <p>As classes filhas herdará todas as propriedades e métodos públicos da classe pai. Além disso, ele pode ter suas próprias propriedades e métodos.</p>
+                    <p>Uma classe herdada é definida usando a palavra-chave <b>extends</b>.</p>
+                    <div class="code">
+                        <pre>
+        class Stramberry extends Fruit {
+            public function message() {
+                echo "Am I a fruit or a berry? ";
+            }
+        }
+        $stramberry = new Stramberry("Stramberry, "red");
+        $stramberry-> message();
+        $stramberry-> intro();</pre>
+                    </div>
+                    <h3>Explicando o exemplo:</h3>
+                    <p>A classe Stramberry é herdada da classe Fruit.</p>
+                    <p>Isso significa qua a classe Stramberry pode usar as propriedades public $name, $color, bem como os métodos públicos __construct() e intro () da classe Fruit por causa da herança.</p>
+                    <p>A classe Stramberry também usou seu próprio método: message().</p>
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>Herança e o Modificador de Acesso Protegido</h2>
+                    </header>
+                    <p>Aprendemos que <b>protected</b> tanto propriedade quanto métodos podem ser acessados dentro da classe e por classes derivadas dessas classes.</p>
+                    <p>Heranças não conseguem ter acesso a propriedades ou métodos, com protected, mas podemos chamar o método ou propriedade com o modificador <b>protected</b> para dentro do objeto filho, basta no final da linha de código inserirmos o <b>$this -> </b>, logo em seguida, o nome do método ou propriedade.</p>
+                    <div class="code">
+                        <pre>
+        class Morango extends Fruta {
+            public function mensagem() {
+                echo "Olá";
+            //Chamando o método protected
+            $this -> intro();
+        }</pre>
+                    </div>
+                </section>
+                
+                <section>
+                    <header>
+                        <h2>Substituindo Métodos Herdados</h2>
+                    </header>
+                    <p>Os métodos herdados podem ser substituídos redefinindo os métodos (use o mesmo nome) na classe filha.</p>
+                    <p>Veja o exemplo abaixo. Os métodos __construct() e intr() na classe filha (Strawberry) irão substituir os métodos __construct() e intro() na classe pai(Fruit).</p>
+                    <img src="img\herdando_classe.png" alt="Substituindo métodos herdados no PHP" width="895" height="572">
+                </section>
+    
+                <section>
+                    <header>
+                        <h2>A palavra-chave final</h2>
+                    </header>
+                    <p>
+                        
+                    </p>
+                </section>
+                
+                <address><a class="next" href="index.html">Página Anterior</a></address>
             </section>
-        </section>
+    
+        </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-        <address><a class="next" href="index.html">Página Anterior</a></address>
+        
         <div class="irtopo"><a href="#irtopo">Subir</a></div>
     </div>
         
